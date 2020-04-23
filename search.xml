@@ -166,4 +166,63 @@
         <tag>JS</tag>
       </tags>
   </entry>
+  <entry>
+    <title>post常见四种提交方式及php接收</title>
+    <url>/2020/04/23/post%E5%B8%B8%E8%A7%81%E5%9B%9B%E7%A7%8D%E6%8F%90%E4%BA%A4%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<ul>
+<li>application/x-www-form-urlencoded</li>
+<li>multipart/form-data</li>
+<li>application/json</li>
+<li>text/xml</li>
+</ul>
+<p>以上是四种常见的<code>POST</code>提交数据的方式，<code>HTTP</code> 协议是以 ASCII 码传输（可参考<a href="https://zh.wikipedia.org/zh-hans/%E8%B6%85%E6%96%87%E6%9C%AC%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener">http介绍</a>），建立在 TCP/IP 协议之上的应用层规范。规范把 HTTP 请求分为三个部分：<code>状态行</code>、<code>请求头</code>、<code>消息主体</code>。类似于下面这样</p>
+<a id="more"></a>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;method&gt; &lt;request-URL&gt; &lt;version&gt;</span><br><span class="line">&lt;headers&gt;</span><br><span class="line">&lt;entity-body&gt;</span><br></pre></td></tr></table></figure>
+
+<p>协议规定 <code>POST</code> 提交的数据必须放在<code>消息主体（entity-body）</code>中，但协议并没有规定数据必须使用什么编码方式。实际上，开发者完全可以自己决定消息主体的格式，只要最后发送的 HTTP 请求满足上面的格式就可以。</p>
+<p>但是，数据发送出去，还要服务端解析成功才有意义。一般服务端语言如 php、python 等，以及它们的 framework，都内置了自动解析常见数据格式的功能。服务端通常是根据请求头（headers）中的 <code>Content-Type</code> 字段来获知请求中的消息主体是用何种方式编码，再对主体进行解析。所以说到 <code>POST</code> 提交数据方案，包含了 <code>Content-Type</code> 和<code>消息主体编码方式</code>两部分</p>
+<h3 id="1-application-x-www-form-urlencoded"><a href="#1-application-x-www-form-urlencoded" class="headerlink" title="1.application/x-www-form-urlencoded"></a>1.application/x-www-form-urlencoded</h3><p>浏览器的原生<code>form</code> 表单，如果不设置<code>enctype</code>属性，那么最终就会以 <code>application/x-www-form-urlencoded</code> 方式提交数据 例如</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span>  <span class="attr">role</span>=<span class="string">"form"</span>  <span class="attr">method</span>=<span class="string">"POST"</span> <span class="attr">action</span>=<span class="string">"index.php"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>最为常见的form表单提交他的请求格式是这样的</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">POST http:<span class="comment">//www.example.com HTTP/1.1</span></span><br><span class="line">Content-Type: application/x-www-form-urlencoded;charset=utf<span class="number">-8</span></span><br><span class="line">Form Data</span><br><span class="line"> title=test&amp;sub%<span class="number">5</span>B%<span class="number">5</span>D=<span class="number">1</span>&amp;sub%<span class="number">5</span>B%<span class="number">5</span>D=<span class="number">2</span>&amp;sub%<span class="number">5</span>B%<span class="number">5</span>D=<span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<p>1.首先，<code>Content-Type</code> 被指定为<code>application/x-www-form-urlencoded</code>；</p>
+<p>2.headers最下方的格式为Form Data 提交的数据按照 <code>key1=val1&amp;key2=val2</code> 的方式进行编码，key 和 val 都进行了 URL 转码。大部分服务端语言都对这种方式有很好的支持，例如php 接收</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$title = $_POST[<span class="string">'title'</span>]; <span class="comment">//获取到title</span></span><br><span class="line">$sub = $_POST[<span class="string">'sub'</span>] <span class="comment">//获取到sub数组</span></span><br></pre></td></tr></table></figure>
+
+<p>很多时候，我们用 Ajax 提交数据时，也是使用这种方式。例如 <a href="http://jquery.com/" target="_blank" rel="noopener">JQuery</a> 和 <a href="http://www.qwrap.com/" target="_blank" rel="noopener">QWrap</a> 的 Ajax，Content-Type 默认值都是「application/x-www-form-urlencoded;charset=utf-8」</p>
+<h3 id="2-multipart-form-data"><a href="#2-multipart-form-data" class="headerlink" title="2.multipart/form-data"></a>2.multipart/form-data</h3><p>常用于form表单上传文件时使用，与 <code>application/x-www-form-urlencoded</code>相比 form多了 <code>enctype=&quot;multipart/form-data&quot;</code> 属性 例如</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">"post"</span>  <span class="attr">enctype</span>=<span class="string">"multipart/form-data"</span> <span class="attr">action</span>=<span class="string">"upload.php"</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span>  <span class="attr">name</span>=<span class="string">"file"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>请求格式为</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">POST http:<span class="comment">//www.example.com HTTP/1.1</span></span><br><span class="line">Content-Type:multipart/form-data; boundary=----WebKitFormBoundaryrGKCBY7qhFd3TrwA</span><br><span class="line">------WebKitFormBoundaryrGKCBY7qhFd3TrwA</span><br><span class="line">Content-Disposition: form-data; name=<span class="string">"text"</span></span><br><span class="line">title</span><br><span class="line">------WebKitFormBoundaryrGKCBY7qhFd3TrwA</span><br><span class="line">Content-Disposition: form-data; name=<span class="string">"file"</span>; filename=<span class="string">"chrome.png"</span></span><br><span class="line">Content-Type: image/png</span><br><span class="line">PNG ... content <span class="keyword">of</span> chrome.png ...</span><br><span class="line">------WebKitFormBoundaryrGKCBY7qhFd3TrwA--</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$file = $_FILES[<span class="string">'name'</span>]; <span class="comment">//接收文件</span></span><br><span class="line">$a = $_POST[<span class="string">'a'</span>] <span class="comment">//接受普通数据</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-application-json"><a href="#3-application-json" class="headerlink" title="3.application/json"></a>3.application/json</h3><p>  <code>application/json</code> 这个 <code>Content-Type</code>作为响应头大家肯定不陌生。实际上，现在越来越多的人把它作为请求头，用来告诉服务端消息主体是序列化后的 <code>JSON</code> 字符串。由于 <code>JSON</code>规范的流行，除了低版本 IE 之外的各大浏览器都原生支持 <code>JSON.stringify</code>，服务端语言也都有处理 <code>JSON</code> 的函数，使用<code>JSON</code>不会遇上什么麻烦。 <code>JSON</code>格式支持比键值对复杂得多的结构化数据，这一点也很有用。</p>
+<p>格式如下</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">POST http:<span class="comment">//www.example.com HTTP/1.1</span></span><br><span class="line">Content-Type: application/json;charset=utf<span class="number">-8</span></span><br><span class="line">Request Payload </span><br><span class="line">  &#123;<span class="string">"title"</span>:<span class="string">"test"</span>,<span class="string">"sub"</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]&#125;</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是 前两种form提交格式为 <code>Form Data</code> 这种为<code>Request Payload</code> 关于二者的区别可以参考 <a href="https://segmentfault.com/a/1190000018774494" target="_blank" rel="noopener">https://segmentfault.com/a/1190000018774494</a>  这篇文章。</p>
+<p>这种格式对php来说是不识别的，他只能解析成文本，所以后台接收原始流</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$data = file_get_contents(<span class="string">"php://input"</span>);</span><br><span class="line">$data = json_decode($data,<span class="keyword">true</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-text-xml"><a href="#4-text-xml" class="headerlink" title="4.text/xml"></a>4.text/xml</h3><p>  它是一种使用 <code>HTTP</code>作为传输协议，<code>XML</code> 作为编码方式的远程调用规范。典型的<code>XML-RPC</code>请求是这样的：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">POST http://www.example.com HTTP/1.1</span><br><span class="line">Content-Type: text/xml</span><br><span class="line"><span class="meta">&lt;?xml version="1.0"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">methodCall</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">methodName</span>&gt;</span>examples.getStateName<span class="tag">&lt;/<span class="name">methodName</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">params</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span><span class="tag">&lt;<span class="name">i4</span>&gt;</span>41<span class="tag">&lt;/<span class="name">i4</span>&gt;</span><span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">params</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">methodCall</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>XML-RPC</code> 协议简单、功能够用，各种语言的实现都有。比如微信的<code>小程序</code>和<code>公众平台</code>都是使用它来作为基本的传输类型，它的使用也很广泛，如 <code>WordPress</code> 的 <a href="http://codex.wordpress.org/XML-RPC_WordPress_API" target="_blank" rel="noopener">XML-RPC Api</a>，搜索引擎的 <a href="http://www.baidu.com/search/blogsearch_help.html#n7" target="_blank" rel="noopener">ping 服务</a>等等。<code>JavaScript</code> 中，也有<a href="http://plugins.jquery.com/xmlrpc/" target="_blank" rel="noopener">现成的库</a>支持以这种方式进行数据交互，能很好的支持已有的 <code>XML-RPC</code>服务。不过，我个人觉得<code>XML</code> 结构还是过于臃肿，一般场景用 <code>JSON</code>会更灵活方便</p>
+<p>同上，这种结构php不认识，可使用 <strong>file_get_contents(‘php://input’)</strong> 进行接收</p>
+<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p> 以上方法都可以通过header头部的Content-Type来指定  header: {“Content-Type”: “xxx” }</p>
+]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+      </tags>
+  </entry>
 </search>
