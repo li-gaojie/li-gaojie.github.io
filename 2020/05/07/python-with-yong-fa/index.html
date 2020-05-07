@@ -20,17 +20,20 @@
     var CONFIG = {"hostname":"li-gaojie.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","Muse | Mist":320,"display":"always","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":"ture","show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="庐山烟雨浙江潮， 未至千般恨不消。 及至到来无一事， 庐山烟雨浙江潮。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="小lee的菜园子">
-<meta property="og:url" content="https://li-gaojie.github.io/tags/Linux/index.html">
+  <meta name="description" content="前言 123456with表达式类似与try-finally，但又不会捕获异常with 语句实质是上下文管理。1、上下文管理协议。包含方法__enter__() 和 __exit__()，支持该协议对象要实现这两个方法。2、上下文管理器，定义执行with语句时要建立的运行时上下文，负责执行with语句块上下文中的进入与退出操作。3、进入上下文的时候执行__enter__方法，如果设置as var语">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python with用法">
+<meta property="og:url" content="https://li-gaojie.github.io/2020/05/07/python-with-yong-fa/index.html">
 <meta property="og:site_name" content="小lee的菜园子">
-<meta property="og:description" content="庐山烟雨浙江潮， 未至千般恨不消。 及至到来无一事， 庐山烟雨浙江潮。">
+<meta property="og:description" content="前言 123456with表达式类似与try-finally，但又不会捕获异常with 语句实质是上下文管理。1、上下文管理协议。包含方法__enter__() 和 __exit__()，支持该协议对象要实现这两个方法。2、上下文管理器，定义执行with语句时要建立的运行时上下文，负责执行with语句块上下文中的进入与退出操作。3、进入上下文的时候执行__enter__方法，如果设置as var语">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-05-07T10:33:39.000Z">
+<meta property="article:modified_time" content="2020-05-07T11:35:16.494Z">
 <meta property="article:author" content="Lee">
+<meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://li-gaojie.github.io/tags/Linux/">
+<link rel="canonical" href="https://li-gaojie.github.io/2020/05/07/python-with-yong-fa/">
 
 
 <script id="page-configurations">
@@ -38,12 +41,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: Linux | 小lee的菜园子</title>
+  <title>python with用法 | 小lee的菜园子</title>
   
 
 
@@ -187,57 +190,231 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://li-gaojie.github.io/2020/05/07/python-with-yong-fa/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Lee">
+      <meta itemprop="description" content=" 庐山烟雨浙江潮， 未至千般恨不消。 及至到来无一事， 庐山烟雨浙江潮。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小lee的菜园子">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          python with用法
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-05-07 18:33:39 / 修改时间：19:35:16" itemprop="dateCreated datePublished" datetime="2020-05-07T18:33:39+08:00">2020-05-07</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/05/07/python-with-yong-fa/" class="post-meta-item leancloud_visitors" data-flag-title="python with用法" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
   
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">Linux
-          <small>标签</small>
-        </h2>
-      </div>
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/05/07/python-with-yong-fa/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/05/07/python-with-yong-fa/" itemprop="commentCount">0</span>
+    </a>
+  </span>
+  
+  </br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2020</span>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span>表达式类似与<span class="keyword">try</span>-<span class="keyword">finally</span>，但又不会捕获异常</span><br><span class="line"><span class="keyword">with</span> 语句实质是上下文管理。</span><br><span class="line"><span class="number">1</span>、上下文管理协议。包含方法__enter__() 和 __exit__()，支持该协议对象要实现这两个方法。</span><br><span class="line"><span class="number">2</span>、上下文管理器，定义执行<span class="keyword">with</span>语句时要建立的运行时上下文，负责执行<span class="keyword">with</span>语句块上下文中的进入与退出操作。</span><br><span class="line"><span class="number">3</span>、进入上下文的时候执行__enter__方法，如果设置<span class="keyword">as</span> var语句，var变量接受__enter__()方法返回值。</span><br><span class="line"><span class="number">4</span>、如果运行时发生了异常，就退出上下文管理器。调用管理器__exit__方法。</span><br></pre></td></tr></table></figure>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>context是一个表达式，返回的是一个对象，var用来保存context表达式返回的对象</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> context [<span class="keyword">as</span> var]:</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">'1.txt'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    print(f.read())</span><br><span class="line">    </span><br><span class="line">print(f.closed) <span class="comment">#true</span></span><br></pre></td></tr></table></figure>
+
+<p>在这段代码中，无论<code>with</code>中的代码块在执行的过程中发生任何情况，文件最终都会被关闭。如果代码块在执行的过程中发生了一个异常，<strong>那么在这个异常被抛出前，程序会先将被打开的文件关闭</strong>。</p>
+<h2 id="with-的一般执行过程"><a href="#with-的一般执行过程" class="headerlink" title="with 的一般执行过程"></a>with 的一般执行过程</h2><p>一段基本的<code>with</code>表达式，其结构是这样的：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`<span class="keyword">with</span> EXPR <span class="keyword">as</span> VAR:     BLOCK `</span><br></pre></td></tr></table></figure>
+
+<p>其中：<code>EXPR</code>可以是任意表达式；<code>as VAR</code>是可选的。其一般的执行过程是这样的：</p>
+<ol>
+<li>计算<code>EXPR</code>，并获取一个上下文管理器。</li>
+<li>上下文管理器的<code>__exit()__</code>方法被保存起来用于之后的调用。</li>
+<li>调用上下文管理器的<code>__enter()__</code>方法。</li>
+<li>如果<code>with</code>表达式包含<code>as VAR</code>，那么<code>EXPR</code>的返回值被赋值给<code>VAR</code>。</li>
+<li>执行<code>BLOCK</code>中的表达式。</li>
+<li>调用上下文管理器的<code>__exit()__</code>方法。如果<code>BLOCK</code>的执行过程中发生了一个异常导致程序退出，那么异常的<code>type</code>、<code>value</code>和<code>traceback</code>(即<code>sys.exc_info()</code>的返回值)将作为参数传递给<code>__exit()__</code>方法。否则，将传递三个<code>None</code>。</li>
+</ol>
+<p>将这个过程用代码表示，是这样的：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`mgr = (EXPR) exit = type(mgr).__exit__ <span class="comment"># 这里没有执行 value = type(mgr).__enter__(mgr) exc = True  try:     try:         VAR = value # 如果有 as VAR         BLOCK     except:         exc = False         if not exit(mgr, *sys.exc_info()):             raise finally:     if exc:         exit(mgr, None, None, None) `</span></span><br></pre></td></tr></table></figure>
+
+<p>这个过程有几个细节：</p>
+<ul>
+<li>如果上下文管理器中没有<code>__enter()__</code>或者<code>__exit()__</code>中的任意一个方法，那么解释器会抛出一个<code>AttributeError</code>。</li>
+<li>在<code>BLOCK</code>中发生异常后，如果<code>__exit()__</code>方法返回一个可被看成是<code>True</code>的值，那么这个异常就不会被抛出，后面的代码会继续执行。</li>
+</ul>
+<p>接下来，用两种方法来实现上面来实现上面的过程的吧。</p>
+<h2 id="实现上下文管理器类"><a href="#实现上下文管理器类" class="headerlink" title="实现上下文管理器类"></a>实现上下文管理器类</h2><p>第一种方法是实现一个类，其含有一个实例属性<code>db</code>和上下文管理器所需要的方法<code>__enter()__</code>和<code>__exit()__</code>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`<span class="class"><span class="keyword">class</span> <span class="title">transaction</span><span class="params">(object)</span>:</span>     <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, db)</span>:</span>         self.db = db      <span class="function"><span class="keyword">def</span> <span class="title">__enter__</span><span class="params">(self)</span>:</span>         self.db.begin()      <span class="function"><span class="keyword">def</span> <span class="title">__exit__</span><span class="params">(self, type, value, traceback)</span>:</span>         <span class="keyword">if</span> type <span class="keyword">is</span> <span class="literal">None</span>:             db.commit()         <span class="keyword">else</span>:             db.rollback() `</span><br></pre></td></tr></table></figure>
+
+<p>了解<code>with</code>的执行过程后，这个实现方式是很容易理解的。下面介绍的实现方式，其原理理解起来要复杂很多。</p>
+<h2 id="使用生成器装饰器"><a href="#使用生成器装饰器" class="headerlink" title="使用生成器装饰器"></a>使用生成器装饰器</h2><p>在Python的标准库中，有一个装饰器可以通过生成器获取上下文管理器。使用生成器装饰器的实现过程如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`<span class="keyword">from</span> contextlib <span class="keyword">import</span> contextmanager  @contextmanager <span class="function"><span class="keyword">def</span> <span class="title">transaction</span><span class="params">(db)</span>:</span>     db.begin()      <span class="keyword">try</span>:         <span class="keyword">yield</span> db     <span class="keyword">except</span>:         db.rollback()         <span class="keyword">raise</span>     <span class="keyword">else</span>:         db.commit() `</span><br></pre></td></tr></table></figure>
+
+<p>第一眼上看去，这种实现方式更为简单，但是其机制更为复杂。看一下其执行过程吧：</p>
+<ol>
+<li>Python解释器识别到<code>yield</code>关键字后，<code>def</code>会创建一个生成器函数替代常规的函数（在类定义之外我喜欢用函数代替方法）。</li>
+<li>装饰器<code>contextmanager</code>被调用并返回一个帮助函数，这个帮助函数在被调用后会生成一个<code>GeneratorContextManager</code>实例。最终<code>with</code>表达式中的<code>EXPR</code>调用的是由<code>contentmanager</code>装饰器返回的帮助函数。</li>
+<li><code>with</code>表达式调用<code>transaction(db)</code>，实际上是调用帮助函数。帮助函数调用生成器函数，生成器函数创建一个生成器。</li>
+<li>帮助函数将这个生成器传递给<code>GeneratorContextManager</code>，并创建一个<code>GeneratorContextManager</code>的实例对象作为上下文管理器。</li>
+<li><code>with</code>表达式调用实例对象的上下文管理器的<code>__enter()__</code>方法。</li>
+<li><code>__enter()__</code>方法中会调用这个生成器的<code>next()</code>方法。这时候，生成器方法会执行到<code>yield db</code>处停止，并将<code>db</code>作为<code>next()</code>的返回值。如果有<code>as VAR</code>，那么它将会被赋值给<code>VAR</code>。</li>
+<li><code>with</code>中的<code>BLOCK</code>被执行。</li>
+<li><code>BLOCK</code>执行结束后，调用上下文管理器的<code>__exit()__</code>方法。<code>__exit()__</code>方法会再次调用生成器的<code>next()</code>方法。如果发生<code>StopIteration</code>异常，则<code>pass</code>。</li>
+<li>如果没有发生异常生成器方法将会执行<code>db.commit()</code>，否则会执行<code>db.rollback()</code>。</li>
+</ol>
+<p>再次看看上述过程的代码大致实现：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`<span class="function"><span class="keyword">def</span> <span class="title">contextmanager</span><span class="params">(func)</span>:</span>     <span class="function"><span class="keyword">def</span> <span class="title">helper</span><span class="params">(*args, **kwargs)</span>:</span>         <span class="keyword">return</span> GeneratorContextManager(func(*args, **kwargs))     <span class="keyword">return</span> helper  <span class="class"><span class="keyword">class</span> <span class="title">GeneratorContextManager</span><span class="params">(object)</span>:</span>     <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, gen)</span>:</span>         self.gen = gen      <span class="function"><span class="keyword">def</span> <span class="title">__enter__</span><span class="params">(self)</span>:</span>         <span class="keyword">try</span>:             <span class="keyword">return</span> self.gen.next()         <span class="keyword">except</span> StopIteration:             <span class="keyword">raise</span> RuntimeError(<span class="string">"generator didn't yield"</span>)      <span class="function"><span class="keyword">def</span> <span class="title">__exit__</span><span class="params">(self, type, value, traceback)</span>:</span>         <span class="keyword">if</span> type <span class="keyword">is</span> <span class="literal">None</span>:             <span class="keyword">try</span>:                 self.gen.next()             <span class="keyword">except</span> StopIteration:                 <span class="keyword">pass</span>             <span class="keyword">else</span>:                 <span class="keyword">raise</span> RuntimeError(<span class="string">"generator didn't stop"</span>)         <span class="keyword">else</span>:             <span class="keyword">try</span>:                 self.gen.throw(type, value, traceback)                 <span class="keyword">raise</span> RuntimeError(<span class="string">"generator didn't stop after throw()"</span>)             <span class="keyword">except</span> StopIteration:                 <span class="keyword">return</span> <span class="literal">True</span>             <span class="keyword">except</span>:                 <span class="keyword">if</span> sys.exc_info()[<span class="number">1</span>] <span class="keyword">is</span> <span class="keyword">not</span> value:                     <span class="keyword">raise</span> `</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Python的<code>with</code>表达式包含了很多Python特性，花点时间吃透<code>with</code>是一件非常值得的事情。</p>
+<h2 id="一些其他的例子"><a href="#一些其他的例子" class="headerlink" title="一些其他的例子"></a>一些其他的例子</h2><p>锁机制</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`@contextmanager <span class="function"><span class="keyword">def</span> <span class="title">locked</span><span class="params">(lock)</span>:</span>     lock.acquired()     <span class="keyword">try</span>:         <span class="keyword">yield</span>     <span class="keyword">finally</span>:         lock.release() `</span><br></pre></td></tr></table></figure>
+
+<p>标准输出重定向</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`@contextmanager <span class="function"><span class="keyword">def</span> <span class="title">stdout_redirect</span><span class="params">(new_stdout)</span>:</span>     old_stdout = sys.stdout     sys.stdout = new_stdout     <span class="keyword">try</span>:         <span class="keyword">yield</span>     <span class="keyword">finally</span>:         sys.stdout = old_stdout  <span class="keyword">with</span> open(<span class="string">"file.txt"</span>, <span class="string">"w"</span>) <span class="keyword">as</span> f:     <span class="keyword">with</span> stdout_redirect(f):         <span class="keyword">print</span> <span class="string">"hello world"</span>`</span><br></pre></td></tr></table></figure>
+
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="http://preshing.com/20110920/the-python-with-statement-by-example/" target="_blank" rel="noopener">The Python “with” Statement by Example</a></li>
+<li><a href="https://www.python.org/dev/peps/pep-0343/" target="_blank" rel="noopener">PEP 343</a></li>
+</ul>
+<h3 id="原文地址"><a href="#原文地址" class="headerlink" title="原文地址"></a>原文地址</h3><p><a href="http://yuez.me/python-zhong-de-guan-jian-zi-with-xiang-jie" target="_blank" rel="noopener">http://yuez.me/python-zhong-de-guan-jian-zi-with-xiang-jie</a></p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
+      
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2020\05\06\lambda-han-shu\" rel="bookmark">lambda函数</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2020\05\06\python-filter-han-shu\" rel="bookmark">python-filter函数</a></div>
+    </li>
+  </ul>
+<div>
+    
+        <div style="text-align:center;color: #333;font-size:14px;">-------------本文结束 <i class="fa fa-hand-peace"></i> 感谢您的阅读-------------</div>
+    
+</div>
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-04-18T10:29:25+08:00"
-              content="2020-04-18">
-          04-18
-        </time>
-      </div>
+        
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/04/18/jie-jue-cannot-remove-user-ini-operation-not-permitted/" itemprop="url">
-            <span itemprop="name">解决cannot remove '.user.ini'Operation not permitted</span>
-          </a>
-      </div>
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Lee
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://li-gaojie.github.io/2020/05/07/python-with-yong-fa/" title="python with用法">https://li-gaojie.github.io/2020/05/07/python-with-yong-fa/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
 
-    </header>
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"><i class="fa fa-tag"></i> python</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/05/06/python-filter-han-shu/" rel="next" title="python-filter函数">
+      python-filter函数 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
   </article>
-
-    </div>
-  </div>
   
   
-  
-
   
 
 
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -284,6 +461,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用法"><span class="nav-number">2.</span> <span class="nav-text">用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#with-的一般执行过程"><span class="nav-number">3.</span> <span class="nav-text">with 的一般执行过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现上下文管理器类"><span class="nav-number">4.</span> <span class="nav-text">实现上下文管理器类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用生成器装饰器"><span class="nav-number">5.</span> <span class="nav-text">使用生成器装饰器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些其他的例子"><span class="nav-number">7.</span> <span class="nav-text">一些其他的例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">8.</span> <span class="nav-text">引用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原文地址"><span class="nav-number">8.1.</span> <span class="nav-text">原文地址</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

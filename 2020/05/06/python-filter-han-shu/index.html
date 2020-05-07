@@ -20,17 +20,20 @@
     var CONFIG = {"hostname":"li-gaojie.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","Muse | Mist":320,"display":"always","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":"ture","show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="庐山烟雨浙江潮， 未至千般恨不消。 及至到来无一事， 庐山烟雨浙江潮。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="小lee的菜园子">
-<meta property="og:url" content="https://li-gaojie.github.io/tags/Linux/index.html">
+  <meta name="description" content="python filter函数 filter() 函数用于过滤序列，过滤掉不符合条件的元素，返回一个迭代器对象，如果要转换为列表，可以使用 list() 来转换。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python-filter函数">
+<meta property="og:url" content="https://li-gaojie.github.io/2020/05/06/python-filter-han-shu/index.html">
 <meta property="og:site_name" content="小lee的菜园子">
-<meta property="og:description" content="庐山烟雨浙江潮， 未至千般恨不消。 及至到来无一事， 庐山烟雨浙江潮。">
+<meta property="og:description" content="python filter函数 filter() 函数用于过滤序列，过滤掉不符合条件的元素，返回一个迭代器对象，如果要转换为列表，可以使用 list() 来转换。">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-05-06T07:35:22.000Z">
+<meta property="article:modified_time" content="2020-05-07T11:35:47.765Z">
 <meta property="article:author" content="Lee">
+<meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://li-gaojie.github.io/tags/Linux/">
+<link rel="canonical" href="https://li-gaojie.github.io/2020/05/06/python-filter-han-shu/">
 
 
 <script id="page-configurations">
@@ -38,12 +41,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: Linux | 小lee的菜园子</title>
+  <title>python-filter函数 | 小lee的菜园子</title>
   
 
 
@@ -187,57 +190,190 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://li-gaojie.github.io/2020/05/06/python-filter-han-shu/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Lee">
+      <meta itemprop="description" content=" 庐山烟雨浙江潮， 未至千般恨不消。 及至到来无一事， 庐山烟雨浙江潮。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小lee的菜园子">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          python-filter函数
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-06 15:35:22" itemprop="dateCreated datePublished" datetime="2020-05-06T15:35:22+08:00">2020-05-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-07 19:35:47" itemprop="dateModified" datetime="2020-05-07T19:35:47+08:00">2020-05-07</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/05/06/python-filter-han-shu/" class="post-meta-item leancloud_visitors" data-flag-title="python-filter函数" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
   
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">Linux
-          <small>标签</small>
-        </h2>
-      </div>
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/05/06/python-filter-han-shu/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/05/06/python-filter-han-shu/" itemprop="commentCount">0</span>
+    </a>
+  </span>
+  
+  </br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>432</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2020</span>
+        <h3 id="python-filter函数"><a href="#python-filter函数" class="headerlink" title="python filter函数"></a>python filter函数</h3><blockquote>
+<p><strong>filter()</strong> 函数用于过滤序列，过滤掉不符合条件的元素，返回一个迭代器对象，如果要转换为列表，可以使用 list() 来转换。</p>
+</blockquote>
+<a id="more"></a>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filter(function, iterable)</span><br></pre></td></tr></table></figure>
+
+<p>参数</p>
+<ul>
+<li>function – 判断函数，可为none。</li>
+<li>iterable – 可迭代对象。</li>
+</ul>
+<p>序列中的每个元素作为参数传递给函数进行判断，返回True或者False，最后将<code>返回为True的元素</code></p>
+<h5 id="为None时"><a href="#为None时" class="headerlink" title="为None时"></a>为None时</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a = filter(<span class="literal">None</span>,[<span class="number">1</span>,<span class="literal">False</span>,<span class="number">0</span>,<span class="literal">True</span>])</span><br><span class="line">print(a)</span><br><span class="line">print(list(a))</span><br><span class="line"><span class="comment">#&lt;filter object at 0x00000169BBEA3550&gt;</span></span><br><span class="line"><span class="comment">#[1, True]</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> a = filter(<span class="keyword">lambda</span> n : n &lt; <span class="number">2</span>,[<span class="number">0</span>,<span class="literal">False</span>,<span class="number">2</span>,<span class="literal">True</span>])</span><br><span class="line"> print(a)</span><br><span class="line"> print(list(a))</span><br><span class="line"><span class="comment">#&lt;filter object at 0x000001D84FB0C390&gt;</span></span><br><span class="line"><span class="comment">#[0, False, True]</span></span><br></pre></td></tr></table></figure>
+
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
+      
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2020\05\06\lambda-han-shu\" rel="bookmark">lambda函数</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2020\05\07\python-with-yong-fa\" rel="bookmark">python with用法</a></div>
+    </li>
+  </ul>
+<div>
+    
+        <div style="text-align:center;color: #333;font-size:14px;">-------------本文结束 <i class="fa fa-hand-peace"></i> 感谢您的阅读-------------</div>
+    
+</div>
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-04-18T10:29:25+08:00"
-              content="2020-04-18">
-          04-18
-        </time>
-      </div>
+        
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/04/18/jie-jue-cannot-remove-user-ini-operation-not-permitted/" itemprop="url">
-            <span itemprop="name">解决cannot remove '.user.ini'Operation not permitted</span>
-          </a>
-      </div>
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Lee
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://li-gaojie.github.io/2020/05/06/python-filter-han-shu/" title="python-filter函数">https://li-gaojie.github.io/2020/05/06/python-filter-han-shu/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
 
-    </header>
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"><i class="fa fa-tag"></i> python</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/05/07/python-with-yong-fa/" rel="prev" title="python with用法">
+      <i class="fa fa-chevron-left"></i> python with用法
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/05/06/lambda-han-shu/" rel="next" title="lambda函数">
+      lambda函数 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
   </article>
-
-    </div>
-  </div>
   
   
-  
-
   
 
 
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -284,6 +420,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#python-filter函数"><span class="nav-number">1.</span> <span class="nav-text">python filter函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#为None时"><span class="nav-number">1.0.1.</span> <span class="nav-text">为None时</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#调用函数"><span class="nav-number">1.0.2.</span> <span class="nav-text">调用函数</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

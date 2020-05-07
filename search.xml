@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>hexo搭建</title>
-    <url>/2020/04/12/hexo%E6%90%AD%E5%BB%BA%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/</url>
+    <url>/2020/04/12/hexo-da-jian-yu-dao-de-keng/</url>
     <content><![CDATA[<h4 id="服务器搭建nginx"><a href="#服务器搭建nginx" class="headerlink" title="服务器搭建nginx"></a>服务器搭建nginx</h4><p><a href="https://yq.aliyun.com/articles/700682" target="_blank" rel="noopener">在阿里云服务器上如何搭建nginx？</a> </p>
 <h4 id="解决本地git提交-问题"><a href="#解决本地git提交-问题" class="headerlink" title="解决本地git提交 问题"></a>解决本地git提交 问题</h4><p><a href="https://blog.csdn.net/lujinjian605894472/article/details/8443403" target="_blank" rel="noopener">![rejected] master -&gt; master (non-fast-forward)</a></p>
 ]]></content>
@@ -14,8 +14,93 @@
       </tags>
   </entry>
   <entry>
+    <title>lambda函数</title>
+    <url>/2020/05/06/lambda-han-shu/</url>
+    <content><![CDATA[<h3 id="python-lambda函数"><a href="#python-lambda函数" class="headerlink" title="python lambda函数"></a>python lambda函数</h3><blockquote>
+<p>匿名函数lambda：是指一类无需定义标识符（函数名）的函数或子程序。<br>lambda 函数可以接收任意多个参数 (包括可选参数) 并且返回单个表达式的值。</p>
+<p>lambda匿名函数的格式：冒号前是参数，可以有多个，用逗号隔开，冒号右边的为表达式。其实lambda返回值是一个函数的地址，也就是函数对象。</p>
+</blockquote>
+<p><strong>要点：</strong></p>
+<ul>
+<li>lambda 函数不能包含命令，</li>
+<li>包含的表达式不能超过一个。<a id="more"></a>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(x)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">2</span> * x + <span class="number">1</span></span><br><span class="line">func(<span class="number">5</span>)</span><br><span class="line"><span class="string">'''等同于'''</span></span><br><span class="line">a = <span class="keyword">lambda</span> x : <span class="number">2</span> * x + <span class="number">1</span></span><br><span class="line">a(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>多个参数</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(x,y)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">2</span> * x + y</span><br><span class="line">func(<span class="number">5</span>,<span class="number">6</span>)</span><br><span class="line"><span class="string">'''等同于'''</span></span><br><span class="line">a = <span class="keyword">lambda</span> x,y : <span class="number">2</span> * x + y</span><br><span class="line">a(<span class="number">5</span>,<span class="number">6</span>)</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>post常见四种提交方式及php接收</title>
+    <url>/2020/04/23/post-chang-jian-si-chong-ti-jiao-fang-shi/</url>
+    <content><![CDATA[<ul>
+<li>application/x-www-form-urlencoded</li>
+<li>multipart/form-data</li>
+<li>application/json</li>
+<li>text/xml</li>
+</ul>
+<p>以上是四种常见的<code>POST</code>提交数据的方式，<code>HTTP</code> 协议是以 ASCII 码传输（可参考<a href="https://zh.wikipedia.org/zh-hans/%E8%B6%85%E6%96%87%E6%9C%AC%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener">http介绍</a>），建立在 TCP/IP 协议之上的应用层规范。规范把 HTTP 请求分为三个部分：<code>状态行</code>、<code>请求头</code>、<code>消息主体</code>。类似于下面这样</p>
+<a id="more"></a>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;method&gt; &lt;request-URL&gt; &lt;version&gt;</span><br><span class="line">&lt;headers&gt;</span><br><span class="line">&lt;entity-body&gt;</span><br></pre></td></tr></table></figure>
+
+<p>协议规定 <code>POST</code> 提交的数据必须放在<code>消息主体（entity-body）</code>中，但协议并没有规定数据必须使用什么编码方式。实际上，开发者完全可以自己决定消息主体的格式，只要最后发送的 HTTP 请求满足上面的格式就可以。</p>
+<p>但是，数据发送出去，还要服务端解析成功才有意义。一般服务端语言如 php、python 等，以及它们的 framework，都内置了自动解析常见数据格式的功能。服务端通常是根据请求头（headers）中的 <code>Content-Type</code> 字段来获知请求中的消息主体是用何种方式编码，再对主体进行解析。所以说到 <code>POST</code> 提交数据方案，包含了 <code>Content-Type</code> 和<code>消息主体编码方式</code>两部分</p>
+<h3 id="1-application-x-www-form-urlencoded"><a href="#1-application-x-www-form-urlencoded" class="headerlink" title="1.application/x-www-form-urlencoded"></a>1.application/x-www-form-urlencoded</h3><p>浏览器的原生<code>form</code> 表单，如果不设置<code>enctype</code>属性，那么最终就会以 <code>application/x-www-form-urlencoded</code> 方式提交数据 例如</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span>  <span class="attr">role</span>=<span class="string">"form"</span>  <span class="attr">method</span>=<span class="string">"POST"</span> <span class="attr">action</span>=<span class="string">"index.php"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>最为常见的form表单提交他的请求格式是这样的</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">POST http:<span class="comment">//www.example.com HTTP/1.1</span></span><br><span class="line">Content-Type: application/x-www-form-urlencoded;charset=utf<span class="number">-8</span></span><br><span class="line">Form Data</span><br><span class="line"> title=test&amp;sub%<span class="number">5</span>B%<span class="number">5</span>D=<span class="number">1</span>&amp;sub%<span class="number">5</span>B%<span class="number">5</span>D=<span class="number">2</span>&amp;sub%<span class="number">5</span>B%<span class="number">5</span>D=<span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<p>1.首先，<code>Content-Type</code> 被指定为<code>application/x-www-form-urlencoded</code>；</p>
+<p>2.headers最下方的格式为Form Data 提交的数据按照 <code>key1=val1&amp;key2=val2</code> 的方式进行编码，key 和 val 都进行了 URL 转码。大部分服务端语言都对这种方式有很好的支持，例如php 接收</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$title = $_POST[<span class="string">'title'</span>]; <span class="comment">//获取到title</span></span><br><span class="line">$sub = $_POST[<span class="string">'sub'</span>] <span class="comment">//获取到sub数组</span></span><br></pre></td></tr></table></figure>
+
+<p>很多时候，我们用 Ajax 提交数据时，也是使用这种方式。例如 <a href="http://jquery.com/" target="_blank" rel="noopener">JQuery</a> 和 <a href="http://www.qwrap.com/" target="_blank" rel="noopener">QWrap</a> 的 Ajax，Content-Type 默认值都是「application/x-www-form-urlencoded;charset=utf-8」</p>
+<h3 id="2-multipart-form-data"><a href="#2-multipart-form-data" class="headerlink" title="2.multipart/form-data"></a>2.multipart/form-data</h3><p>常用于form表单上传文件时使用，与 <code>application/x-www-form-urlencoded</code>相比 form多了 <code>enctype=&quot;multipart/form-data&quot;</code> 属性 例如</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">"post"</span>  <span class="attr">enctype</span>=<span class="string">"multipart/form-data"</span> <span class="attr">action</span>=<span class="string">"upload.php"</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span>  <span class="attr">name</span>=<span class="string">"file"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>请求格式为</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">POST http:<span class="comment">//www.example.com HTTP/1.1</span></span><br><span class="line">Content-Type:multipart/form-data; boundary=----WebKitFormBoundaryrGKCBY7qhFd3TrwA</span><br><span class="line">------WebKitFormBoundaryrGKCBY7qhFd3TrwA</span><br><span class="line">Content-Disposition: form-data; name=<span class="string">"text"</span></span><br><span class="line">title</span><br><span class="line">------WebKitFormBoundaryrGKCBY7qhFd3TrwA</span><br><span class="line">Content-Disposition: form-data; name=<span class="string">"file"</span>; filename=<span class="string">"chrome.png"</span></span><br><span class="line">Content-Type: image/png</span><br><span class="line">PNG ... content <span class="keyword">of</span> chrome.png ...</span><br><span class="line">------WebKitFormBoundaryrGKCBY7qhFd3TrwA--</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$file = $_FILES[<span class="string">'name'</span>]; <span class="comment">//接收文件</span></span><br><span class="line">$a = $_POST[<span class="string">'a'</span>] <span class="comment">//接受普通数据</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-application-json"><a href="#3-application-json" class="headerlink" title="3.application/json"></a>3.application/json</h3><p>  <code>application/json</code> 这个 <code>Content-Type</code>作为响应头大家肯定不陌生。实际上，现在越来越多的人把它作为请求头，用来告诉服务端消息主体是序列化后的 <code>JSON</code> 字符串。由于 <code>JSON</code>规范的流行，除了低版本 IE 之外的各大浏览器都原生支持 <code>JSON.stringify</code>，服务端语言也都有处理 <code>JSON</code> 的函数，使用<code>JSON</code>不会遇上什么麻烦。 <code>JSON</code>格式支持比键值对复杂得多的结构化数据，这一点也很有用。</p>
+<p>格式如下</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">POST http:<span class="comment">//www.example.com HTTP/1.1</span></span><br><span class="line">Content-Type: application/json;charset=utf<span class="number">-8</span></span><br><span class="line">Request Payload </span><br><span class="line">  &#123;<span class="string">"title"</span>:<span class="string">"test"</span>,<span class="string">"sub"</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]&#125;</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是 前两种form提交格式为 <code>Form Data</code> 这种为<code>Request Payload</code> 关于二者的区别可以参考 <a href="https://segmentfault.com/a/1190000018774494" target="_blank" rel="noopener">https://segmentfault.com/a/1190000018774494</a>  这篇文章。</p>
+<p>这种格式对php来说是不识别的，他只能解析成文本，所以后台接收原始流</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$data = file_get_contents(<span class="string">"php://input"</span>);</span><br><span class="line">$data = json_decode($data,<span class="keyword">true</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-text-xml"><a href="#4-text-xml" class="headerlink" title="4.text/xml"></a>4.text/xml</h3><p>  它是一种使用 <code>HTTP</code>作为传输协议，<code>XML</code> 作为编码方式的远程调用规范。典型的<code>XML-RPC</code>请求是这样的：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">POST http://www.example.com HTTP/1.1</span><br><span class="line">Content-Type: text/xml</span><br><span class="line"><span class="meta">&lt;?xml version="1.0"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">methodCall</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">methodName</span>&gt;</span>examples.getStateName<span class="tag">&lt;/<span class="name">methodName</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">params</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span><span class="tag">&lt;<span class="name">i4</span>&gt;</span>41<span class="tag">&lt;/<span class="name">i4</span>&gt;</span><span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">params</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">methodCall</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>XML-RPC</code> 协议简单、功能够用，各种语言的实现都有。比如微信的<code>小程序</code>和<code>公众平台</code>都是使用它来作为基本的传输类型，它的使用也很广泛，如 <code>WordPress</code> 的 <a href="http://codex.wordpress.org/XML-RPC_WordPress_API" target="_blank" rel="noopener">XML-RPC Api</a>，搜索引擎的 <a href="http://www.baidu.com/search/blogsearch_help.html#n7" target="_blank" rel="noopener">ping 服务</a>等等。<code>JavaScript</code> 中，也有<a href="http://plugins.jquery.com/xmlrpc/" target="_blank" rel="noopener">现成的库</a>支持以这种方式进行数据交互，能很好的支持已有的 <code>XML-RPC</code>服务。不过，我个人觉得<code>XML</code> 结构还是过于臃肿，一般场景用 <code>JSON</code>会更灵活方便</p>
+<p>同上，这种结构php不认识，可使用 <strong>file_get_contents(‘php://input’)</strong> 进行接收</p>
+<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p> 以上方法都可以通过header头部的Content-Type来指定  header: {“Content-Type”: “xxx” }</p>
+]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>markdown基本语法</title>
-    <url>/2020/04/12/markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</url>
+    <url>/2020/04/12/markdown-ji-ben-yu-fa/</url>
     <content><![CDATA[<h4 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 这是一级标题</span><br><span class="line">## 这是二级标题</span><br><span class="line">### 这是三级标题</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 
@@ -44,20 +129,8 @@
       </tags>
   </entry>
   <entry>
-    <title>在github中建立一个图片库</title>
-    <url>/2020/04/18/%E5%9C%A8github%E4%B8%AD%E5%BB%BA%E7%AB%8B%E4%B8%80%E4%B8%AA%E5%9B%BE%E7%89%87%E5%BA%93/</url>
-    <content><![CDATA[<p>废话少说 就是在GitHub建个库单独存储图片<br>遇到的问题是<br>    <strong>找不到 raw.githubusercontent.com 的服务器 IP 地址。</strong><br>其原因应该就是DNS污染，解决办法<br><strong>在hosts文件添加 199.232.68.133  raw.githubusercontent.com</strong></p>
-]]></content>
-      <categories>
-        <category>github</category>
-      </categories>
-      <tags>
-        <tag>github</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux服务器中配置Nginx一个域名访问多个项目</title>
-    <url>/2020/04/12/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD%E9%85%8D%E7%BD%AENginx%E4%B8%80%E4%B8%AA%E5%9F%9F%E5%90%8D%E8%AE%BF%E9%97%AE%E5%A4%9A%E4%B8%AA%E9%A1%B9%E7%9B%AE/</url>
+    <url>/2020/04/12/linux-fu-wu-qi-zhong-pei-zhi-nginx-yi-ge-yu-ming-fang-wen-duo-ge-xiang-mu/</url>
     <content><![CDATA[<p>&emsp;&emsp;务器配置个人博客和其它项目使其能够根据不同 url 跳转到不同项目，(例如:<em>localhosh://A 项目/，localhosh://B 项目/</em> )因为对服务器和 Nginx 部署了解甚少，在此记录一下</p>
 <a id="more"></a>
 
@@ -119,8 +192,172 @@
       </tags>
   </entry>
   <entry>
+    <title>在github中建立一个图片库</title>
+    <url>/2020/04/18/zai-github-zhong-jian-li-yi-ge-tu-pian-ku/</url>
+    <content><![CDATA[<p>废话少说 就是在GitHub建个库单独存储图片<br>遇到的问题是<br>    <strong>找不到 raw.githubusercontent.com 的服务器 IP 地址。</strong><br>其原因应该就是DNS污染，解决办法<br><strong>在hosts文件添加 199.232.68.133  raw.githubusercontent.com</strong></p>
+]]></content>
+      <categories>
+        <category>github</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python with用法</title>
+    <url>/2020/05/07/python-with-yong-fa/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span>表达式类似与<span class="keyword">try</span>-<span class="keyword">finally</span>，但又不会捕获异常</span><br><span class="line"><span class="keyword">with</span> 语句实质是上下文管理。</span><br><span class="line"><span class="number">1</span>、上下文管理协议。包含方法__enter__() 和 __exit__()，支持该协议对象要实现这两个方法。</span><br><span class="line"><span class="number">2</span>、上下文管理器，定义执行<span class="keyword">with</span>语句时要建立的运行时上下文，负责执行<span class="keyword">with</span>语句块上下文中的进入与退出操作。</span><br><span class="line"><span class="number">3</span>、进入上下文的时候执行__enter__方法，如果设置<span class="keyword">as</span> var语句，var变量接受__enter__()方法返回值。</span><br><span class="line"><span class="number">4</span>、如果运行时发生了异常，就退出上下文管理器。调用管理器__exit__方法。</span><br></pre></td></tr></table></figure>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>context是一个表达式，返回的是一个对象，var用来保存context表达式返回的对象</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> context [<span class="keyword">as</span> var]:</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">'1.txt'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    print(f.read())</span><br><span class="line">    </span><br><span class="line">print(f.closed) <span class="comment">#true</span></span><br></pre></td></tr></table></figure>
+
+<p>在这段代码中，无论<code>with</code>中的代码块在执行的过程中发生任何情况，文件最终都会被关闭。如果代码块在执行的过程中发生了一个异常，<strong>那么在这个异常被抛出前，程序会先将被打开的文件关闭</strong>。</p>
+<h2 id="with-的一般执行过程"><a href="#with-的一般执行过程" class="headerlink" title="with 的一般执行过程"></a>with 的一般执行过程</h2><p>一段基本的<code>with</code>表达式，其结构是这样的：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">`<span class="keyword">with</span> EXPR <span class="keyword">as</span> VAR:     BLOCK `</span><br></pre></td></tr></table></figure>
+
+<p>其中：<code>EXPR</code>可以是任意表达式；<code>as VAR</code>是可选的。其一般的执行过程是这样的：</p>
+<ol>
+<li>计算<code>EXPR</code>，并获取一个上下文管理器。</li>
+<li>上下文管理器的<code>__exit()__</code>方法被保存起来用于之后的调用。</li>
+<li>调用上下文管理器的<code>__enter()__</code>方法。</li>
+<li>如果<code>with</code>表达式包含<code>as VAR</code>，那么<code>EXPR</code>的返回值被赋值给<code>VAR</code>。</li>
+<li>执行<code>BLOCK</code>中的表达式。</li>
+<li>调用上下文管理器的<code>__exit()__</code>方法。如果<code>BLOCK</code>的执行过程中发生了一个异常导致程序退出，那么异常的<code>type</code>、<code>value</code>和<code>traceback</code>(即<code>sys.exc_info()</code>的返回值)将作为参数传递给<code>__exit()__</code>方法。否则，将传递三个<code>None</code>。</li>
+</ol>
+<p>将这个过程用代码表示，是这样的：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">`mgr = (EXPR) exit = type(mgr).__exit__ <span class="comment"># 这里没有执行 value = type(mgr).__enter__(mgr) exc = True  try:     try:         VAR = value # 如果有 as VAR         BLOCK     except:         exc = False         if not exit(mgr, *sys.exc_info()):             raise finally:     if exc:         exit(mgr, None, None, None) `</span></span><br></pre></td></tr></table></figure>
+
+<p>这个过程有几个细节：</p>
+<ul>
+<li>如果上下文管理器中没有<code>__enter()__</code>或者<code>__exit()__</code>中的任意一个方法，那么解释器会抛出一个<code>AttributeError</code>。</li>
+<li>在<code>BLOCK</code>中发生异常后，如果<code>__exit()__</code>方法返回一个可被看成是<code>True</code>的值，那么这个异常就不会被抛出，后面的代码会继续执行。</li>
+</ul>
+<p>接下来，用两种方法来实现上面来实现上面的过程的吧。</p>
+<h2 id="实现上下文管理器类"><a href="#实现上下文管理器类" class="headerlink" title="实现上下文管理器类"></a>实现上下文管理器类</h2><p>第一种方法是实现一个类，其含有一个实例属性<code>db</code>和上下文管理器所需要的方法<code>__enter()__</code>和<code>__exit()__</code>。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">`<span class="class"><span class="keyword">class</span> <span class="title">transaction</span><span class="params">(object)</span>:</span>     <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, db)</span>:</span>         self.db = db      <span class="function"><span class="keyword">def</span> <span class="title">__enter__</span><span class="params">(self)</span>:</span>         self.db.begin()      <span class="function"><span class="keyword">def</span> <span class="title">__exit__</span><span class="params">(self, type, value, traceback)</span>:</span>         <span class="keyword">if</span> type <span class="keyword">is</span> <span class="literal">None</span>:             db.commit()         <span class="keyword">else</span>:             db.rollback() `</span><br></pre></td></tr></table></figure>
+
+<p>了解<code>with</code>的执行过程后，这个实现方式是很容易理解的。下面介绍的实现方式，其原理理解起来要复杂很多。</p>
+<h2 id="使用生成器装饰器"><a href="#使用生成器装饰器" class="headerlink" title="使用生成器装饰器"></a>使用生成器装饰器</h2><p>在Python的标准库中，有一个装饰器可以通过生成器获取上下文管理器。使用生成器装饰器的实现过程如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">`<span class="keyword">from</span> contextlib <span class="keyword">import</span> contextmanager  @contextmanager <span class="function"><span class="keyword">def</span> <span class="title">transaction</span><span class="params">(db)</span>:</span>     db.begin()      <span class="keyword">try</span>:         <span class="keyword">yield</span> db     <span class="keyword">except</span>:         db.rollback()         <span class="keyword">raise</span>     <span class="keyword">else</span>:         db.commit() `</span><br></pre></td></tr></table></figure>
+
+<p>第一眼上看去，这种实现方式更为简单，但是其机制更为复杂。看一下其执行过程吧：</p>
+<ol>
+<li>Python解释器识别到<code>yield</code>关键字后，<code>def</code>会创建一个生成器函数替代常规的函数（在类定义之外我喜欢用函数代替方法）。</li>
+<li>装饰器<code>contextmanager</code>被调用并返回一个帮助函数，这个帮助函数在被调用后会生成一个<code>GeneratorContextManager</code>实例。最终<code>with</code>表达式中的<code>EXPR</code>调用的是由<code>contentmanager</code>装饰器返回的帮助函数。</li>
+<li><code>with</code>表达式调用<code>transaction(db)</code>，实际上是调用帮助函数。帮助函数调用生成器函数，生成器函数创建一个生成器。</li>
+<li>帮助函数将这个生成器传递给<code>GeneratorContextManager</code>，并创建一个<code>GeneratorContextManager</code>的实例对象作为上下文管理器。</li>
+<li><code>with</code>表达式调用实例对象的上下文管理器的<code>__enter()__</code>方法。</li>
+<li><code>__enter()__</code>方法中会调用这个生成器的<code>next()</code>方法。这时候，生成器方法会执行到<code>yield db</code>处停止，并将<code>db</code>作为<code>next()</code>的返回值。如果有<code>as VAR</code>，那么它将会被赋值给<code>VAR</code>。</li>
+<li><code>with</code>中的<code>BLOCK</code>被执行。</li>
+<li><code>BLOCK</code>执行结束后，调用上下文管理器的<code>__exit()__</code>方法。<code>__exit()__</code>方法会再次调用生成器的<code>next()</code>方法。如果发生<code>StopIteration</code>异常，则<code>pass</code>。</li>
+<li>如果没有发生异常生成器方法将会执行<code>db.commit()</code>，否则会执行<code>db.rollback()</code>。</li>
+</ol>
+<p>再次看看上述过程的代码大致实现：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">`<span class="function"><span class="keyword">def</span> <span class="title">contextmanager</span><span class="params">(func)</span>:</span>     <span class="function"><span class="keyword">def</span> <span class="title">helper</span><span class="params">(*args, **kwargs)</span>:</span>         <span class="keyword">return</span> GeneratorContextManager(func(*args, **kwargs))     <span class="keyword">return</span> helper  <span class="class"><span class="keyword">class</span> <span class="title">GeneratorContextManager</span><span class="params">(object)</span>:</span>     <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, gen)</span>:</span>         self.gen = gen      <span class="function"><span class="keyword">def</span> <span class="title">__enter__</span><span class="params">(self)</span>:</span>         <span class="keyword">try</span>:             <span class="keyword">return</span> self.gen.next()         <span class="keyword">except</span> StopIteration:             <span class="keyword">raise</span> RuntimeError(<span class="string">"generator didn't yield"</span>)      <span class="function"><span class="keyword">def</span> <span class="title">__exit__</span><span class="params">(self, type, value, traceback)</span>:</span>         <span class="keyword">if</span> type <span class="keyword">is</span> <span class="literal">None</span>:             <span class="keyword">try</span>:                 self.gen.next()             <span class="keyword">except</span> StopIteration:                 <span class="keyword">pass</span>             <span class="keyword">else</span>:                 <span class="keyword">raise</span> RuntimeError(<span class="string">"generator didn't stop"</span>)         <span class="keyword">else</span>:             <span class="keyword">try</span>:                 self.gen.throw(type, value, traceback)                 <span class="keyword">raise</span> RuntimeError(<span class="string">"generator didn't stop after throw()"</span>)             <span class="keyword">except</span> StopIteration:                 <span class="keyword">return</span> <span class="literal">True</span>             <span class="keyword">except</span>:                 <span class="keyword">if</span> sys.exc_info()[<span class="number">1</span>] <span class="keyword">is</span> <span class="keyword">not</span> value:                     <span class="keyword">raise</span> `</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Python的<code>with</code>表达式包含了很多Python特性，花点时间吃透<code>with</code>是一件非常值得的事情。</p>
+<h2 id="一些其他的例子"><a href="#一些其他的例子" class="headerlink" title="一些其他的例子"></a>一些其他的例子</h2><p>锁机制</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">`@contextmanager <span class="function"><span class="keyword">def</span> <span class="title">locked</span><span class="params">(lock)</span>:</span>     lock.acquired()     <span class="keyword">try</span>:         <span class="keyword">yield</span>     <span class="keyword">finally</span>:         lock.release() `</span><br></pre></td></tr></table></figure>
+
+<p>标准输出重定向</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">`@contextmanager <span class="function"><span class="keyword">def</span> <span class="title">stdout_redirect</span><span class="params">(new_stdout)</span>:</span>     old_stdout = sys.stdout     sys.stdout = new_stdout     <span class="keyword">try</span>:         <span class="keyword">yield</span>     <span class="keyword">finally</span>:         sys.stdout = old_stdout  <span class="keyword">with</span> open(<span class="string">"file.txt"</span>, <span class="string">"w"</span>) <span class="keyword">as</span> f:     <span class="keyword">with</span> stdout_redirect(f):         <span class="keyword">print</span> <span class="string">"hello world"</span>`</span><br></pre></td></tr></table></figure>
+
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="http://preshing.com/20110920/the-python-with-statement-by-example/" target="_blank" rel="noopener">The Python “with” Statement by Example</a></li>
+<li><a href="https://www.python.org/dev/peps/pep-0343/" target="_blank" rel="noopener">PEP 343</a></li>
+</ul>
+<h3 id="原文地址"><a href="#原文地址" class="headerlink" title="原文地址"></a>原文地址</h3><p><a href="http://yuez.me/python-zhong-de-guan-jian-zi-with-xiang-jie" target="_blank" rel="noopener">http://yuez.me/python-zhong-de-guan-jian-zi-with-xiang-jie</a></p>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python-filter函数</title>
+    <url>/2020/05/06/python-filter-han-shu/</url>
+    <content><![CDATA[<h3 id="python-filter函数"><a href="#python-filter函数" class="headerlink" title="python filter函数"></a>python filter函数</h3><blockquote>
+<p><strong>filter()</strong> 函数用于过滤序列，过滤掉不符合条件的元素，返回一个迭代器对象，如果要转换为列表，可以使用 list() 来转换。</p>
+</blockquote>
+<a id="more"></a>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">filter(function, iterable)</span><br></pre></td></tr></table></figure>
+
+<p>参数</p>
+<ul>
+<li>function – 判断函数，可为none。</li>
+<li>iterable – 可迭代对象。</li>
+</ul>
+<p>序列中的每个元素作为参数传递给函数进行判断，返回True或者False，最后将<code>返回为True的元素</code></p>
+<h5 id="为None时"><a href="#为None时" class="headerlink" title="为None时"></a>为None时</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = filter(<span class="literal">None</span>,[<span class="number">1</span>,<span class="literal">False</span>,<span class="number">0</span>,<span class="literal">True</span>])</span><br><span class="line">print(a)</span><br><span class="line">print(list(a))</span><br><span class="line"><span class="comment">#&lt;filter object at 0x00000169BBEA3550&gt;</span></span><br><span class="line"><span class="comment">#[1, True]</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"> a = filter(<span class="keyword">lambda</span> n : n &lt; <span class="number">2</span>,[<span class="number">0</span>,<span class="literal">False</span>,<span class="number">2</span>,<span class="literal">True</span>])</span><br><span class="line"> print(a)</span><br><span class="line"> print(list(a))</span><br><span class="line"><span class="comment">#&lt;filter object at 0x000001D84FB0C390&gt;</span></span><br><span class="line"><span class="comment">#[0, False, True]</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>生成全球唯一标识uuid(python/php)</title>
+    <url>/2020/04/24/sheng-cheng-quan-qiu-wei-yi-biao-shi-uuid-python-php/</url>
+    <content><![CDATA[<p>UUID（全称为Universally Unique IDentifier）是128位的全局唯一标识符，通常由32字节的字符串表示。</p>
+<a id="more"></a>
+<h2 id="python"><a href="#python" class="headerlink" title="python"></a>python</h2><p> 在python中有uuid库，它可以通过MAC地址、时间戳、命名空间、随机数、伪随机数来保证生成ID的时间和空间的唯一性。共有五个算法，也就是五种方法来实现：</p>
+<h4 id="1、uuid1-——基于时间戳"><a href="#1、uuid1-——基于时间戳" class="headerlink" title="1、uuid1()——基于时间戳"></a>1、uuid1()——基于时间戳</h4><p>由MAC地址、当前时间戳、随机数生成。可以保证全球范围内的唯一性，但MAC的使用同时带来安全性问题，局域网中可以使用IP来代替MAC。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> uuid</span><br><span class="line">print(uuid.uuid1())</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2、uuid2-——基于分布式计算环境DCE（Python中没有这个函数）"><a href="#2、uuid2-——基于分布式计算环境DCE（Python中没有这个函数）" class="headerlink" title="2、uuid2()——基于分布式计算环境DCE（Python中没有这个函数）"></a>2、uuid2()——基于分布式计算环境DCE（Python中没有这个函数）</h4><p>算法与uuid1相同，不同的是把时间戳的前4位置换为POSIX的UID。实际中很少用到该方法。</p>
+<h4 id="3、uuid3-——基于名字的MD5散列值"><a href="#3、uuid3-——基于名字的MD5散列值" class="headerlink" title="3、uuid3()——基于名字的MD5散列值"></a>3、uuid3()——基于名字的MD5散列值</h4><p>通过计算名字和命名空间的MD5散列值得到，保证了同一命名空间中不同名字的唯一性，和不同命名空间的唯一性，但同一命名空间的同一名字生成相同的uuid。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> uuid</span><br><span class="line"></span><br><span class="line">name = <span class="string">"name"</span></span><br><span class="line">namespace = <span class="string">"namespace"</span></span><br><span class="line"></span><br><span class="line">print(uuid.uuid3(namespace, name))</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="4、uuid4-——基于随机数"><a href="#4、uuid4-——基于随机数" class="headerlink" title="4、uuid4()——基于随机数"></a>4、uuid4()——基于随机数</h4><p>由伪随机数得到，有一定的重复概率。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> uuid</span><br><span class="line">print(uuid.uuid4())</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="5、uuid5-——基于名字的SHA-1散列值"><a href="#5、uuid5-——基于名字的SHA-1散列值" class="headerlink" title="5、uuid5()——基于名字的SHA-1散列值"></a>5、uuid5()——基于名字的SHA-1散列值</h4><p>使用 Secure Hash Algorithm 1 算法代替uuid3中的MD5算法。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> uuid</span><br><span class="line"></span><br><span class="line">name = <span class="string">"test_name"</span></span><br><span class="line">namespace = <span class="string">"test_namespace"</span></span><br><span class="line"></span><br><span class="line">print(uuid.uuid5(namespace, name))</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h2><p>由于php中uuid可以引用安装扩展包，参考 <a href="https://www.cnblogs.com/cndavidwang/p/4018207.html" target="_blank" rel="noopener">https://www.cnblogs.com/cndavidwang/p/4018207.html</a></p>
+<p> 觉得麻烦也可以直接代码生成</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">sprintf(</span><br><span class="line">            <span class="string">'%04x%04x-%04x-%04x-%04x-%04x%04x%04x'</span>,</span><br><span class="line">            mt_rand(<span class="number">0</span>, <span class="number">0xffff</span>),</span><br><span class="line">            mt_rand(<span class="number">0</span>, <span class="number">0xffff</span>),</span><br><span class="line">            mt_rand(<span class="number">0</span>, <span class="number">0xffff</span>),</span><br><span class="line">            mt_rand(<span class="number">0</span>, <span class="number">0x0fff</span>) | <span class="number">0x4000</span>,</span><br><span class="line">            mt_rand(<span class="number">0</span>, <span class="number">0x3fff</span>) | <span class="number">0x8000</span>,</span><br><span class="line">            mt_rand(<span class="number">0</span>, <span class="number">0xffff</span>),</span><br><span class="line">            mt_rand(<span class="number">0</span>, <span class="number">0xffff</span>),</span><br><span class="line">            mt_rand(<span class="number">0</span>, <span class="number">0xffff</span>)</span><br><span class="line">        );</span><br></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$data = openssl_random_pseudo_bytes(<span class="number">16</span>);</span><br><span class="line">$data[<span class="number">6</span>] = chr(ord($data[<span class="number">6</span>]) &amp; <span class="number">0x0f</span> | <span class="number">0x40</span>); <span class="comment">// set version to 0100</span></span><br><span class="line">$data[<span class="number">8</span>] = chr(ord($data[<span class="number">8</span>]) &amp; <span class="number">0x3f</span> | <span class="number">0x80</span>); <span class="comment">// set bits 6-7 to 10</span></span><br><span class="line"><span class="keyword">echo</span> vsprintf(<span class="string">'%s%s-%s-%s-%s-%s%s%s'</span>, str_split(bin2hex($data), <span class="number">4</span>));</span><br></pre></td></tr></table></figure>
+
+<p>还有mysql里有自带uuid 函数</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select UUID();</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>php</category>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>uuid</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>解决cannot remove &#39;.user.ini&#39;Operation not permitted</title>
-    <url>/2020/04/18/%E8%A7%A3%E5%86%B3cannot-remove-user-ini-Operation-not-permitted/</url>
+    <url>/2020/04/18/jie-jue-cannot-remove-user-ini-operation-not-permitted/</url>
     <content><![CDATA[<p>在Linux中删除整个git仓库，删除失败出现 cannot remove ‘.user.ini’Operation not permitted，原因就是文件中含有某种属性不可更改，删除该属性就可以了</p>
 <a id="more"></a>
 <p>在Linux中rm -rf的威力是十分巨大的，特别是附带了 -f 参数，不少新手都干过用root用户执行 rm -rf /命令这种傻事，如果云服务器没有快照，简直就是灾难，从根目录开始所有文件被递归删除，连系统都被损坏。</p>
@@ -139,7 +376,7 @@
   </entry>
   <entry>
     <title>JS中的prototype、__proto__与constructor</title>
-    <url>/2020/04/18/JS%E4%B8%AD%E7%9A%84prototype%E3%80%81-proto-%E4%B8%8Econstructor/</url>
+    <url>/2020/04/18/js-zhong-de-prototype-proto-yu-constructor/</url>
     <content><![CDATA[<p>​    原文链接 <a href="https://blog.csdn.net/cc18868876837/article/details/81211729" target="_blank" rel="noopener">https://blog.csdn.net/cc18868876837/article/details/81211729</a></p>
 <h3 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h3><p>作为一名前端工程师，必须搞懂JS中的prototype、_ _ proto_ _ 与constructor属性，相信很多初学者对这些属性存在许多困惑，容易把它们混淆，本文旨在帮助大家理清它们之间的关系并彻底搞懂它们。这里说明一点，_ _ proto_ _ 属性的两边是各由两个下划线构成（这里为了方便大家看清，在两下划线之间加入了一个空格：_ <em>proto</em> <em>，读作“dunder proto”，“double underscore proto”的缩写），实际上，该属性在ES标准定义中的名字应该是[[Prototype]]，具体实现是由浏览器代理自己实现，谷歌浏览器的实现就是将[[Prototype]]命名为</em> _ proto_ _ ，大家清楚这个标准定义与具体实现的区别即可（名字有所差异，功能是一样的），可以通过该方式检测引擎是否支持这个属性：Object.getPrototypeOf({_ _ proto_ _ : null}) === null。本文基于谷歌浏览器（版本 72.0.3626.121）的实验结果所得。</p>
 <a id="more"></a>
@@ -164,65 +401,6 @@
       </categories>
       <tags>
         <tag>JS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>post常见四种提交方式及php接收</title>
-    <url>/2020/04/23/post%E5%B8%B8%E8%A7%81%E5%9B%9B%E7%A7%8D%E6%8F%90%E4%BA%A4%E6%96%B9%E5%BC%8F/</url>
-    <content><![CDATA[<ul>
-<li>application/x-www-form-urlencoded</li>
-<li>multipart/form-data</li>
-<li>application/json</li>
-<li>text/xml</li>
-</ul>
-<p>以上是四种常见的<code>POST</code>提交数据的方式，<code>HTTP</code> 协议是以 ASCII 码传输（可参考<a href="https://zh.wikipedia.org/zh-hans/%E8%B6%85%E6%96%87%E6%9C%AC%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener">http介绍</a>），建立在 TCP/IP 协议之上的应用层规范。规范把 HTTP 请求分为三个部分：<code>状态行</code>、<code>请求头</code>、<code>消息主体</code>。类似于下面这样</p>
-<a id="more"></a>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;method&gt; &lt;request-URL&gt; &lt;version&gt;</span><br><span class="line">&lt;headers&gt;</span><br><span class="line">&lt;entity-body&gt;</span><br></pre></td></tr></table></figure>
-
-<p>协议规定 <code>POST</code> 提交的数据必须放在<code>消息主体（entity-body）</code>中，但协议并没有规定数据必须使用什么编码方式。实际上，开发者完全可以自己决定消息主体的格式，只要最后发送的 HTTP 请求满足上面的格式就可以。</p>
-<p>但是，数据发送出去，还要服务端解析成功才有意义。一般服务端语言如 php、python 等，以及它们的 framework，都内置了自动解析常见数据格式的功能。服务端通常是根据请求头（headers）中的 <code>Content-Type</code> 字段来获知请求中的消息主体是用何种方式编码，再对主体进行解析。所以说到 <code>POST</code> 提交数据方案，包含了 <code>Content-Type</code> 和<code>消息主体编码方式</code>两部分</p>
-<h3 id="1-application-x-www-form-urlencoded"><a href="#1-application-x-www-form-urlencoded" class="headerlink" title="1.application/x-www-form-urlencoded"></a>1.application/x-www-form-urlencoded</h3><p>浏览器的原生<code>form</code> 表单，如果不设置<code>enctype</code>属性，那么最终就会以 <code>application/x-www-form-urlencoded</code> 方式提交数据 例如</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span>  <span class="attr">role</span>=<span class="string">"form"</span>  <span class="attr">method</span>=<span class="string">"POST"</span> <span class="attr">action</span>=<span class="string">"index.php"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>最为常见的form表单提交他的请求格式是这样的</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">POST http:<span class="comment">//www.example.com HTTP/1.1</span></span><br><span class="line">Content-Type: application/x-www-form-urlencoded;charset=utf<span class="number">-8</span></span><br><span class="line">Form Data</span><br><span class="line"> title=test&amp;sub%<span class="number">5</span>B%<span class="number">5</span>D=<span class="number">1</span>&amp;sub%<span class="number">5</span>B%<span class="number">5</span>D=<span class="number">2</span>&amp;sub%<span class="number">5</span>B%<span class="number">5</span>D=<span class="number">3</span></span><br></pre></td></tr></table></figure>
-
-<p>1.首先，<code>Content-Type</code> 被指定为<code>application/x-www-form-urlencoded</code>；</p>
-<p>2.headers最下方的格式为Form Data 提交的数据按照 <code>key1=val1&amp;key2=val2</code> 的方式进行编码，key 和 val 都进行了 URL 转码。大部分服务端语言都对这种方式有很好的支持，例如php 接收</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$title = $_POST[<span class="string">'title'</span>]; <span class="comment">//获取到title</span></span><br><span class="line">$sub = $_POST[<span class="string">'sub'</span>] <span class="comment">//获取到sub数组</span></span><br></pre></td></tr></table></figure>
-
-<p>很多时候，我们用 Ajax 提交数据时，也是使用这种方式。例如 <a href="http://jquery.com/" target="_blank" rel="noopener">JQuery</a> 和 <a href="http://www.qwrap.com/" target="_blank" rel="noopener">QWrap</a> 的 Ajax，Content-Type 默认值都是「application/x-www-form-urlencoded;charset=utf-8」</p>
-<h3 id="2-multipart-form-data"><a href="#2-multipart-form-data" class="headerlink" title="2.multipart/form-data"></a>2.multipart/form-data</h3><p>常用于form表单上传文件时使用，与 <code>application/x-www-form-urlencoded</code>相比 form多了 <code>enctype=&quot;multipart/form-data&quot;</code> 属性 例如</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">"post"</span>  <span class="attr">enctype</span>=<span class="string">"multipart/form-data"</span> <span class="attr">action</span>=<span class="string">"upload.php"</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span>  <span class="attr">name</span>=<span class="string">"file"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>请求格式为</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">POST http:<span class="comment">//www.example.com HTTP/1.1</span></span><br><span class="line">Content-Type:multipart/form-data; boundary=----WebKitFormBoundaryrGKCBY7qhFd3TrwA</span><br><span class="line">------WebKitFormBoundaryrGKCBY7qhFd3TrwA</span><br><span class="line">Content-Disposition: form-data; name=<span class="string">"text"</span></span><br><span class="line">title</span><br><span class="line">------WebKitFormBoundaryrGKCBY7qhFd3TrwA</span><br><span class="line">Content-Disposition: form-data; name=<span class="string">"file"</span>; filename=<span class="string">"chrome.png"</span></span><br><span class="line">Content-Type: image/png</span><br><span class="line">PNG ... content <span class="keyword">of</span> chrome.png ...</span><br><span class="line">------WebKitFormBoundaryrGKCBY7qhFd3TrwA--</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$file = $_FILES[<span class="string">'name'</span>]; <span class="comment">//接收文件</span></span><br><span class="line">$a = $_POST[<span class="string">'a'</span>] <span class="comment">//接受普通数据</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="3-application-json"><a href="#3-application-json" class="headerlink" title="3.application/json"></a>3.application/json</h3><p>  <code>application/json</code> 这个 <code>Content-Type</code>作为响应头大家肯定不陌生。实际上，现在越来越多的人把它作为请求头，用来告诉服务端消息主体是序列化后的 <code>JSON</code> 字符串。由于 <code>JSON</code>规范的流行，除了低版本 IE 之外的各大浏览器都原生支持 <code>JSON.stringify</code>，服务端语言也都有处理 <code>JSON</code> 的函数，使用<code>JSON</code>不会遇上什么麻烦。 <code>JSON</code>格式支持比键值对复杂得多的结构化数据，这一点也很有用。</p>
-<p>格式如下</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">POST http:<span class="comment">//www.example.com HTTP/1.1</span></span><br><span class="line">Content-Type: application/json;charset=utf<span class="number">-8</span></span><br><span class="line">Request Payload </span><br><span class="line">  &#123;<span class="string">"title"</span>:<span class="string">"test"</span>,<span class="string">"sub"</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]&#125;</span><br></pre></td></tr></table></figure>
-
-<p>需要注意的是 前两种form提交格式为 <code>Form Data</code> 这种为<code>Request Payload</code> 关于二者的区别可以参考 <a href="https://segmentfault.com/a/1190000018774494" target="_blank" rel="noopener">https://segmentfault.com/a/1190000018774494</a>  这篇文章。</p>
-<p>这种格式对php来说是不识别的，他只能解析成文本，所以后台接收原始流</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$data = file_get_contents(<span class="string">"php://input"</span>);</span><br><span class="line">$data = json_decode($data,<span class="keyword">true</span>);</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-text-xml"><a href="#4-text-xml" class="headerlink" title="4.text/xml"></a>4.text/xml</h3><p>  它是一种使用 <code>HTTP</code>作为传输协议，<code>XML</code> 作为编码方式的远程调用规范。典型的<code>XML-RPC</code>请求是这样的：</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">POST http://www.example.com HTTP/1.1</span><br><span class="line">Content-Type: text/xml</span><br><span class="line"><span class="meta">&lt;?xml version="1.0"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">methodCall</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">methodName</span>&gt;</span>examples.getStateName<span class="tag">&lt;/<span class="name">methodName</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">params</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span><span class="tag">&lt;<span class="name">i4</span>&gt;</span>41<span class="tag">&lt;/<span class="name">i4</span>&gt;</span><span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">params</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">methodCall</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><code>XML-RPC</code> 协议简单、功能够用，各种语言的实现都有。比如微信的<code>小程序</code>和<code>公众平台</code>都是使用它来作为基本的传输类型，它的使用也很广泛，如 <code>WordPress</code> 的 <a href="http://codex.wordpress.org/XML-RPC_WordPress_API" target="_blank" rel="noopener">XML-RPC Api</a>，搜索引擎的 <a href="http://www.baidu.com/search/blogsearch_help.html#n7" target="_blank" rel="noopener">ping 服务</a>等等。<code>JavaScript</code> 中，也有<a href="http://plugins.jquery.com/xmlrpc/" target="_blank" rel="noopener">现成的库</a>支持以这种方式进行数据交互，能很好的支持已有的 <code>XML-RPC</code>服务。不过，我个人觉得<code>XML</code> 结构还是过于臃肿，一般场景用 <code>JSON</code>会更灵活方便</p>
-<p>同上，这种结构php不认识，可使用 <strong>file_get_contents(‘php://input’)</strong> 进行接收</p>
-<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p> 以上方法都可以通过header头部的Content-Type来指定  header: {“Content-Type”: “xxx” }</p>
-]]></content>
-      <categories>
-        <category>php</category>
-      </categories>
-      <tags>
-        <tag>php</tag>
       </tags>
   </entry>
 </search>
