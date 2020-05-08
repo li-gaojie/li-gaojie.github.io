@@ -14,6 +14,69 @@
       </tags>
   </entry>
   <entry>
+    <title>Linux服务器中配置Nginx一个域名访问多个项目</title>
+    <url>/2020/04/12/linux-fu-wu-qi-zhong-pei-zhi-nginx-yi-ge-yu-ming-fang-wen-duo-ge-xiang-mu/</url>
+    <content><![CDATA[<p>&emsp;&emsp;务器配置个人博客和其它项目使其能够根据不同 url 跳转到不同项目，(例如:<em>localhosh://A 项目/，localhosh://B 项目/</em> )因为对服务器和 Nginx 部署了解甚少，在此记录一下</p>
+<a id="more"></a>
+
+<h2 id="location-模块的匹配介绍"><a href="#location-模块的匹配介绍" class="headerlink" title="location 模块的匹配介绍"></a>location 模块的匹配介绍</h2><blockquote>
+<ol>
+<li>”=”前缀指令匹配，如果匹配成功，则停止其他匹配。</li>
+<li>普通字符串指令匹配，顺序是从长到短，匹配成功的 location 如果使用^~，则停止其他匹配（正则匹配）。</li>
+<li>正则表达式指令匹配，按照配置文件里的顺序，成功就停止其他匹配。</li>
+<li>如果第三步中有匹配成功，则使用该结果，否则使用第二步结果。</li>
+</ol>
+</blockquote>
+<h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><blockquote>
+<ol>
+<li>匹配的顺序是先匹配普通字符串，然后再匹配正则表达式。另外普通字符串匹配顺序是根据配置中字符长度从长到短，也就是说使用普通字符串配置的 location 顺序是无关紧要的，反正最后 nginx 会根据配置的长短来进行匹配，但是需要注意的是正则表达式按照配置文件里的顺序测试。找到第一个匹配的正则表达式将停止搜索。</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li>一般情况下，匹配成功了普通字符串 location 后还会进行正则表达式 location 匹配。有两种方法改变这种行为，其一就是使用“=”前缀，这时执行的是严格匹配，并且匹配成功后立即停止其他匹配，同时处理这个请求；另外一种就是使用“^~”前缀，如果把这个前缀用于一个常规字符串那么告诉 nginx 如果路径匹配那么不测试正则表达式。</li>
+</ol>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">location = <span class="string">``</span> / uri;</span><br></pre></td></tr></table></figure>
+
+<p>=开头表示精确匹配，只有完全匹配上才能生效。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">location ^ (~<span class="string">``</span> / uri);</span><br></pre></td></tr></table></figure>
+
+<p>^~ 开头对 URL 路径进行前缀匹配，并且在正则之前。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">location ~ pattern</span><br></pre></td></tr></table></figure>
+
+<p>~开头表示区分大小写的正则匹配。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">location ~* pattern</span><br></pre></td></tr></table></figure>
+
+<p>~*开头表示不区分大小写的正则匹配。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">location<span class="string">``</span> / uri;</span><br></pre></td></tr></table></figure>
+
+<p>不带任何修饰符，也表示前缀匹配，但是在正则匹配之后。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">location /</span><br></pre></td></tr></table></figure>
+
+<p>通用匹配，任何未匹配到其它 location 的请求都会匹配到，相当于 switch 中的 default。</p>
+<h2 id="alias-和-root-的区别"><a href="#alias-和-root-的区别" class="headerlink" title="alias 和 root 的区别"></a>alias 和 root 的区别</h2><p>在<a href="https://router.vuejs.org/zh/guide/essentials/redirect-and-alias.html#%E9%87%8D%E5%AE%9A%E5%90%91" target="_blank" rel="noopener">VUE</a>中也有alias的概念，感觉两者差不多</p>
+<ul>
+<li>alias 和 root 都是用来指定文件路径的，root与alias主要区别在于nginx如何解释location后面的uri，这会使两者分别以不同的方式将请求映射到服务器文件上。</li>
+<li>root的处理结果是：root路径＋location路径</li>
+<li>alias的处理结果是：使用alias路径替换location路径</li>
+<li>alias是一个目录别名的定义，root则是最上层目录的定义。</li>
+<li>还有一个重要的区别是alias后面必须要用“/”结束，否则会找不到文件</li>
+<li>alias在使用正则匹配时，必须捕捉要匹配的内容并在指定的内容处使用。</li>
+<li>alias只能位于location块中。（root可以不放在location中）</li>
+</ul>
+<h2 id="配置示例"><a href="#配置示例" class="headerlink" title="配置示例"></a>配置示例</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line"> *****</span><br><span class="line"> *****</span><br><span class="line"> # 域名+项目1名称</span><br><span class="line"> location ^~ <span class="regexp">/A/</span> &#123;</span><br><span class="line">   alias /data/A/;</span><br><span class="line"> &#125;</span><br><span class="line"> # 域名+项目2名称</span><br><span class="line"> location ^~ <span class="regexp">/B/</span> &#123;</span><br><span class="line">   alias /data/B/;</span><br><span class="line"> &#125;</span><br><span class="line">    ****</span><br><span class="line">    ****</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>参考：<a href="https://www.nginx.cn/4658.html" target="_blank" rel="noopener">nginx的location、root、alias指令用法和区别</a></p>
+]]></content>
+      <categories>
+        <category>Nginx</category>
+      </categories>
+      <tags>
+        <tag>Nginx</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>lambda函数</title>
     <url>/2020/05/06/lambda-han-shu/</url>
     <content><![CDATA[<h3 id="python-lambda函数"><a href="#python-lambda函数" class="headerlink" title="python lambda函数"></a>python lambda函数</h3><blockquote>
@@ -30,6 +93,64 @@
 </ul>
 <p>多个参数</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(x,y)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">2</span> * x + y</span><br><span class="line">func(<span class="number">5</span>,<span class="number">6</span>)</span><br><span class="line"><span class="string">'''等同于'''</span></span><br><span class="line">a = <span class="keyword">lambda</span> x,y : <span class="number">2</span> * x + y</span><br><span class="line">a(<span class="number">5</span>,<span class="number">6</span>)</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>markdown基本语法</title>
+    <url>/2020/04/12/markdown-ji-ben-yu-fa/</url>
+    <content><![CDATA[<h4 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 这是一级标题</span><br><span class="line">## 这是二级标题</span><br><span class="line">### 这是三级标题</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+
+<h4 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">**这是加粗的文字**</span><br><span class="line">*这是倾斜的文字*&#96;</span><br><span class="line">***这是斜体加粗的文字***</span><br><span class="line">~~这是加删除线的文字~~</span><br></pre></td></tr></table></figure>
+
+<h4 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;这是引用的内容</span><br><span class="line">&gt;&gt;这是引用的内容</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;这是引用的内容</span><br></pre></td></tr></table></figure>
+
+<h4 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">----</span><br><span class="line">***</span><br><span class="line">*****</span><br></pre></td></tr></table></figure>
+
+<h4 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">![图片alt](图片地址 &#39;&#39;图片title&#39;&#39;)</span><br><span class="line"> </span><br><span class="line">图片alt就是显示在图片下面的文字，相当于对图片内容的解释。</span><br><span class="line">图片title是图片的标题，当鼠标移到图片上时显示的内容。title可加可不加</span><br></pre></td></tr></table></figure>
+
+<h4 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[超链接名](超链接地址 &quot;超链接title&quot;)</span><br><span class="line">title可加可不加</span><br></pre></td></tr></table></figure>
+
+<h4 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- 列表内容</span><br><span class="line">+ 列表内容</span><br><span class="line">* 列表内容</span><br><span class="line"> </span><br><span class="line">注意：- + * 跟内容之间都要有一个空格</span><br></pre></td></tr></table></figure>
+
+<h4 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">表头|表头|表头</span><br><span class="line">---|:--:|---:</span><br><span class="line">内容|内容|内容</span><br><span class="line">内容|内容|内容</span><br><span class="line"> </span><br><span class="line">注意：</span><br><span class="line">1.第二行分割表头和内容“-”有一个就行，为了对齐，多加了几个</span><br><span class="line">2.文字默认居左，“-”两边加：表示文字居中；“-”右边加：表示文字居右</span><br></pre></td></tr></table></figure>
+
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">​   &#96;&#96;&#96; 语言类型 如 js &#x2F; html &#x2F; php</span><br><span class="line">    代码...</span><br><span class="line">    代码...</span><br><span class="line">    代码...</span><br><span class="line">​</span><br></pre></td></tr></table></figure>
+<p>```</p>
+]]></content>
+      <categories>
+        <category>markdown</category>
+      </categories>
+      <tags>
+        <tag>markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python-filter函数</title>
+    <url>/2020/05/06/python-filter-han-shu/</url>
+    <content><![CDATA[<h3 id="python-filter函数"><a href="#python-filter函数" class="headerlink" title="python filter函数"></a>python filter函数</h3><blockquote>
+<p><strong>filter()</strong> 函数用于过滤序列，过滤掉不符合条件的元素，返回一个迭代器对象，如果要转换为列表，可以使用 list() 来转换。</p>
+</blockquote>
+<a id="more"></a>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">filter(function, iterable)</span><br></pre></td></tr></table></figure>
+
+<p>参数</p>
+<ul>
+<li>function – 判断函数，可为none。</li>
+<li>iterable – 可迭代对象。</li>
+</ul>
+<p>序列中的每个元素作为参数传递给函数进行判断，返回True或者False，最后将<code>返回为True的元素</code></p>
+<h5 id="为None时"><a href="#为None时" class="headerlink" title="为None时"></a>为None时</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = filter(<span class="literal">None</span>,[<span class="number">1</span>,<span class="literal">False</span>,<span class="number">0</span>,<span class="literal">True</span>])</span><br><span class="line">print(a)</span><br><span class="line">print(list(a))</span><br><span class="line"><span class="comment">#&lt;filter object at 0x00000169BBEA3550&gt;</span></span><br><span class="line"><span class="comment">#[1, True]</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"> a = filter(<span class="keyword">lambda</span> n : n &lt; <span class="number">2</span>,[<span class="number">0</span>,<span class="literal">False</span>,<span class="number">2</span>,<span class="literal">True</span>])</span><br><span class="line"> print(a)</span><br><span class="line"> print(list(a))</span><br><span class="line"><span class="comment">#&lt;filter object at 0x000001D84FB0C390&gt;</span></span><br><span class="line"><span class="comment">#[0, False, True]</span></span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -96,111 +217,6 @@
       </categories>
       <tags>
         <tag>php</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>markdown基本语法</title>
-    <url>/2020/04/12/markdown-ji-ben-yu-fa/</url>
-    <content><![CDATA[<h4 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 这是一级标题</span><br><span class="line">## 这是二级标题</span><br><span class="line">### 这是三级标题</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-
-<h4 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">**这是加粗的文字**</span><br><span class="line">*这是倾斜的文字*&#96;</span><br><span class="line">***这是斜体加粗的文字***</span><br><span class="line">~~这是加删除线的文字~~</span><br></pre></td></tr></table></figure>
-
-<h4 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;这是引用的内容</span><br><span class="line">&gt;&gt;这是引用的内容</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;这是引用的内容</span><br></pre></td></tr></table></figure>
-
-<h4 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">----</span><br><span class="line">***</span><br><span class="line">*****</span><br></pre></td></tr></table></figure>
-
-<h4 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">![图片alt](图片地址 &#39;&#39;图片title&#39;&#39;)</span><br><span class="line"> </span><br><span class="line">图片alt就是显示在图片下面的文字，相当于对图片内容的解释。</span><br><span class="line">图片title是图片的标题，当鼠标移到图片上时显示的内容。title可加可不加</span><br></pre></td></tr></table></figure>
-
-<h4 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[超链接名](超链接地址 &quot;超链接title&quot;)</span><br><span class="line">title可加可不加</span><br></pre></td></tr></table></figure>
-
-<h4 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- 列表内容</span><br><span class="line">+ 列表内容</span><br><span class="line">* 列表内容</span><br><span class="line"> </span><br><span class="line">注意：- + * 跟内容之间都要有一个空格</span><br></pre></td></tr></table></figure>
-
-<h4 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">表头|表头|表头</span><br><span class="line">---|:--:|---:</span><br><span class="line">内容|内容|内容</span><br><span class="line">内容|内容|内容</span><br><span class="line"> </span><br><span class="line">注意：</span><br><span class="line">1.第二行分割表头和内容“-”有一个就行，为了对齐，多加了几个</span><br><span class="line">2.文字默认居左，“-”两边加：表示文字居中；“-”右边加：表示文字居右</span><br></pre></td></tr></table></figure>
-
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">​   &#96;&#96;&#96; 语言类型 如 js &#x2F; html &#x2F; php</span><br><span class="line">    代码...</span><br><span class="line">    代码...</span><br><span class="line">    代码...</span><br><span class="line">​</span><br></pre></td></tr></table></figure>
-<p>```</p>
-]]></content>
-      <categories>
-        <category>markdown</category>
-      </categories>
-      <tags>
-        <tag>markdown</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux服务器中配置Nginx一个域名访问多个项目</title>
-    <url>/2020/04/12/linux-fu-wu-qi-zhong-pei-zhi-nginx-yi-ge-yu-ming-fang-wen-duo-ge-xiang-mu/</url>
-    <content><![CDATA[<p>&emsp;&emsp;务器配置个人博客和其它项目使其能够根据不同 url 跳转到不同项目，(例如:<em>localhosh://A 项目/，localhosh://B 项目/</em> )因为对服务器和 Nginx 部署了解甚少，在此记录一下</p>
-<a id="more"></a>
-
-<h2 id="location-模块的匹配介绍"><a href="#location-模块的匹配介绍" class="headerlink" title="location 模块的匹配介绍"></a>location 模块的匹配介绍</h2><blockquote>
-<ol>
-<li>”=”前缀指令匹配，如果匹配成功，则停止其他匹配。</li>
-<li>普通字符串指令匹配，顺序是从长到短，匹配成功的 location 如果使用^~，则停止其他匹配（正则匹配）。</li>
-<li>正则表达式指令匹配，按照配置文件里的顺序，成功就停止其他匹配。</li>
-<li>如果第三步中有匹配成功，则使用该结果，否则使用第二步结果。</li>
-</ol>
-</blockquote>
-<h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><blockquote>
-<ol>
-<li>匹配的顺序是先匹配普通字符串，然后再匹配正则表达式。另外普通字符串匹配顺序是根据配置中字符长度从长到短，也就是说使用普通字符串配置的 location 顺序是无关紧要的，反正最后 nginx 会根据配置的长短来进行匹配，但是需要注意的是正则表达式按照配置文件里的顺序测试。找到第一个匹配的正则表达式将停止搜索。</li>
-</ol>
-</blockquote>
-<blockquote>
-<ol start="2">
-<li>一般情况下，匹配成功了普通字符串 location 后还会进行正则表达式 location 匹配。有两种方法改变这种行为，其一就是使用“=”前缀，这时执行的是严格匹配，并且匹配成功后立即停止其他匹配，同时处理这个请求；另外一种就是使用“^~”前缀，如果把这个前缀用于一个常规字符串那么告诉 nginx 如果路径匹配那么不测试正则表达式。</li>
-</ol>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">location = <span class="string">``</span> / uri;</span><br></pre></td></tr></table></figure>
-
-<p>=开头表示精确匹配，只有完全匹配上才能生效。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">location ^ (~<span class="string">``</span> / uri);</span><br></pre></td></tr></table></figure>
-
-<p>^~ 开头对 URL 路径进行前缀匹配，并且在正则之前。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">location ~ pattern</span><br></pre></td></tr></table></figure>
-
-<p>~开头表示区分大小写的正则匹配。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">location ~* pattern</span><br></pre></td></tr></table></figure>
-
-<p>~*开头表示不区分大小写的正则匹配。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">location<span class="string">``</span> / uri;</span><br></pre></td></tr></table></figure>
-
-<p>不带任何修饰符，也表示前缀匹配，但是在正则匹配之后。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">location /</span><br></pre></td></tr></table></figure>
-
-<p>通用匹配，任何未匹配到其它 location 的请求都会匹配到，相当于 switch 中的 default。</p>
-<h2 id="alias-和-root-的区别"><a href="#alias-和-root-的区别" class="headerlink" title="alias 和 root 的区别"></a>alias 和 root 的区别</h2><p>在<a href="https://router.vuejs.org/zh/guide/essentials/redirect-and-alias.html#%E9%87%8D%E5%AE%9A%E5%90%91" target="_blank" rel="noopener">VUE</a>中也有alias的概念，感觉两者差不多</p>
-<ul>
-<li>alias 和 root 都是用来指定文件路径的，root与alias主要区别在于nginx如何解释location后面的uri，这会使两者分别以不同的方式将请求映射到服务器文件上。</li>
-<li>root的处理结果是：root路径＋location路径</li>
-<li>alias的处理结果是：使用alias路径替换location路径</li>
-<li>alias是一个目录别名的定义，root则是最上层目录的定义。</li>
-<li>还有一个重要的区别是alias后面必须要用“/”结束，否则会找不到文件</li>
-<li>alias在使用正则匹配时，必须捕捉要匹配的内容并在指定的内容处使用。</li>
-<li>alias只能位于location块中。（root可以不放在location中）</li>
-</ul>
-<h2 id="配置示例"><a href="#配置示例" class="headerlink" title="配置示例"></a>配置示例</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line"> *****</span><br><span class="line"> *****</span><br><span class="line"> # 域名+项目1名称</span><br><span class="line"> location ^~ <span class="regexp">/A/</span> &#123;</span><br><span class="line">   alias /data/A/;</span><br><span class="line"> &#125;</span><br><span class="line"> # 域名+项目2名称</span><br><span class="line"> location ^~ <span class="regexp">/B/</span> &#123;</span><br><span class="line">   alias /data/B/;</span><br><span class="line"> &#125;</span><br><span class="line">    ****</span><br><span class="line">    ****</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>参考：<a href="https://www.nginx.cn/4658.html" target="_blank" rel="noopener">nginx的location、root、alias指令用法和区别</a></p>
-]]></content>
-      <categories>
-        <category>Nginx</category>
-      </categories>
-      <tags>
-        <tag>Nginx</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>在github中建立一个图片库</title>
-    <url>/2020/04/18/zai-github-zhong-jian-li-yi-ge-tu-pian-ku/</url>
-    <content><![CDATA[<p>废话少说 就是在GitHub建个库单独存储图片<br>遇到的问题是<br>    <strong>找不到 raw.githubusercontent.com 的服务器 IP 地址。</strong><br>其原因应该就是DNS污染，解决办法<br><strong>在hosts文件添加 199.232.68.133  raw.githubusercontent.com</strong></p>
-]]></content>
-      <categories>
-        <category>github</category>
-      </categories>
-      <tags>
-        <tag>github</tag>
       </tags>
   </entry>
   <entry>
@@ -282,34 +298,6 @@
       </tags>
   </entry>
   <entry>
-    <title>python-filter函数</title>
-    <url>/2020/05/06/python-filter-han-shu/</url>
-    <content><![CDATA[<h3 id="python-filter函数"><a href="#python-filter函数" class="headerlink" title="python filter函数"></a>python filter函数</h3><blockquote>
-<p><strong>filter()</strong> 函数用于过滤序列，过滤掉不符合条件的元素，返回一个迭代器对象，如果要转换为列表，可以使用 list() 来转换。</p>
-</blockquote>
-<a id="more"></a>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">filter(function, iterable)</span><br></pre></td></tr></table></figure>
-
-<p>参数</p>
-<ul>
-<li>function – 判断函数，可为none。</li>
-<li>iterable – 可迭代对象。</li>
-</ul>
-<p>序列中的每个元素作为参数传递给函数进行判断，返回True或者False，最后将<code>返回为True的元素</code></p>
-<h5 id="为None时"><a href="#为None时" class="headerlink" title="为None时"></a>为None时</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = filter(<span class="literal">None</span>,[<span class="number">1</span>,<span class="literal">False</span>,<span class="number">0</span>,<span class="literal">True</span>])</span><br><span class="line">print(a)</span><br><span class="line">print(list(a))</span><br><span class="line"><span class="comment">#&lt;filter object at 0x00000169BBEA3550&gt;</span></span><br><span class="line"><span class="comment">#[1, True]</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"> a = filter(<span class="keyword">lambda</span> n : n &lt; <span class="number">2</span>,[<span class="number">0</span>,<span class="literal">False</span>,<span class="number">2</span>,<span class="literal">True</span>])</span><br><span class="line"> print(a)</span><br><span class="line"> print(list(a))</span><br><span class="line"><span class="comment">#&lt;filter object at 0x000001D84FB0C390&gt;</span></span><br><span class="line"><span class="comment">#[0, False, True]</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>生成全球唯一标识uuid(python/php)</title>
     <url>/2020/04/24/sheng-cheng-quan-qiu-wei-yi-biao-shi-uuid-python-php/</url>
     <content><![CDATA[<p>UUID（全称为Universally Unique IDentifier）是128位的全局唯一标识符，通常由32字节的字符串表示。</p>
@@ -353,6 +341,18 @@
       </categories>
       <tags>
         <tag>uuid</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在github中建立一个图片库</title>
+    <url>/2020/04/18/zai-github-zhong-jian-li-yi-ge-tu-pian-ku/</url>
+    <content><![CDATA[<p>废话少说 就是在GitHub建个库单独存储图片<br>遇到的问题是<br>    <strong>找不到 raw.githubusercontent.com 的服务器 IP 地址。</strong><br>其原因应该就是DNS污染，解决办法<br><strong>在hosts文件添加 199.232.68.133  raw.githubusercontent.com</strong></p>
+]]></content>
+      <categories>
+        <category>github</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
       </tags>
   </entry>
   <entry>
