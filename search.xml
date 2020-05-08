@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>hexo搭建</title>
-    <url>/2020/04/12/hexo-da-jian-yu-dao-de-keng/</url>
-    <content><![CDATA[<h4 id="服务器搭建nginx"><a href="#服务器搭建nginx" class="headerlink" title="服务器搭建nginx"></a>服务器搭建nginx</h4><p><a href="https://yq.aliyun.com/articles/700682" target="_blank" rel="noopener">在阿里云服务器上如何搭建nginx？</a> </p>
-<h4 id="解决本地git提交-问题"><a href="#解决本地git提交-问题" class="headerlink" title="解决本地git提交 问题"></a>解决本地git提交 问题</h4><p><a href="https://blog.csdn.net/lujinjian605894472/article/details/8443403" target="_blank" rel="noopener">![rejected] master -&gt; master (non-fast-forward)</a></p>
-]]></content>
-      <categories>
-        <category>Nginx</category>
-      </categories>
-      <tags>
-        <tag>Nginx</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux服务器中配置Nginx一个域名访问多个项目</title>
     <url>/2020/04/12/linux-fu-wu-qi-zhong-pei-zhi-nginx-yi-ge-yu-ming-fang-wen-duo-ge-xiang-mu/</url>
     <content><![CDATA[<p>&emsp;&emsp;务器配置个人博客和其它项目使其能够根据不同 url 跳转到不同项目，(例如:<em>localhosh://A 项目/，localhosh://B 项目/</em> )因为对服务器和 Nginx 部署了解甚少，在此记录一下</p>
@@ -68,6 +55,19 @@
 <h2 id="配置示例"><a href="#配置示例" class="headerlink" title="配置示例"></a>配置示例</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line"> *****</span><br><span class="line"> *****</span><br><span class="line"> # 域名+项目1名称</span><br><span class="line"> location ^~ <span class="regexp">/A/</span> &#123;</span><br><span class="line">   alias /data/A/;</span><br><span class="line"> &#125;</span><br><span class="line"> # 域名+项目2名称</span><br><span class="line"> location ^~ <span class="regexp">/B/</span> &#123;</span><br><span class="line">   alias /data/B/;</span><br><span class="line"> &#125;</span><br><span class="line">    ****</span><br><span class="line">    ****</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>参考：<a href="https://www.nginx.cn/4658.html" target="_blank" rel="noopener">nginx的location、root、alias指令用法和区别</a></p>
+]]></content>
+      <categories>
+        <category>Nginx</category>
+      </categories>
+      <tags>
+        <tag>Nginx</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo搭建</title>
+    <url>/2020/04/12/hexo-da-jian-yu-dao-de-keng/</url>
+    <content><![CDATA[<h4 id="服务器搭建nginx"><a href="#服务器搭建nginx" class="headerlink" title="服务器搭建nginx"></a>服务器搭建nginx</h4><p><a href="https://yq.aliyun.com/articles/700682" target="_blank" rel="noopener">在阿里云服务器上如何搭建nginx？</a> </p>
+<h4 id="解决本地git提交-问题"><a href="#解决本地git提交-问题" class="headerlink" title="解决本地git提交 问题"></a>解决本地git提交 问题</h4><p><a href="https://blog.csdn.net/lujinjian605894472/article/details/8443403" target="_blank" rel="noopener">![rejected] master -&gt; master (non-fast-forward)</a></p>
 ]]></content>
       <categories>
         <category>Nginx</category>
@@ -133,34 +133,6 @@
       </tags>
   </entry>
   <entry>
-    <title>python-filter函数</title>
-    <url>/2020/05/06/python-filter-han-shu/</url>
-    <content><![CDATA[<h3 id="python-filter函数"><a href="#python-filter函数" class="headerlink" title="python filter函数"></a>python filter函数</h3><blockquote>
-<p><strong>filter()</strong> 函数用于过滤序列，过滤掉不符合条件的元素，返回一个迭代器对象，如果要转换为列表，可以使用 list() 来转换。</p>
-</blockquote>
-<a id="more"></a>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">filter(function, iterable)</span><br></pre></td></tr></table></figure>
-
-<p>参数</p>
-<ul>
-<li>function – 判断函数，可为none。</li>
-<li>iterable – 可迭代对象。</li>
-</ul>
-<p>序列中的每个元素作为参数传递给函数进行判断，返回True或者False，最后将<code>返回为True的元素</code></p>
-<h5 id="为None时"><a href="#为None时" class="headerlink" title="为None时"></a>为None时</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = filter(<span class="literal">None</span>,[<span class="number">1</span>,<span class="literal">False</span>,<span class="number">0</span>,<span class="literal">True</span>])</span><br><span class="line">print(a)</span><br><span class="line">print(list(a))</span><br><span class="line"><span class="comment">#&lt;filter object at 0x00000169BBEA3550&gt;</span></span><br><span class="line"><span class="comment">#[1, True]</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"> a = filter(<span class="keyword">lambda</span> n : n &lt; <span class="number">2</span>,[<span class="number">0</span>,<span class="literal">False</span>,<span class="number">2</span>,<span class="literal">True</span>])</span><br><span class="line"> print(a)</span><br><span class="line"> print(list(a))</span><br><span class="line"><span class="comment">#&lt;filter object at 0x000001D84FB0C390&gt;</span></span><br><span class="line"><span class="comment">#[0, False, True]</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>post常见四种提交方式及php接收</title>
     <url>/2020/04/23/post-chang-jian-si-chong-ti-jiao-fang-shi/</url>
     <content><![CDATA[<ul>
@@ -217,6 +189,34 @@
       </categories>
       <tags>
         <tag>php</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python-filter函数</title>
+    <url>/2020/05/06/python-filter-han-shu/</url>
+    <content><![CDATA[<h3 id="python-filter函数"><a href="#python-filter函数" class="headerlink" title="python filter函数"></a>python filter函数</h3><blockquote>
+<p><strong>filter()</strong> 函数用于过滤序列，过滤掉不符合条件的元素，返回一个迭代器对象，如果要转换为列表，可以使用 list() 来转换。</p>
+</blockquote>
+<a id="more"></a>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">filter(function, iterable)</span><br></pre></td></tr></table></figure>
+
+<p>参数</p>
+<ul>
+<li>function – 判断函数，可为none。</li>
+<li>iterable – 可迭代对象。</li>
+</ul>
+<p>序列中的每个元素作为参数传递给函数进行判断，返回True或者False，最后将<code>返回为True的元素</code></p>
+<h5 id="为None时"><a href="#为None时" class="headerlink" title="为None时"></a>为None时</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = filter(<span class="literal">None</span>,[<span class="number">1</span>,<span class="literal">False</span>,<span class="number">0</span>,<span class="literal">True</span>])</span><br><span class="line">print(a)</span><br><span class="line">print(list(a))</span><br><span class="line"><span class="comment">#&lt;filter object at 0x00000169BBEA3550&gt;</span></span><br><span class="line"><span class="comment">#[1, True]</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"> a = filter(<span class="keyword">lambda</span> n : n &lt; <span class="number">2</span>,[<span class="number">0</span>,<span class="literal">False</span>,<span class="number">2</span>,<span class="literal">True</span>])</span><br><span class="line"> print(a)</span><br><span class="line"> print(list(a))</span><br><span class="line"><span class="comment">#&lt;filter object at 0x000001D84FB0C390&gt;</span></span><br><span class="line"><span class="comment">#[0, False, True]</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -298,6 +298,18 @@
       </tags>
   </entry>
   <entry>
+    <title>在github中建立一个图片库</title>
+    <url>/2020/04/18/zai-github-zhong-jian-li-yi-ge-tu-pian-ku/</url>
+    <content><![CDATA[<p>废话少说 就是在GitHub建个库单独存储图片<br>遇到的问题是<br>    <strong>找不到 raw.githubusercontent.com 的服务器 IP 地址。</strong><br>其原因应该就是DNS污染，解决办法<br><strong>在hosts文件添加 199.232.68.133  raw.githubusercontent.com</strong></p>
+]]></content>
+      <categories>
+        <category>github</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>生成全球唯一标识uuid(python/php)</title>
     <url>/2020/04/24/sheng-cheng-quan-qiu-wei-yi-biao-shi-uuid-python-php/</url>
     <content><![CDATA[<p>UUID（全称为Universally Unique IDentifier）是128位的全局唯一标识符，通常由32字节的字符串表示。</p>
@@ -336,23 +348,11 @@
 
 ]]></content>
       <categories>
-        <category>php</category>
         <category>python</category>
+        <category>php</category>
       </categories>
       <tags>
         <tag>uuid</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>在github中建立一个图片库</title>
-    <url>/2020/04/18/zai-github-zhong-jian-li-yi-ge-tu-pian-ku/</url>
-    <content><![CDATA[<p>废话少说 就是在GitHub建个库单独存储图片<br>遇到的问题是<br>    <strong>找不到 raw.githubusercontent.com 的服务器 IP 地址。</strong><br>其原因应该就是DNS污染，解决办法<br><strong>在hosts文件添加 199.232.68.133  raw.githubusercontent.com</strong></p>
-]]></content>
-      <categories>
-        <category>github</category>
-      </categories>
-      <tags>
-        <tag>github</tag>
       </tags>
   </entry>
   <entry>
