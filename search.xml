@@ -1,69 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Linux服务器中配置Nginx一个域名访问多个项目</title>
-    <url>/2020/04/12/linux-fu-wu-qi-zhong-pei-zhi-nginx-yi-ge-yu-ming-fang-wen-duo-ge-xiang-mu/</url>
-    <content><![CDATA[<p>&emsp;&emsp;务器配置个人博客和其它项目使其能够根据不同 url 跳转到不同项目，(例如:<em>localhosh://A 项目/，localhosh://B 项目/</em> )因为对服务器和 Nginx 部署了解甚少，在此记录一下</p>
-<a id="more"></a>
-
-<h2 id="location-模块的匹配介绍"><a href="#location-模块的匹配介绍" class="headerlink" title="location 模块的匹配介绍"></a>location 模块的匹配介绍</h2><blockquote>
-<ol>
-<li>”=”前缀指令匹配，如果匹配成功，则停止其他匹配。</li>
-<li>普通字符串指令匹配，顺序是从长到短，匹配成功的 location 如果使用^~，则停止其他匹配（正则匹配）。</li>
-<li>正则表达式指令匹配，按照配置文件里的顺序，成功就停止其他匹配。</li>
-<li>如果第三步中有匹配成功，则使用该结果，否则使用第二步结果。</li>
-</ol>
-</blockquote>
-<h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><blockquote>
-<ol>
-<li>匹配的顺序是先匹配普通字符串，然后再匹配正则表达式。另外普通字符串匹配顺序是根据配置中字符长度从长到短，也就是说使用普通字符串配置的 location 顺序是无关紧要的，反正最后 nginx 会根据配置的长短来进行匹配，但是需要注意的是正则表达式按照配置文件里的顺序测试。找到第一个匹配的正则表达式将停止搜索。</li>
-</ol>
-</blockquote>
-<blockquote>
-<ol start="2">
-<li>一般情况下，匹配成功了普通字符串 location 后还会进行正则表达式 location 匹配。有两种方法改变这种行为，其一就是使用“=”前缀，这时执行的是严格匹配，并且匹配成功后立即停止其他匹配，同时处理这个请求；另外一种就是使用“^~”前缀，如果把这个前缀用于一个常规字符串那么告诉 nginx 如果路径匹配那么不测试正则表达式。</li>
-</ol>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">location = <span class="string">``</span> / uri;</span><br></pre></td></tr></table></figure>
-
-<p>=开头表示精确匹配，只有完全匹配上才能生效。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">location ^ (~<span class="string">``</span> / uri);</span><br></pre></td></tr></table></figure>
-
-<p>^~ 开头对 URL 路径进行前缀匹配，并且在正则之前。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">location ~ pattern</span><br></pre></td></tr></table></figure>
-
-<p>~开头表示区分大小写的正则匹配。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">location ~* pattern</span><br></pre></td></tr></table></figure>
-
-<p>~*开头表示不区分大小写的正则匹配。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">location<span class="string">``</span> / uri;</span><br></pre></td></tr></table></figure>
-
-<p>不带任何修饰符，也表示前缀匹配，但是在正则匹配之后。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">location /</span><br></pre></td></tr></table></figure>
-
-<p>通用匹配，任何未匹配到其它 location 的请求都会匹配到，相当于 switch 中的 default。</p>
-<h2 id="alias-和-root-的区别"><a href="#alias-和-root-的区别" class="headerlink" title="alias 和 root 的区别"></a>alias 和 root 的区别</h2><p>在<a href="https://router.vuejs.org/zh/guide/essentials/redirect-and-alias.html#%E9%87%8D%E5%AE%9A%E5%90%91" target="_blank" rel="noopener">VUE</a>中也有alias的概念，感觉两者差不多</p>
-<ul>
-<li>alias 和 root 都是用来指定文件路径的，root与alias主要区别在于nginx如何解释location后面的uri，这会使两者分别以不同的方式将请求映射到服务器文件上。</li>
-<li>root的处理结果是：root路径＋location路径</li>
-<li>alias的处理结果是：使用alias路径替换location路径</li>
-<li>alias是一个目录别名的定义，root则是最上层目录的定义。</li>
-<li>还有一个重要的区别是alias后面必须要用“/”结束，否则会找不到文件</li>
-<li>alias在使用正则匹配时，必须捕捉要匹配的内容并在指定的内容处使用。</li>
-<li>alias只能位于location块中。（root可以不放在location中）</li>
-</ul>
-<h2 id="配置示例"><a href="#配置示例" class="headerlink" title="配置示例"></a>配置示例</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line"> *****</span><br><span class="line"> *****</span><br><span class="line"> # 域名+项目1名称</span><br><span class="line"> location ^~ <span class="regexp">/A/</span> &#123;</span><br><span class="line">   alias /data/A/;</span><br><span class="line"> &#125;</span><br><span class="line"> # 域名+项目2名称</span><br><span class="line"> location ^~ <span class="regexp">/B/</span> &#123;</span><br><span class="line">   alias /data/B/;</span><br><span class="line"> &#125;</span><br><span class="line">    ****</span><br><span class="line">    ****</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>参考：<a href="https://www.nginx.cn/4658.html" target="_blank" rel="noopener">nginx的location、root、alias指令用法和区别</a></p>
-]]></content>
-      <categories>
-        <category>Nginx</category>
-      </categories>
-      <tags>
-        <tag>Nginx</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>hexo搭建</title>
     <url>/2020/04/12/hexo-da-jian-yu-dao-de-keng/</url>
     <content><![CDATA[<h4 id="服务器搭建nginx"><a href="#服务器搭建nginx" class="headerlink" title="服务器搭建nginx"></a>服务器搭建nginx</h4><p><a href="https://yq.aliyun.com/articles/700682" target="_blank" rel="noopener">在阿里云服务器上如何搭建nginx？</a> </p>
@@ -74,32 +11,6 @@
       </categories>
       <tags>
         <tag>Nginx</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>lambda函数</title>
-    <url>/2020/05/06/lambda-han-shu/</url>
-    <content><![CDATA[<h3 id="python-lambda函数"><a href="#python-lambda函数" class="headerlink" title="python lambda函数"></a>python lambda函数</h3><blockquote>
-<p>匿名函数lambda：是指一类无需定义标识符（函数名）的函数或子程序。<br>lambda 函数可以接收任意多个参数 (包括可选参数) 并且返回单个表达式的值。</p>
-<p>lambda匿名函数的格式：冒号前是参数，可以有多个，用逗号隔开，冒号右边的为表达式。其实lambda返回值是一个函数的地址，也就是函数对象。</p>
-</blockquote>
-<p><strong>要点：</strong></p>
-<ul>
-<li>lambda 函数不能包含命令，</li>
-<li>包含的表达式不能超过一个。<a id="more"></a>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(x)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">2</span> * x + <span class="number">1</span></span><br><span class="line">func(<span class="number">5</span>)</span><br><span class="line"><span class="string">'''等同于'''</span></span><br><span class="line">a = <span class="keyword">lambda</span> x : <span class="number">2</span> * x + <span class="number">1</span></span><br><span class="line">a(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>多个参数</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(x,y)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">2</span> * x + y</span><br><span class="line">func(<span class="number">5</span>,<span class="number">6</span>)</span><br><span class="line"><span class="string">'''等同于'''</span></span><br><span class="line">a = <span class="keyword">lambda</span> x,y : <span class="number">2</span> * x + y</span><br><span class="line">a(<span class="number">5</span>,<span class="number">6</span>)</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -133,83 +44,22 @@
       </tags>
   </entry>
   <entry>
-    <title>post常见四种提交方式及php接收</title>
-    <url>/2020/04/23/post-chang-jian-si-chong-ti-jiao-fang-shi/</url>
-    <content><![CDATA[<ul>
-<li>application/x-www-form-urlencoded</li>
-<li>multipart/form-data</li>
-<li>application/json</li>
-<li>text/xml</li>
-</ul>
-<p>以上是四种常见的<code>POST</code>提交数据的方式，<code>HTTP</code> 协议是以 ASCII 码传输（可参考<a href="https://zh.wikipedia.org/zh-hans/%E8%B6%85%E6%96%87%E6%9C%AC%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener">http介绍</a>），建立在 TCP/IP 协议之上的应用层规范。规范把 HTTP 请求分为三个部分：<code>状态行</code>、<code>请求头</code>、<code>消息主体</code>。类似于下面这样</p>
-<a id="more"></a>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;method&gt; &lt;request-URL&gt; &lt;version&gt;</span><br><span class="line">&lt;headers&gt;</span><br><span class="line">&lt;entity-body&gt;</span><br></pre></td></tr></table></figure>
-
-<p>协议规定 <code>POST</code> 提交的数据必须放在<code>消息主体（entity-body）</code>中，但协议并没有规定数据必须使用什么编码方式。实际上，开发者完全可以自己决定消息主体的格式，只要最后发送的 HTTP 请求满足上面的格式就可以。</p>
-<p>但是，数据发送出去，还要服务端解析成功才有意义。一般服务端语言如 php、python 等，以及它们的 framework，都内置了自动解析常见数据格式的功能。服务端通常是根据请求头（headers）中的 <code>Content-Type</code> 字段来获知请求中的消息主体是用何种方式编码，再对主体进行解析。所以说到 <code>POST</code> 提交数据方案，包含了 <code>Content-Type</code> 和<code>消息主体编码方式</code>两部分</p>
-<h3 id="1-application-x-www-form-urlencoded"><a href="#1-application-x-www-form-urlencoded" class="headerlink" title="1.application/x-www-form-urlencoded"></a>1.application/x-www-form-urlencoded</h3><p>浏览器的原生<code>form</code> 表单，如果不设置<code>enctype</code>属性，那么最终就会以 <code>application/x-www-form-urlencoded</code> 方式提交数据 例如</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span>  <span class="attr">role</span>=<span class="string">"form"</span>  <span class="attr">method</span>=<span class="string">"POST"</span> <span class="attr">action</span>=<span class="string">"index.php"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>最为常见的form表单提交他的请求格式是这样的</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">POST http:<span class="comment">//www.example.com HTTP/1.1</span></span><br><span class="line">Content-Type: application/x-www-form-urlencoded;charset=utf<span class="number">-8</span></span><br><span class="line">Form Data</span><br><span class="line"> title=test&amp;sub%<span class="number">5</span>B%<span class="number">5</span>D=<span class="number">1</span>&amp;sub%<span class="number">5</span>B%<span class="number">5</span>D=<span class="number">2</span>&amp;sub%<span class="number">5</span>B%<span class="number">5</span>D=<span class="number">3</span></span><br></pre></td></tr></table></figure>
-
-<p>1.首先，<code>Content-Type</code> 被指定为<code>application/x-www-form-urlencoded</code>；</p>
-<p>2.headers最下方的格式为Form Data 提交的数据按照 <code>key1=val1&amp;key2=val2</code> 的方式进行编码，key 和 val 都进行了 URL 转码。大部分服务端语言都对这种方式有很好的支持，例如php 接收</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$title = $_POST[<span class="string">'title'</span>]; <span class="comment">//获取到title</span></span><br><span class="line">$sub = $_POST[<span class="string">'sub'</span>] <span class="comment">//获取到sub数组</span></span><br></pre></td></tr></table></figure>
-
-<p>很多时候，我们用 Ajax 提交数据时，也是使用这种方式。例如 <a href="http://jquery.com/" target="_blank" rel="noopener">JQuery</a> 和 <a href="http://www.qwrap.com/" target="_blank" rel="noopener">QWrap</a> 的 Ajax，Content-Type 默认值都是「application/x-www-form-urlencoded;charset=utf-8」</p>
-<h3 id="2-multipart-form-data"><a href="#2-multipart-form-data" class="headerlink" title="2.multipart/form-data"></a>2.multipart/form-data</h3><p>常用于form表单上传文件时使用，与 <code>application/x-www-form-urlencoded</code>相比 form多了 <code>enctype=&quot;multipart/form-data&quot;</code> 属性 例如</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">"post"</span>  <span class="attr">enctype</span>=<span class="string">"multipart/form-data"</span> <span class="attr">action</span>=<span class="string">"upload.php"</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span>  <span class="attr">name</span>=<span class="string">"file"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>请求格式为</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">POST http:<span class="comment">//www.example.com HTTP/1.1</span></span><br><span class="line">Content-Type:multipart/form-data; boundary=----WebKitFormBoundaryrGKCBY7qhFd3TrwA</span><br><span class="line">------WebKitFormBoundaryrGKCBY7qhFd3TrwA</span><br><span class="line">Content-Disposition: form-data; name=<span class="string">"text"</span></span><br><span class="line">title</span><br><span class="line">------WebKitFormBoundaryrGKCBY7qhFd3TrwA</span><br><span class="line">Content-Disposition: form-data; name=<span class="string">"file"</span>; filename=<span class="string">"chrome.png"</span></span><br><span class="line">Content-Type: image/png</span><br><span class="line">PNG ... content <span class="keyword">of</span> chrome.png ...</span><br><span class="line">------WebKitFormBoundaryrGKCBY7qhFd3TrwA--</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$file = $_FILES[<span class="string">'name'</span>]; <span class="comment">//接收文件</span></span><br><span class="line">$a = $_POST[<span class="string">'a'</span>] <span class="comment">//接受普通数据</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="3-application-json"><a href="#3-application-json" class="headerlink" title="3.application/json"></a>3.application/json</h3><p>  <code>application/json</code> 这个 <code>Content-Type</code>作为响应头大家肯定不陌生。实际上，现在越来越多的人把它作为请求头，用来告诉服务端消息主体是序列化后的 <code>JSON</code> 字符串。由于 <code>JSON</code>规范的流行，除了低版本 IE 之外的各大浏览器都原生支持 <code>JSON.stringify</code>，服务端语言也都有处理 <code>JSON</code> 的函数，使用<code>JSON</code>不会遇上什么麻烦。 <code>JSON</code>格式支持比键值对复杂得多的结构化数据，这一点也很有用。</p>
-<p>格式如下</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">POST http:<span class="comment">//www.example.com HTTP/1.1</span></span><br><span class="line">Content-Type: application/json;charset=utf<span class="number">-8</span></span><br><span class="line">Request Payload </span><br><span class="line">  &#123;<span class="string">"title"</span>:<span class="string">"test"</span>,<span class="string">"sub"</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]&#125;</span><br></pre></td></tr></table></figure>
-
-<p>需要注意的是 前两种form提交格式为 <code>Form Data</code> 这种为<code>Request Payload</code> 关于二者的区别可以参考 <a href="https://segmentfault.com/a/1190000018774494" target="_blank" rel="noopener">https://segmentfault.com/a/1190000018774494</a>  这篇文章。</p>
-<p>这种格式对php来说是不识别的，他只能解析成文本，所以后台接收原始流</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$data = file_get_contents(<span class="string">"php://input"</span>);</span><br><span class="line">$data = json_decode($data,<span class="keyword">true</span>);</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-text-xml"><a href="#4-text-xml" class="headerlink" title="4.text/xml"></a>4.text/xml</h3><p>  它是一种使用 <code>HTTP</code>作为传输协议，<code>XML</code> 作为编码方式的远程调用规范。典型的<code>XML-RPC</code>请求是这样的：</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">POST http://www.example.com HTTP/1.1</span><br><span class="line">Content-Type: text/xml</span><br><span class="line"><span class="meta">&lt;?xml version="1.0"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">methodCall</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">methodName</span>&gt;</span>examples.getStateName<span class="tag">&lt;/<span class="name">methodName</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">params</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span><span class="tag">&lt;<span class="name">i4</span>&gt;</span>41<span class="tag">&lt;/<span class="name">i4</span>&gt;</span><span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">params</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">methodCall</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><code>XML-RPC</code> 协议简单、功能够用，各种语言的实现都有。比如微信的<code>小程序</code>和<code>公众平台</code>都是使用它来作为基本的传输类型，它的使用也很广泛，如 <code>WordPress</code> 的 <a href="http://codex.wordpress.org/XML-RPC_WordPress_API" target="_blank" rel="noopener">XML-RPC Api</a>，搜索引擎的 <a href="http://www.baidu.com/search/blogsearch_help.html#n7" target="_blank" rel="noopener">ping 服务</a>等等。<code>JavaScript</code> 中，也有<a href="http://plugins.jquery.com/xmlrpc/" target="_blank" rel="noopener">现成的库</a>支持以这种方式进行数据交互，能很好的支持已有的 <code>XML-RPC</code>服务。不过，我个人觉得<code>XML</code> 结构还是过于臃肿，一般场景用 <code>JSON</code>会更灵活方便</p>
-<p>同上，这种结构php不认识，可使用 <strong>file_get_contents(‘php://input’)</strong> 进行接收</p>
-<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p> 以上方法都可以通过header头部的Content-Type来指定  header: {“Content-Type”: “xxx” }</p>
-]]></content>
-      <categories>
-        <category>php</category>
-      </categories>
-      <tags>
-        <tag>php</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python-filter函数</title>
-    <url>/2020/05/06/python-filter-han-shu/</url>
-    <content><![CDATA[<h3 id="python-filter函数"><a href="#python-filter函数" class="headerlink" title="python filter函数"></a>python filter函数</h3><blockquote>
-<p><strong>filter()</strong> 函数用于过滤序列，过滤掉不符合条件的元素，返回一个迭代器对象，如果要转换为列表，可以使用 list() 来转换。</p>
+    <title>lambda函数</title>
+    <url>/2020/05/06/lambda-han-shu/</url>
+    <content><![CDATA[<h3 id="python-lambda函数"><a href="#python-lambda函数" class="headerlink" title="python lambda函数"></a>python lambda函数</h3><blockquote>
+<p>匿名函数lambda：是指一类无需定义标识符（函数名）的函数或子程序。<br>lambda 函数可以接收任意多个参数 (包括可选参数) 并且返回单个表达式的值。</p>
+<p>lambda匿名函数的格式：冒号前是参数，可以有多个，用逗号隔开，冒号右边的为表达式。其实lambda返回值是一个函数的地址，也就是函数对象。</p>
 </blockquote>
-<a id="more"></a>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">filter(function, iterable)</span><br></pre></td></tr></table></figure>
-
-<p>参数</p>
+<p><strong>要点：</strong></p>
 <ul>
-<li>function – 判断函数，可为none。</li>
-<li>iterable – 可迭代对象。</li>
-</ul>
-<p>序列中的每个元素作为参数传递给函数进行判断，返回True或者False，最后将<code>返回为True的元素</code></p>
-<h5 id="为None时"><a href="#为None时" class="headerlink" title="为None时"></a>为None时</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = filter(<span class="literal">None</span>,[<span class="number">1</span>,<span class="literal">False</span>,<span class="number">0</span>,<span class="literal">True</span>])</span><br><span class="line">print(a)</span><br><span class="line">print(list(a))</span><br><span class="line"><span class="comment">#&lt;filter object at 0x00000169BBEA3550&gt;</span></span><br><span class="line"><span class="comment">#[1, True]</span></span><br></pre></td></tr></table></figure>
+<li>lambda 函数不能包含命令，</li>
+<li>包含的表达式不能超过一个。<a id="more"></a>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(x)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">2</span> * x + <span class="number">1</span></span><br><span class="line">func(<span class="number">5</span>)</span><br><span class="line"><span class="string">'''等同于'''</span></span><br><span class="line">a = <span class="keyword">lambda</span> x : <span class="number">2</span> * x + <span class="number">1</span></span><br><span class="line">a(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
 
-<h5 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"> a = filter(<span class="keyword">lambda</span> n : n &lt; <span class="number">2</span>,[<span class="number">0</span>,<span class="literal">False</span>,<span class="number">2</span>,<span class="literal">True</span>])</span><br><span class="line"> print(a)</span><br><span class="line"> print(list(a))</span><br><span class="line"><span class="comment">#&lt;filter object at 0x000001D84FB0C390&gt;</span></span><br><span class="line"><span class="comment">#[0, False, True]</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>多个参数</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(x,y)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">2</span> * x + y</span><br><span class="line">func(<span class="number">5</span>,<span class="number">6</span>)</span><br><span class="line"><span class="string">'''等同于'''</span></span><br><span class="line">a = <span class="keyword">lambda</span> x,y : <span class="number">2</span> * x + y</span><br><span class="line">a(<span class="number">5</span>,<span class="number">6</span>)</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -298,15 +148,196 @@
       </tags>
   </entry>
   <entry>
-    <title>在github中建立一个图片库</title>
-    <url>/2020/04/18/zai-github-zhong-jian-li-yi-ge-tu-pian-ku/</url>
-    <content><![CDATA[<p>废话少说 就是在GitHub建个库单独存储图片<br>遇到的问题是<br>    <strong>找不到 raw.githubusercontent.com 的服务器 IP 地址。</strong><br>其原因应该就是DNS污染，解决办法<br><strong>在hosts文件添加 199.232.68.133  raw.githubusercontent.com</strong></p>
+    <title>Linux服务器中配置Nginx一个域名访问多个项目</title>
+    <url>/2020/04/12/linux-fu-wu-qi-zhong-pei-zhi-nginx-yi-ge-yu-ming-fang-wen-duo-ge-xiang-mu/</url>
+    <content><![CDATA[<p>&emsp;&emsp;务器配置个人博客和其它项目使其能够根据不同 url 跳转到不同项目，(例如:<em>localhosh://A 项目/，localhosh://B 项目/</em> )因为对服务器和 Nginx 部署了解甚少，在此记录一下</p>
+<a id="more"></a>
+
+<h2 id="location-模块的匹配介绍"><a href="#location-模块的匹配介绍" class="headerlink" title="location 模块的匹配介绍"></a>location 模块的匹配介绍</h2><blockquote>
+<ol>
+<li>”=”前缀指令匹配，如果匹配成功，则停止其他匹配。</li>
+<li>普通字符串指令匹配，顺序是从长到短，匹配成功的 location 如果使用^~，则停止其他匹配（正则匹配）。</li>
+<li>正则表达式指令匹配，按照配置文件里的顺序，成功就停止其他匹配。</li>
+<li>如果第三步中有匹配成功，则使用该结果，否则使用第二步结果。</li>
+</ol>
+</blockquote>
+<h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><blockquote>
+<ol>
+<li>匹配的顺序是先匹配普通字符串，然后再匹配正则表达式。另外普通字符串匹配顺序是根据配置中字符长度从长到短，也就是说使用普通字符串配置的 location 顺序是无关紧要的，反正最后 nginx 会根据配置的长短来进行匹配，但是需要注意的是正则表达式按照配置文件里的顺序测试。找到第一个匹配的正则表达式将停止搜索。</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li>一般情况下，匹配成功了普通字符串 location 后还会进行正则表达式 location 匹配。有两种方法改变这种行为，其一就是使用“=”前缀，这时执行的是严格匹配，并且匹配成功后立即停止其他匹配，同时处理这个请求；另外一种就是使用“^~”前缀，如果把这个前缀用于一个常规字符串那么告诉 nginx 如果路径匹配那么不测试正则表达式。</li>
+</ol>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">location = <span class="string">``</span> / uri;</span><br></pre></td></tr></table></figure>
+
+<p>=开头表示精确匹配，只有完全匹配上才能生效。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">location ^ (~<span class="string">``</span> / uri);</span><br></pre></td></tr></table></figure>
+
+<p>^~ 开头对 URL 路径进行前缀匹配，并且在正则之前。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">location ~ pattern</span><br></pre></td></tr></table></figure>
+
+<p>~开头表示区分大小写的正则匹配。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">location ~* pattern</span><br></pre></td></tr></table></figure>
+
+<p>~*开头表示不区分大小写的正则匹配。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">location<span class="string">``</span> / uri;</span><br></pre></td></tr></table></figure>
+
+<p>不带任何修饰符，也表示前缀匹配，但是在正则匹配之后。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">location /</span><br></pre></td></tr></table></figure>
+
+<p>通用匹配，任何未匹配到其它 location 的请求都会匹配到，相当于 switch 中的 default。</p>
+<h2 id="alias-和-root-的区别"><a href="#alias-和-root-的区别" class="headerlink" title="alias 和 root 的区别"></a>alias 和 root 的区别</h2><p>在<a href="https://router.vuejs.org/zh/guide/essentials/redirect-and-alias.html#%E9%87%8D%E5%AE%9A%E5%90%91" target="_blank" rel="noopener">VUE</a>中也有alias的概念，感觉两者差不多</p>
+<ul>
+<li>alias 和 root 都是用来指定文件路径的，root与alias主要区别在于nginx如何解释location后面的uri，这会使两者分别以不同的方式将请求映射到服务器文件上。</li>
+<li>root的处理结果是：root路径＋location路径</li>
+<li>alias的处理结果是：使用alias路径替换location路径</li>
+<li>alias是一个目录别名的定义，root则是最上层目录的定义。</li>
+<li>还有一个重要的区别是alias后面必须要用“/”结束，否则会找不到文件</li>
+<li>alias在使用正则匹配时，必须捕捉要匹配的内容并在指定的内容处使用。</li>
+<li>alias只能位于location块中。（root可以不放在location中）</li>
+</ul>
+<h2 id="配置示例"><a href="#配置示例" class="headerlink" title="配置示例"></a>配置示例</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line"> *****</span><br><span class="line"> *****</span><br><span class="line"> # 域名+项目1名称</span><br><span class="line"> location ^~ <span class="regexp">/A/</span> &#123;</span><br><span class="line">   alias /data/A/;</span><br><span class="line"> &#125;</span><br><span class="line"> # 域名+项目2名称</span><br><span class="line"> location ^~ <span class="regexp">/B/</span> &#123;</span><br><span class="line">   alias /data/B/;</span><br><span class="line"> &#125;</span><br><span class="line">    ****</span><br><span class="line">    ****</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>参考：<a href="https://www.nginx.cn/4658.html" target="_blank" rel="noopener">nginx的location、root、alias指令用法和区别</a></p>
 ]]></content>
       <categories>
-        <category>github</category>
+        <category>Nginx</category>
       </categories>
       <tags>
-        <tag>github</tag>
+        <tag>Nginx</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python-filter函数</title>
+    <url>/2020/05/06/python-filter-han-shu/</url>
+    <content><![CDATA[<h3 id="python-filter函数"><a href="#python-filter函数" class="headerlink" title="python filter函数"></a>python filter函数</h3><blockquote>
+<p><strong>filter()</strong> 函数用于过滤序列，过滤掉不符合条件的元素，返回一个迭代器对象，如果要转换为列表，可以使用 list() 来转换。</p>
+</blockquote>
+<a id="more"></a>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">filter(function, iterable)</span><br></pre></td></tr></table></figure>
+
+<p>参数</p>
+<ul>
+<li>function – 判断函数，可为none。</li>
+<li>iterable – 可迭代对象。</li>
+</ul>
+<p>序列中的每个元素作为参数传递给函数进行判断，返回True或者False，最后将<code>返回为True的元素</code></p>
+<h5 id="为None时"><a href="#为None时" class="headerlink" title="为None时"></a>为None时</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = filter(<span class="literal">None</span>,[<span class="number">1</span>,<span class="literal">False</span>,<span class="number">0</span>,<span class="literal">True</span>])</span><br><span class="line">print(a)</span><br><span class="line">print(list(a))</span><br><span class="line"><span class="comment">#&lt;filter object at 0x00000169BBEA3550&gt;</span></span><br><span class="line"><span class="comment">#[1, True]</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"> a = filter(<span class="keyword">lambda</span> n : n &lt; <span class="number">2</span>,[<span class="number">0</span>,<span class="literal">False</span>,<span class="number">2</span>,<span class="literal">True</span>])</span><br><span class="line"> print(a)</span><br><span class="line"> print(list(a))</span><br><span class="line"><span class="comment">#&lt;filter object at 0x000001D84FB0C390&gt;</span></span><br><span class="line"><span class="comment">#[0, False, True]</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>post常见四种提交方式及php接收</title>
+    <url>/2020/04/23/post-chang-jian-si-chong-ti-jiao-fang-shi/</url>
+    <content><![CDATA[<ul>
+<li>application/x-www-form-urlencoded</li>
+<li>multipart/form-data</li>
+<li>application/json</li>
+<li>text/xml</li>
+</ul>
+<p>以上是四种常见的<code>POST</code>提交数据的方式，<code>HTTP</code> 协议是以 ASCII 码传输（可参考<a href="https://zh.wikipedia.org/zh-hans/%E8%B6%85%E6%96%87%E6%9C%AC%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener">http介绍</a>），建立在 TCP/IP 协议之上的应用层规范。规范把 HTTP 请求分为三个部分：<code>状态行</code>、<code>请求头</code>、<code>消息主体</code>。类似于下面这样</p>
+<a id="more"></a>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;method&gt; &lt;request-URL&gt; &lt;version&gt;</span><br><span class="line">&lt;headers&gt;</span><br><span class="line">&lt;entity-body&gt;</span><br></pre></td></tr></table></figure>
+
+<p>协议规定 <code>POST</code> 提交的数据必须放在<code>消息主体（entity-body）</code>中，但协议并没有规定数据必须使用什么编码方式。实际上，开发者完全可以自己决定消息主体的格式，只要最后发送的 HTTP 请求满足上面的格式就可以。</p>
+<p>但是，数据发送出去，还要服务端解析成功才有意义。一般服务端语言如 php、python 等，以及它们的 framework，都内置了自动解析常见数据格式的功能。服务端通常是根据请求头（headers）中的 <code>Content-Type</code> 字段来获知请求中的消息主体是用何种方式编码，再对主体进行解析。所以说到 <code>POST</code> 提交数据方案，包含了 <code>Content-Type</code> 和<code>消息主体编码方式</code>两部分</p>
+<h3 id="1-application-x-www-form-urlencoded"><a href="#1-application-x-www-form-urlencoded" class="headerlink" title="1.application/x-www-form-urlencoded"></a>1.application/x-www-form-urlencoded</h3><p>浏览器的原生<code>form</code> 表单，如果不设置<code>enctype</code>属性，那么最终就会以 <code>application/x-www-form-urlencoded</code> 方式提交数据 例如</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span>  <span class="attr">role</span>=<span class="string">"form"</span>  <span class="attr">method</span>=<span class="string">"POST"</span> <span class="attr">action</span>=<span class="string">"index.php"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>最为常见的form表单提交他的请求格式是这样的</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">POST http:<span class="comment">//www.example.com HTTP/1.1</span></span><br><span class="line">Content-Type: application/x-www-form-urlencoded;charset=utf<span class="number">-8</span></span><br><span class="line">Form Data</span><br><span class="line"> title=test&amp;sub%<span class="number">5</span>B%<span class="number">5</span>D=<span class="number">1</span>&amp;sub%<span class="number">5</span>B%<span class="number">5</span>D=<span class="number">2</span>&amp;sub%<span class="number">5</span>B%<span class="number">5</span>D=<span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<p>1.首先，<code>Content-Type</code> 被指定为<code>application/x-www-form-urlencoded</code>；</p>
+<p>2.headers最下方的格式为Form Data 提交的数据按照 <code>key1=val1&amp;key2=val2</code> 的方式进行编码，key 和 val 都进行了 URL 转码。大部分服务端语言都对这种方式有很好的支持，例如php 接收</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$title = $_POST[<span class="string">'title'</span>]; <span class="comment">//获取到title</span></span><br><span class="line">$sub = $_POST[<span class="string">'sub'</span>] <span class="comment">//获取到sub数组</span></span><br></pre></td></tr></table></figure>
+
+<p>很多时候，我们用 Ajax 提交数据时，也是使用这种方式。例如 <a href="http://jquery.com/" target="_blank" rel="noopener">JQuery</a> 和 <a href="http://www.qwrap.com/" target="_blank" rel="noopener">QWrap</a> 的 Ajax，Content-Type 默认值都是「application/x-www-form-urlencoded;charset=utf-8」</p>
+<h3 id="2-multipart-form-data"><a href="#2-multipart-form-data" class="headerlink" title="2.multipart/form-data"></a>2.multipart/form-data</h3><p>常用于form表单上传文件时使用，与 <code>application/x-www-form-urlencoded</code>相比 form多了 <code>enctype=&quot;multipart/form-data&quot;</code> 属性 例如</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">"post"</span>  <span class="attr">enctype</span>=<span class="string">"multipart/form-data"</span> <span class="attr">action</span>=<span class="string">"upload.php"</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span>  <span class="attr">name</span>=<span class="string">"file"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>请求格式为</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">POST http:<span class="comment">//www.example.com HTTP/1.1</span></span><br><span class="line">Content-Type:multipart/form-data; boundary=----WebKitFormBoundaryrGKCBY7qhFd3TrwA</span><br><span class="line">------WebKitFormBoundaryrGKCBY7qhFd3TrwA</span><br><span class="line">Content-Disposition: form-data; name=<span class="string">"text"</span></span><br><span class="line">title</span><br><span class="line">------WebKitFormBoundaryrGKCBY7qhFd3TrwA</span><br><span class="line">Content-Disposition: form-data; name=<span class="string">"file"</span>; filename=<span class="string">"chrome.png"</span></span><br><span class="line">Content-Type: image/png</span><br><span class="line">PNG ... content <span class="keyword">of</span> chrome.png ...</span><br><span class="line">------WebKitFormBoundaryrGKCBY7qhFd3TrwA--</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$file = $_FILES[<span class="string">'name'</span>]; <span class="comment">//接收文件</span></span><br><span class="line">$a = $_POST[<span class="string">'a'</span>] <span class="comment">//接受普通数据</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-application-json"><a href="#3-application-json" class="headerlink" title="3.application/json"></a>3.application/json</h3><p>  <code>application/json</code> 这个 <code>Content-Type</code>作为响应头大家肯定不陌生。实际上，现在越来越多的人把它作为请求头，用来告诉服务端消息主体是序列化后的 <code>JSON</code> 字符串。由于 <code>JSON</code>规范的流行，除了低版本 IE 之外的各大浏览器都原生支持 <code>JSON.stringify</code>，服务端语言也都有处理 <code>JSON</code> 的函数，使用<code>JSON</code>不会遇上什么麻烦。 <code>JSON</code>格式支持比键值对复杂得多的结构化数据，这一点也很有用。</p>
+<p>格式如下</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">POST http:<span class="comment">//www.example.com HTTP/1.1</span></span><br><span class="line">Content-Type: application/json;charset=utf<span class="number">-8</span></span><br><span class="line">Request Payload </span><br><span class="line">  &#123;<span class="string">"title"</span>:<span class="string">"test"</span>,<span class="string">"sub"</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]&#125;</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是 前两种form提交格式为 <code>Form Data</code> 这种为<code>Request Payload</code> 关于二者的区别可以参考 <a href="https://segmentfault.com/a/1190000018774494" target="_blank" rel="noopener">https://segmentfault.com/a/1190000018774494</a>  这篇文章。</p>
+<p>这种格式对php来说是不识别的，他只能解析成文本，所以后台接收原始流</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$data = file_get_contents(<span class="string">"php://input"</span>);</span><br><span class="line">$data = json_decode($data,<span class="keyword">true</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-text-xml"><a href="#4-text-xml" class="headerlink" title="4.text/xml"></a>4.text/xml</h3><p>  它是一种使用 <code>HTTP</code>作为传输协议，<code>XML</code> 作为编码方式的远程调用规范。典型的<code>XML-RPC</code>请求是这样的：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">POST http://www.example.com HTTP/1.1</span><br><span class="line">Content-Type: text/xml</span><br><span class="line"><span class="meta">&lt;?xml version="1.0"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">methodCall</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">methodName</span>&gt;</span>examples.getStateName<span class="tag">&lt;/<span class="name">methodName</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">params</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span><span class="tag">&lt;<span class="name">i4</span>&gt;</span>41<span class="tag">&lt;/<span class="name">i4</span>&gt;</span><span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">params</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">methodCall</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>XML-RPC</code> 协议简单、功能够用，各种语言的实现都有。比如微信的<code>小程序</code>和<code>公众平台</code>都是使用它来作为基本的传输类型，它的使用也很广泛，如 <code>WordPress</code> 的 <a href="http://codex.wordpress.org/XML-RPC_WordPress_API" target="_blank" rel="noopener">XML-RPC Api</a>，搜索引擎的 <a href="http://www.baidu.com/search/blogsearch_help.html#n7" target="_blank" rel="noopener">ping 服务</a>等等。<code>JavaScript</code> 中，也有<a href="http://plugins.jquery.com/xmlrpc/" target="_blank" rel="noopener">现成的库</a>支持以这种方式进行数据交互，能很好的支持已有的 <code>XML-RPC</code>服务。不过，我个人觉得<code>XML</code> 结构还是过于臃肿，一般场景用 <code>JSON</code>会更灵活方便</p>
+<p>同上，这种结构php不认识，可使用 <strong>file_get_contents(‘php://input’)</strong> 进行接收</p>
+<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p> 以上方法都可以通过header头部的Content-Type来指定  header: {“Content-Type”: “xxx” }</p>
+]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python-map函数</title>
+    <url>/2020/05/06/python-map-han-shu/</url>
+    <content><![CDATA[<h3 id="Python-map-函数"><a href="#Python-map-函数" class="headerlink" title="Python map() 函数"></a>Python map() 函数</h3><blockquote>
+<p><strong>map()</strong> 会根据提供的函数对指定序列做映射。</p>
+<p>第一个参数 function 以参数序列中的每一个元素调用 function 函数，返回包含每次 function 函数返回值的新列表。</p>
+</blockquote>
+<a id="more"></a>
+
+<p>类似于php中的array_map()函数</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"> array_map(<span class="function"><span class="keyword">function</span><span class="params">($n)</span></span>&#123; <span class="keyword">return</span> $n*$n;&#125;, range(<span class="number">0</span>,<span class="number">9</span>)); <span class="comment">#使用function()&#123;&#125;匿名函数</span></span><br><span class="line"><span class="comment">#[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">map(<span class="keyword">lambda</span> x: x ** <span class="number">2</span>, range(<span class="number">10</span>))  <span class="comment"># 使用 lambda 匿名函数</span></span><br><span class="line"><span class="comment">#[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</span></span><br><span class="line"></span><br><span class="line">b=[]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>): 	<span class="comment">#使用for循环逐个遍历</span></span><br><span class="line">    b.append(i**<span class="number">2</span>)</span><br><span class="line"><span class="comment">#[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>解决cannot remove &#39;.user.ini&#39;Operation not permitted</title>
+    <url>/2020/04/18/jie-jue-cannot-remove-user-ini-operation-not-permitted/</url>
+    <content><![CDATA[<p>在Linux中删除整个git仓库，删除失败出现 cannot remove ‘.user.ini’Operation not permitted，原因就是文件中含有某种属性不可更改，删除该属性就可以了</p>
+<a id="more"></a>
+<p>在Linux中rm -rf的威力是十分巨大的，特别是附带了 -f 参数，不少新手都干过用root用户执行 rm -rf /命令这种傻事，如果云服务器没有快照，简直就是灾难，从根目录开始所有文件被递归删除，连系统都被损坏。</p>
+<p>但是，偶尔也会遇到使用rm -rf也删除不了的文件，执行后报rm: cannot remove `.user.ini’: Operation not permitted，</p>
+<p>这时候需要使用到Linux的chattr命令， chattr命令用于改变文件属性。这项指令可改变存放在ext2文件系统上的文件或目录属性，这些属性共有以下8种模式：<br>a：让文件或目录仅供附加用途。<br>b：不更新文件或目录的最后存取时间。<br>c：将文件或目录压缩后存放。<br>d：将文件或目录排除在倾倒操作之外。<br>i：不得任意更动文件或目录。<br>s：保密性删除文件或目录。<br>S：即时更新文件或目录。<br>u：预防以外删除。<br>语法chattr[-RV][-v&lt;版本编号&gt;][+/-/=&lt;属性&gt;][文件或目录…]参数<br>　　-R 递归处理，将指定目录下的所有文件及子目录一并处理。<br>　　-v&lt;版本编号&gt; 设置文件或目录版本。<br>　　-V 显示指令执行过程。<br>　　+&lt;属性&gt; 开启文件或目录的该项属性。<br>　　-&lt;属性&gt; 关闭文件或目录的该项属性。<br>　　=&lt;属性&gt; 指定文件或目录的该项属性。</p>
+<p>进入到<code>.user.ini&#39;所在目录，执行一下 lsattr -a，查看文件下下边包含文件的属性，看到</code>.user.ini’有个’i’属性，代表不得任意更动文件或目录，正是此属性在作祟：</p>
+<p>然后执行命令：<br><code>chattr -i .user.ini</code><br>就可以去除掉此属性，然后我们再执行删除，就可以顺利删除掉了：</p>
+<p>原文链接：<a href="https://blog.csdn.net/sinat_35861727/article/details/79040755" target="_blank" rel="noopener">https://blog.csdn.net/sinat_35861727/article/details/79040755</a></p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -356,25 +387,6 @@
       </tags>
   </entry>
   <entry>
-    <title>解决cannot remove &#39;.user.ini&#39;Operation not permitted</title>
-    <url>/2020/04/18/jie-jue-cannot-remove-user-ini-operation-not-permitted/</url>
-    <content><![CDATA[<p>在Linux中删除整个git仓库，删除失败出现 cannot remove ‘.user.ini’Operation not permitted，原因就是文件中含有某种属性不可更改，删除该属性就可以了</p>
-<a id="more"></a>
-<p>在Linux中rm -rf的威力是十分巨大的，特别是附带了 -f 参数，不少新手都干过用root用户执行 rm -rf /命令这种傻事，如果云服务器没有快照，简直就是灾难，从根目录开始所有文件被递归删除，连系统都被损坏。</p>
-<p>但是，偶尔也会遇到使用rm -rf也删除不了的文件，执行后报rm: cannot remove `.user.ini’: Operation not permitted，</p>
-<p>这时候需要使用到Linux的chattr命令， chattr命令用于改变文件属性。这项指令可改变存放在ext2文件系统上的文件或目录属性，这些属性共有以下8种模式：<br>a：让文件或目录仅供附加用途。<br>b：不更新文件或目录的最后存取时间。<br>c：将文件或目录压缩后存放。<br>d：将文件或目录排除在倾倒操作之外。<br>i：不得任意更动文件或目录。<br>s：保密性删除文件或目录。<br>S：即时更新文件或目录。<br>u：预防以外删除。<br>语法chattr[-RV][-v&lt;版本编号&gt;][+/-/=&lt;属性&gt;][文件或目录…]参数<br>　　-R 递归处理，将指定目录下的所有文件及子目录一并处理。<br>　　-v&lt;版本编号&gt; 设置文件或目录版本。<br>　　-V 显示指令执行过程。<br>　　+&lt;属性&gt; 开启文件或目录的该项属性。<br>　　-&lt;属性&gt; 关闭文件或目录的该项属性。<br>　　=&lt;属性&gt; 指定文件或目录的该项属性。</p>
-<p>进入到<code>.user.ini&#39;所在目录，执行一下 lsattr -a，查看文件下下边包含文件的属性，看到</code>.user.ini’有个’i’属性，代表不得任意更动文件或目录，正是此属性在作祟：</p>
-<p>然后执行命令：<br><code>chattr -i .user.ini</code><br>就可以去除掉此属性，然后我们再执行删除，就可以顺利删除掉了：</p>
-<p>原文链接：<a href="https://blog.csdn.net/sinat_35861727/article/details/79040755" target="_blank" rel="noopener">https://blog.csdn.net/sinat_35861727/article/details/79040755</a></p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JS中的prototype、__proto__与constructor</title>
     <url>/2020/04/18/js-zhong-de-prototype-proto-yu-constructor/</url>
     <content><![CDATA[<p>​    原文链接 <a href="https://blog.csdn.net/cc18868876837/article/details/81211729" target="_blank" rel="noopener">https://blog.csdn.net/cc18868876837/article/details/81211729</a></p>
@@ -384,16 +396,16 @@
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;...&#125;;</span><br><span class="line"><span class="keyword">let</span> f1 = <span class="keyword">new</span> Foo();</span><br></pre></td></tr></table></figure>
 
 <p>以上代码表示创建一个构造函数Foo()，并用new关键字实例化该构造函数得到一个实例化对象f1。这里稍微补充一下new操作符将函数作为构造器进行调用时的过程：函数被调用，然后新创建一个对象，并且成了函数的上下文（也就是此时函数内部的this是指向该新创建的对象，这意味着我们可以在构造器函数内部通过this参数初始化值），最后返回该新对象的引用，详细请看：详解JavaScript中的new操作符。虽然是简简单单的两行代码，然而它们背后的关系却是错综复杂的，如下图所示：<br>看到这图别怕，让我们一步步剖析，彻底搞懂它们！</p>
-<p><img src="https://raw.githubusercontent.com/zjt-wy/images/master/js/1%20(6).png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/zjt-wy/images/master/js/1%20(6).png" alt></p>
 <p>  图的说明：右下角为图例，红色箭头表示_ _ proto_ _ 属性指向、绿色箭头表示prototype属性的指向、棕色实线箭头表示本身具有的constructor属性的指向，棕色虚线箭头表示继承而来的constructor属性的指向；蓝色方块表示对象，浅绿色方块表示函数（这里为了更好看清，Foo()仅代表是函数，并不是指执行函数Foo后得到的结果，图中的其他函数同理）。图的中间部分即为它们之间的联系，图的最左边即为例子代码。</p>
 <h3 id="2-proto-属性"><a href="#2-proto-属性" class="headerlink" title="2. _ _ proto _ _ 属性  "></a>2. _ _ proto _ _ 属性  </h3><p>  首先，我们需要牢记两点：①_ _ proto_ _ 和constructor属性是对象所独有的；② prototype属性是函数所独有的。但是由于JS中函数也是一种对象，所以函数也拥有_ _ proto_ _ 和constructor属性，这点是致使我们产生困惑的很大原因之一。上图有点复杂，我们把它按照属性分别拆开，然后进行分析：</p>
-<p><img src="https://raw.githubusercontent.com/zjt-wy/images/master/js/1%20(5).png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/zjt-wy/images/master/js/1%20(5).png" alt></p>
 <p>  第一，这里我们仅留下 _ <em>proto</em> _ 属性，它是对象所独有的，可以看到_ _ proto_ _ 属性都是由一个对象指向一个对象，即指向它们的原型对象（也可以理解为父对象），那么这个属性的作用是什么呢？它的作用就是当访问一个对象的属性时，如果该对象内部不存在这个属性，那么就会去它的_ _ proto_ _ 属性所指向的那个对象（可以理解为父对象）里找，如果父对象也不存在这个属性，则继续往父对象的_ _ proto_ _ 属性所指向的那个对象（可以理解为爷爷对象）里找，如果还没找到，则继续往上找…直到原型链顶端null（可以理解为原始人。。。），再往上找就相当于在null上取值，会报错（可以理解为，再往上就已经不是“人”的范畴了，找不到了，到此结束，null为原型链的终点），由以上这种通过_ _ proto_ _ 属性来连接对象直到null的一条链即为我们所谓的原型链。<br>  其实我们平时调用的字符串方法、数组方法、对象方法、函数方法等都是靠_ _ proto_ _ 继承而来的。</p>
 <h3 id="3-prototype属性"><a href="#3-prototype属性" class="headerlink" title="3. prototype属性"></a>3. prototype属性</h3><p>  第二，接下来我们看 prototype 属性：</p>
-<p>  <img src="https://raw.githubusercontent.com/zjt-wy/images/master/js/1%20(4).png" alt=""></p>
+<p>  <img src="https://raw.githubusercontent.com/zjt-wy/images/master/js/1%20(4).png" alt></p>
 <p>prototype属性，别忘了一点，就是我们前面提到要牢记的两点中的第二点，它是函数所独有的，它是从一个函数指向一个对象。它的含义是函数的原型对象，也就是这个函数（其实所有函数都可以作为构造函数）所创建的实例的原型对象，由此可知：f1._ _ proto_ _  === Foo.prototype，它们两个完全一样。那prototype属性的作用又是什么呢？它的作用就是包含可以由特定类型的所有实例共享的属性和方法，也就是让该函数所实例化的对象们都可以找到公用的属性和方法。任何函数在创建的时候，其实会默认同时创建该函数的prototype对象。</p>
-<h3 id="4-constructor属性"><a href="#4-constructor属性" class="headerlink" title="4. constructor属性"></a>4. constructor属性</h3><p>最后，我们来看一下 constructor 属性：<br>    <img src="https://raw.githubusercontent.com/zjt-wy/images/master/js/1%20(3).png" alt=""><br>    constructor属性也是对象才拥有的，它是从一个对象指向一个函数，含义就是指向该对象的构造函数，每个对象都有构造函数（本身拥有或继承而来，继承而来的要结合_ _ proto_ _ 属性查看会更清楚点，如下图所示），从上图中可以看出Function这个对象比较特殊，它的构造函数就是它自己（因为Function可以看成是一个函数，也可以是一个对象），所有函数和对象最终都是由Function构造函数得来，所以constructor属性的终点就是Function这个函数。<br><img src="https://raw.githubusercontent.com/zjt-wy/images/master/js/1%20(2).png" alt=""></p>
-<p>  感谢网友的指出，这里解释一下上段中“每个对象都有构造函数”这句话。这里的意思是每个对象都可以找到其对应的constructor，因为创建对象的前提是需要有constructor，而这个constructor可能是对象自己本身显式定义的或者通过_ _ proto_ _ 在原型链中找到的。而单从constructor这个属性来讲，只有prototype对象才有。每个函数在创建的时候，JS会同时创建一个该函数对应的prototype对象，而函数创建的对象._ _ proto_ _  === 该函数.prototype，该函数.prototype.constructor===该函数本身，故通过函数创建的对象即使自己没有constructor属性，它也能通过_ _ proto_ _ 找到对应的constructor，所以任何对象最终都可以找到其构造函数（null如果当成对象的话，将null除外）。如下：<br><img src="https://raw.githubusercontent.com/zjt-wy/images/master/js/1%20(1).png" alt=""></p>
+<h3 id="4-constructor属性"><a href="#4-constructor属性" class="headerlink" title="4. constructor属性"></a>4. constructor属性</h3><p>最后，我们来看一下 constructor 属性：<br>    <img src="https://raw.githubusercontent.com/zjt-wy/images/master/js/1%20(3).png" alt><br>    constructor属性也是对象才拥有的，它是从一个对象指向一个函数，含义就是指向该对象的构造函数，每个对象都有构造函数（本身拥有或继承而来，继承而来的要结合_ _ proto_ _ 属性查看会更清楚点，如下图所示），从上图中可以看出Function这个对象比较特殊，它的构造函数就是它自己（因为Function可以看成是一个函数，也可以是一个对象），所有函数和对象最终都是由Function构造函数得来，所以constructor属性的终点就是Function这个函数。<br><img src="https://raw.githubusercontent.com/zjt-wy/images/master/js/1%20(2).png" alt></p>
+<p>  感谢网友的指出，这里解释一下上段中“每个对象都有构造函数”这句话。这里的意思是每个对象都可以找到其对应的constructor，因为创建对象的前提是需要有constructor，而这个constructor可能是对象自己本身显式定义的或者通过_ _ proto_ _ 在原型链中找到的。而单从constructor这个属性来讲，只有prototype对象才有。每个函数在创建的时候，JS会同时创建一个该函数对应的prototype对象，而函数创建的对象._ _ proto_ _  === 该函数.prototype，该函数.prototype.constructor===该函数本身，故通过函数创建的对象即使自己没有constructor属性，它也能通过_ _ proto_ _ 找到对应的constructor，所以任何对象最终都可以找到其构造函数（null如果当成对象的话，将null除外）。如下：<br><img src="https://raw.githubusercontent.com/zjt-wy/images/master/js/1%20(1).png" alt></p>
 <h3 id="5-总结"><a href="#5-总结" class="headerlink" title="5.总结"></a>5.总结</h3><p>我们需要牢记两点：①_ _ proto_ _ 和constructor属性是对象所独有的；② prototype属性是函数所独有的，因为函数也是一种对象，所以函数也拥有_ _ proto_ _ 和constructor属性。<br>_ _ proto_ _ 属性的作用就是当访问一个对象的属性时，如果该对象内部不存在这个属性，那么就会去它的_ _ proto_ _ 属性所指向的那个对象（父对象）里找，一直找，直到_ _ proto_ _ 属性的终点null，再往上找就相当于在null上取值，会报错。通过_ _ proto_ _ 属性将对象连接起来的这条链路即我们所谓的原型链。<br>prototype属性的作用就是让该函数所实例化的对象们都可以找到公用的属性和方法，即f1._ _ proto_ _  === Foo.prototype。<br>constructor属性的含义就是指向该对象的构造函数，所有函数（此时看成对象了）最终的构造函数都指向Function。</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.name;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.say=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"hello"</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> person=<span class="keyword">new</span> Person();</span><br><span class="line"> </span><br><span class="line"><span class="built_in">console</span>.log(Person.__proto__);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Function</span>.prototype);</span><br><span class="line"> </span><br><span class="line"><span class="built_in">console</span>.log(Person.prototype.__proto__);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype);</span><br><span class="line"> </span><br><span class="line"><span class="built_in">console</span>.log(person.__proto__);</span><br><span class="line"><span class="built_in">console</span>.log(Person.prototype);</span><br><span class="line"> </span><br><span class="line"><span class="built_in">console</span>.log(Person.prototype.constructor);</span><br><span class="line"><span class="built_in">console</span>.log(Person);</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
@@ -402,5 +414,11 @@
       <tags>
         <tag>JS</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>test 123</title>
+    <url>/2021/01/13/test-123/</url>
+    <content><![CDATA[<p><img src="/2021/01/13/test-123/image-20210113172909475.png" alt="image-20210113172909475">123</p>
+]]></content>
   </entry>
 </search>
