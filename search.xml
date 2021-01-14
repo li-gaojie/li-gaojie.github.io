@@ -14,140 +14,6 @@
       </tags>
   </entry>
   <entry>
-    <title>markdown基本语法</title>
-    <url>/2020/04/12/markdown-ji-ben-yu-fa/</url>
-    <content><![CDATA[<h4 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 这是一级标题</span><br><span class="line">## 这是二级标题</span><br><span class="line">### 这是三级标题</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-
-<h4 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">**这是加粗的文字**</span><br><span class="line">*这是倾斜的文字*&#96;</span><br><span class="line">***这是斜体加粗的文字***</span><br><span class="line">~~这是加删除线的文字~~</span><br></pre></td></tr></table></figure>
-
-<h4 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;这是引用的内容</span><br><span class="line">&gt;&gt;这是引用的内容</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;这是引用的内容</span><br></pre></td></tr></table></figure>
-
-<h4 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">----</span><br><span class="line">***</span><br><span class="line">*****</span><br></pre></td></tr></table></figure>
-
-<h4 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">![图片alt](图片地址 &#39;&#39;图片title&#39;&#39;)</span><br><span class="line"> </span><br><span class="line">图片alt就是显示在图片下面的文字，相当于对图片内容的解释。</span><br><span class="line">图片title是图片的标题，当鼠标移到图片上时显示的内容。title可加可不加</span><br></pre></td></tr></table></figure>
-
-<h4 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[超链接名](超链接地址 &quot;超链接title&quot;)</span><br><span class="line">title可加可不加</span><br></pre></td></tr></table></figure>
-
-<h4 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- 列表内容</span><br><span class="line">+ 列表内容</span><br><span class="line">* 列表内容</span><br><span class="line"> </span><br><span class="line">注意：- + * 跟内容之间都要有一个空格</span><br></pre></td></tr></table></figure>
-
-<h4 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">表头|表头|表头</span><br><span class="line">---|:--:|---:</span><br><span class="line">内容|内容|内容</span><br><span class="line">内容|内容|内容</span><br><span class="line"> </span><br><span class="line">注意：</span><br><span class="line">1.第二行分割表头和内容“-”有一个就行，为了对齐，多加了几个</span><br><span class="line">2.文字默认居左，“-”两边加：表示文字居中；“-”右边加：表示文字居右</span><br></pre></td></tr></table></figure>
-
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">​   &#96;&#96;&#96; 语言类型 如 js &#x2F; html &#x2F; php</span><br><span class="line">    代码...</span><br><span class="line">    代码...</span><br><span class="line">    代码...</span><br><span class="line">​</span><br></pre></td></tr></table></figure>
-<p>```</p>
-]]></content>
-      <categories>
-        <category>markdown</category>
-      </categories>
-      <tags>
-        <tag>markdown</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>lambda函数</title>
-    <url>/2020/05/06/lambda-han-shu/</url>
-    <content><![CDATA[<h3 id="python-lambda函数"><a href="#python-lambda函数" class="headerlink" title="python lambda函数"></a>python lambda函数</h3><blockquote>
-<p>匿名函数lambda：是指一类无需定义标识符（函数名）的函数或子程序。<br>lambda 函数可以接收任意多个参数 (包括可选参数) 并且返回单个表达式的值。</p>
-<p>lambda匿名函数的格式：冒号前是参数，可以有多个，用逗号隔开，冒号右边的为表达式。其实lambda返回值是一个函数的地址，也就是函数对象。</p>
-</blockquote>
-<p><strong>要点：</strong></p>
-<ul>
-<li>lambda 函数不能包含命令，</li>
-<li>包含的表达式不能超过一个。<a id="more"></a>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(x)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">2</span> * x + <span class="number">1</span></span><br><span class="line">func(<span class="number">5</span>)</span><br><span class="line"><span class="string">'''等同于'''</span></span><br><span class="line">a = <span class="keyword">lambda</span> x : <span class="number">2</span> * x + <span class="number">1</span></span><br><span class="line">a(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>多个参数</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(x,y)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">2</span> * x + y</span><br><span class="line">func(<span class="number">5</span>,<span class="number">6</span>)</span><br><span class="line"><span class="string">'''等同于'''</span></span><br><span class="line">a = <span class="keyword">lambda</span> x,y : <span class="number">2</span> * x + y</span><br><span class="line">a(<span class="number">5</span>,<span class="number">6</span>)</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python with用法</title>
-    <url>/2020/05/07/python-with-yong-fa/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span>表达式类似与<span class="keyword">try</span>-<span class="keyword">finally</span>，但又不会捕获异常</span><br><span class="line"><span class="keyword">with</span> 语句实质是上下文管理。</span><br><span class="line"><span class="number">1</span>、上下文管理协议。包含方法__enter__() 和 __exit__()，支持该协议对象要实现这两个方法。</span><br><span class="line"><span class="number">2</span>、上下文管理器，定义执行<span class="keyword">with</span>语句时要建立的运行时上下文，负责执行<span class="keyword">with</span>语句块上下文中的进入与退出操作。</span><br><span class="line"><span class="number">3</span>、进入上下文的时候执行__enter__方法，如果设置<span class="keyword">as</span> var语句，var变量接受__enter__()方法返回值。</span><br><span class="line"><span class="number">4</span>、如果运行时发生了异常，就退出上下文管理器。调用管理器__exit__方法。</span><br></pre></td></tr></table></figure>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>context是一个表达式，返回的是一个对象，var用来保存context表达式返回的对象</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> context [<span class="keyword">as</span> var]:</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
-
-<p>例如：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">'1.txt'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    print(f.read())</span><br><span class="line">    </span><br><span class="line">print(f.closed) <span class="comment">#true</span></span><br></pre></td></tr></table></figure>
-
-<p>在这段代码中，无论<code>with</code>中的代码块在执行的过程中发生任何情况，文件最终都会被关闭。如果代码块在执行的过程中发生了一个异常，<strong>那么在这个异常被抛出前，程序会先将被打开的文件关闭</strong>。</p>
-<h2 id="with-的一般执行过程"><a href="#with-的一般执行过程" class="headerlink" title="with 的一般执行过程"></a>with 的一般执行过程</h2><p>一段基本的<code>with</code>表达式，其结构是这样的：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">`<span class="keyword">with</span> EXPR <span class="keyword">as</span> VAR:     BLOCK `</span><br></pre></td></tr></table></figure>
-
-<p>其中：<code>EXPR</code>可以是任意表达式；<code>as VAR</code>是可选的。其一般的执行过程是这样的：</p>
-<ol>
-<li>计算<code>EXPR</code>，并获取一个上下文管理器。</li>
-<li>上下文管理器的<code>__exit()__</code>方法被保存起来用于之后的调用。</li>
-<li>调用上下文管理器的<code>__enter()__</code>方法。</li>
-<li>如果<code>with</code>表达式包含<code>as VAR</code>，那么<code>EXPR</code>的返回值被赋值给<code>VAR</code>。</li>
-<li>执行<code>BLOCK</code>中的表达式。</li>
-<li>调用上下文管理器的<code>__exit()__</code>方法。如果<code>BLOCK</code>的执行过程中发生了一个异常导致程序退出，那么异常的<code>type</code>、<code>value</code>和<code>traceback</code>(即<code>sys.exc_info()</code>的返回值)将作为参数传递给<code>__exit()__</code>方法。否则，将传递三个<code>None</code>。</li>
-</ol>
-<p>将这个过程用代码表示，是这样的：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">`mgr = (EXPR) exit = type(mgr).__exit__ <span class="comment"># 这里没有执行 value = type(mgr).__enter__(mgr) exc = True  try:     try:         VAR = value # 如果有 as VAR         BLOCK     except:         exc = False         if not exit(mgr, *sys.exc_info()):             raise finally:     if exc:         exit(mgr, None, None, None) `</span></span><br></pre></td></tr></table></figure>
-
-<p>这个过程有几个细节：</p>
-<ul>
-<li>如果上下文管理器中没有<code>__enter()__</code>或者<code>__exit()__</code>中的任意一个方法，那么解释器会抛出一个<code>AttributeError</code>。</li>
-<li>在<code>BLOCK</code>中发生异常后，如果<code>__exit()__</code>方法返回一个可被看成是<code>True</code>的值，那么这个异常就不会被抛出，后面的代码会继续执行。</li>
-</ul>
-<p>接下来，用两种方法来实现上面来实现上面的过程的吧。</p>
-<h2 id="实现上下文管理器类"><a href="#实现上下文管理器类" class="headerlink" title="实现上下文管理器类"></a>实现上下文管理器类</h2><p>第一种方法是实现一个类，其含有一个实例属性<code>db</code>和上下文管理器所需要的方法<code>__enter()__</code>和<code>__exit()__</code>。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">`<span class="class"><span class="keyword">class</span> <span class="title">transaction</span><span class="params">(object)</span>:</span>     <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, db)</span>:</span>         self.db = db      <span class="function"><span class="keyword">def</span> <span class="title">__enter__</span><span class="params">(self)</span>:</span>         self.db.begin()      <span class="function"><span class="keyword">def</span> <span class="title">__exit__</span><span class="params">(self, type, value, traceback)</span>:</span>         <span class="keyword">if</span> type <span class="keyword">is</span> <span class="literal">None</span>:             db.commit()         <span class="keyword">else</span>:             db.rollback() `</span><br></pre></td></tr></table></figure>
-
-<p>了解<code>with</code>的执行过程后，这个实现方式是很容易理解的。下面介绍的实现方式，其原理理解起来要复杂很多。</p>
-<h2 id="使用生成器装饰器"><a href="#使用生成器装饰器" class="headerlink" title="使用生成器装饰器"></a>使用生成器装饰器</h2><p>在Python的标准库中，有一个装饰器可以通过生成器获取上下文管理器。使用生成器装饰器的实现过程如下：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">`<span class="keyword">from</span> contextlib <span class="keyword">import</span> contextmanager  @contextmanager <span class="function"><span class="keyword">def</span> <span class="title">transaction</span><span class="params">(db)</span>:</span>     db.begin()      <span class="keyword">try</span>:         <span class="keyword">yield</span> db     <span class="keyword">except</span>:         db.rollback()         <span class="keyword">raise</span>     <span class="keyword">else</span>:         db.commit() `</span><br></pre></td></tr></table></figure>
-
-<p>第一眼上看去，这种实现方式更为简单，但是其机制更为复杂。看一下其执行过程吧：</p>
-<ol>
-<li>Python解释器识别到<code>yield</code>关键字后，<code>def</code>会创建一个生成器函数替代常规的函数（在类定义之外我喜欢用函数代替方法）。</li>
-<li>装饰器<code>contextmanager</code>被调用并返回一个帮助函数，这个帮助函数在被调用后会生成一个<code>GeneratorContextManager</code>实例。最终<code>with</code>表达式中的<code>EXPR</code>调用的是由<code>contentmanager</code>装饰器返回的帮助函数。</li>
-<li><code>with</code>表达式调用<code>transaction(db)</code>，实际上是调用帮助函数。帮助函数调用生成器函数，生成器函数创建一个生成器。</li>
-<li>帮助函数将这个生成器传递给<code>GeneratorContextManager</code>，并创建一个<code>GeneratorContextManager</code>的实例对象作为上下文管理器。</li>
-<li><code>with</code>表达式调用实例对象的上下文管理器的<code>__enter()__</code>方法。</li>
-<li><code>__enter()__</code>方法中会调用这个生成器的<code>next()</code>方法。这时候，生成器方法会执行到<code>yield db</code>处停止，并将<code>db</code>作为<code>next()</code>的返回值。如果有<code>as VAR</code>，那么它将会被赋值给<code>VAR</code>。</li>
-<li><code>with</code>中的<code>BLOCK</code>被执行。</li>
-<li><code>BLOCK</code>执行结束后，调用上下文管理器的<code>__exit()__</code>方法。<code>__exit()__</code>方法会再次调用生成器的<code>next()</code>方法。如果发生<code>StopIteration</code>异常，则<code>pass</code>。</li>
-<li>如果没有发生异常生成器方法将会执行<code>db.commit()</code>，否则会执行<code>db.rollback()</code>。</li>
-</ol>
-<p>再次看看上述过程的代码大致实现：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">`<span class="function"><span class="keyword">def</span> <span class="title">contextmanager</span><span class="params">(func)</span>:</span>     <span class="function"><span class="keyword">def</span> <span class="title">helper</span><span class="params">(*args, **kwargs)</span>:</span>         <span class="keyword">return</span> GeneratorContextManager(func(*args, **kwargs))     <span class="keyword">return</span> helper  <span class="class"><span class="keyword">class</span> <span class="title">GeneratorContextManager</span><span class="params">(object)</span>:</span>     <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, gen)</span>:</span>         self.gen = gen      <span class="function"><span class="keyword">def</span> <span class="title">__enter__</span><span class="params">(self)</span>:</span>         <span class="keyword">try</span>:             <span class="keyword">return</span> self.gen.next()         <span class="keyword">except</span> StopIteration:             <span class="keyword">raise</span> RuntimeError(<span class="string">"generator didn't yield"</span>)      <span class="function"><span class="keyword">def</span> <span class="title">__exit__</span><span class="params">(self, type, value, traceback)</span>:</span>         <span class="keyword">if</span> type <span class="keyword">is</span> <span class="literal">None</span>:             <span class="keyword">try</span>:                 self.gen.next()             <span class="keyword">except</span> StopIteration:                 <span class="keyword">pass</span>             <span class="keyword">else</span>:                 <span class="keyword">raise</span> RuntimeError(<span class="string">"generator didn't stop"</span>)         <span class="keyword">else</span>:             <span class="keyword">try</span>:                 self.gen.throw(type, value, traceback)                 <span class="keyword">raise</span> RuntimeError(<span class="string">"generator didn't stop after throw()"</span>)             <span class="keyword">except</span> StopIteration:                 <span class="keyword">return</span> <span class="literal">True</span>             <span class="keyword">except</span>:                 <span class="keyword">if</span> sys.exc_info()[<span class="number">1</span>] <span class="keyword">is</span> <span class="keyword">not</span> value:                     <span class="keyword">raise</span> `</span><br></pre></td></tr></table></figure>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Python的<code>with</code>表达式包含了很多Python特性，花点时间吃透<code>with</code>是一件非常值得的事情。</p>
-<h2 id="一些其他的例子"><a href="#一些其他的例子" class="headerlink" title="一些其他的例子"></a>一些其他的例子</h2><p>锁机制</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">`@contextmanager <span class="function"><span class="keyword">def</span> <span class="title">locked</span><span class="params">(lock)</span>:</span>     lock.acquired()     <span class="keyword">try</span>:         <span class="keyword">yield</span>     <span class="keyword">finally</span>:         lock.release() `</span><br></pre></td></tr></table></figure>
-
-<p>标准输出重定向</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">`@contextmanager <span class="function"><span class="keyword">def</span> <span class="title">stdout_redirect</span><span class="params">(new_stdout)</span>:</span>     old_stdout = sys.stdout     sys.stdout = new_stdout     <span class="keyword">try</span>:         <span class="keyword">yield</span>     <span class="keyword">finally</span>:         sys.stdout = old_stdout  <span class="keyword">with</span> open(<span class="string">"file.txt"</span>, <span class="string">"w"</span>) <span class="keyword">as</span> f:     <span class="keyword">with</span> stdout_redirect(f):         <span class="keyword">print</span> <span class="string">"hello world"</span>`</span><br></pre></td></tr></table></figure>
-
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="http://preshing.com/20110920/the-python-with-statement-by-example/" target="_blank" rel="noopener">The Python “with” Statement by Example</a></li>
-<li><a href="https://www.python.org/dev/peps/pep-0343/" target="_blank" rel="noopener">PEP 343</a></li>
-</ul>
-<h3 id="原文地址"><a href="#原文地址" class="headerlink" title="原文地址"></a>原文地址</h3><p><a href="http://yuez.me/python-zhong-de-guan-jian-zi-with-xiang-jie" target="_blank" rel="noopener">http://yuez.me/python-zhong-de-guan-jian-zi-with-xiang-jie</a></p>
-]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux服务器中配置Nginx一个域名访问多个项目</title>
     <url>/2020/04/12/linux-fu-wu-qi-zhong-pei-zhi-nginx-yi-ge-yu-ming-fang-wen-duo-ge-xiang-mu/</url>
     <content><![CDATA[<p>&emsp;&emsp;务器配置个人博客和其它项目使其能够根据不同 url 跳转到不同项目，(例如:<em>localhosh://A 项目/，localhosh://B 项目/</em> )因为对服务器和 Nginx 部署了解甚少，在此记录一下</p>
@@ -208,6 +74,62 @@
       </categories>
       <tags>
         <tag>Nginx</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>lambda函数</title>
+    <url>/2020/05/06/lambda-han-shu/</url>
+    <content><![CDATA[<h3 id="python-lambda函数"><a href="#python-lambda函数" class="headerlink" title="python lambda函数"></a>python lambda函数</h3><blockquote>
+<p>匿名函数lambda：是指一类无需定义标识符（函数名）的函数或子程序。<br>lambda 函数可以接收任意多个参数 (包括可选参数) 并且返回单个表达式的值。</p>
+<p>lambda匿名函数的格式：冒号前是参数，可以有多个，用逗号隔开，冒号右边的为表达式。其实lambda返回值是一个函数的地址，也就是函数对象。</p>
+</blockquote>
+<p><strong>要点：</strong></p>
+<ul>
+<li>lambda 函数不能包含命令，</li>
+<li>包含的表达式不能超过一个。<a id="more"></a>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(x)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">2</span> * x + <span class="number">1</span></span><br><span class="line">func(<span class="number">5</span>)</span><br><span class="line"><span class="string">'''等同于'''</span></span><br><span class="line">a = <span class="keyword">lambda</span> x : <span class="number">2</span> * x + <span class="number">1</span></span><br><span class="line">a(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>多个参数</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(x,y)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">2</span> * x + y</span><br><span class="line">func(<span class="number">5</span>,<span class="number">6</span>)</span><br><span class="line"><span class="string">'''等同于'''</span></span><br><span class="line">a = <span class="keyword">lambda</span> x,y : <span class="number">2</span> * x + y</span><br><span class="line">a(<span class="number">5</span>,<span class="number">6</span>)</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>markdown基本语法</title>
+    <url>/2020/04/12/markdown-ji-ben-yu-fa/</url>
+    <content><![CDATA[<h4 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 这是一级标题</span><br><span class="line">## 这是二级标题</span><br><span class="line">### 这是三级标题</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+
+<h4 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">**这是加粗的文字**</span><br><span class="line">*这是倾斜的文字*&#96;</span><br><span class="line">***这是斜体加粗的文字***</span><br><span class="line">~~这是加删除线的文字~~</span><br></pre></td></tr></table></figure>
+
+<h4 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;这是引用的内容</span><br><span class="line">&gt;&gt;这是引用的内容</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;这是引用的内容</span><br></pre></td></tr></table></figure>
+
+<h4 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">----</span><br><span class="line">***</span><br><span class="line">*****</span><br></pre></td></tr></table></figure>
+
+<h4 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">![图片alt](图片地址 &#39;&#39;图片title&#39;&#39;)</span><br><span class="line"> </span><br><span class="line">图片alt就是显示在图片下面的文字，相当于对图片内容的解释。</span><br><span class="line">图片title是图片的标题，当鼠标移到图片上时显示的内容。title可加可不加</span><br></pre></td></tr></table></figure>
+
+<h4 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[超链接名](超链接地址 &quot;超链接title&quot;)</span><br><span class="line">title可加可不加</span><br></pre></td></tr></table></figure>
+
+<h4 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- 列表内容</span><br><span class="line">+ 列表内容</span><br><span class="line">* 列表内容</span><br><span class="line"> </span><br><span class="line">注意：- + * 跟内容之间都要有一个空格</span><br></pre></td></tr></table></figure>
+
+<h4 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">表头|表头|表头</span><br><span class="line">---|:--:|---:</span><br><span class="line">内容|内容|内容</span><br><span class="line">内容|内容|内容</span><br><span class="line"> </span><br><span class="line">注意：</span><br><span class="line">1.第二行分割表头和内容“-”有一个就行，为了对齐，多加了几个</span><br><span class="line">2.文字默认居左，“-”两边加：表示文字居中；“-”右边加：表示文字居右</span><br></pre></td></tr></table></figure>
+
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">​   &#96;&#96;&#96; 语言类型 如 js &#x2F; html &#x2F; php</span><br><span class="line">    代码...</span><br><span class="line">    代码...</span><br><span class="line">    代码...</span><br><span class="line">​</span><br></pre></td></tr></table></figure>
+<p>```</p>
+]]></content>
+      <categories>
+        <category>markdown</category>
+      </categories>
+      <tags>
+        <tag>markdown</tag>
       </tags>
   </entry>
   <entry>
@@ -322,22 +244,81 @@
       </tags>
   </entry>
   <entry>
-    <title>解决cannot remove &#39;.user.ini&#39;Operation not permitted</title>
-    <url>/2020/04/18/jie-jue-cannot-remove-user-ini-operation-not-permitted/</url>
-    <content><![CDATA[<p>在Linux中删除整个git仓库，删除失败出现 cannot remove ‘.user.ini’Operation not permitted，原因就是文件中含有某种属性不可更改，删除该属性就可以了</p>
+    <title>python with用法</title>
+    <url>/2020/05/07/python-with-yong-fa/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span>表达式类似与<span class="keyword">try</span>-<span class="keyword">finally</span>，但又不会捕获异常。</span><br><span class="line"><span class="keyword">with</span> 语句实质是上下文管理。</span><br><span class="line"><span class="number">1</span>、上下文管理协议。包含方法__enter__() 和 __exit__()，支持该协议对象要实现这两个方法。</span><br><span class="line"><span class="number">2</span>、上下文管理器，定义执行<span class="keyword">with</span>语句时要建立的运行时上下文，负责执行<span class="keyword">with</span>语句块上下文中的进入与退出操作。</span><br><span class="line"><span class="number">3</span>、进入上下文的时候执行__enter__方法，如果设置<span class="keyword">as</span> var语句，var变量接受__enter__()方法返回值。</span><br><span class="line"><span class="number">4</span>、如果运行时发生了异常，就退出上下文管理器。调用管理器__exit__方法。</span><br></pre></td></tr></table></figure>
+</blockquote>
 <a id="more"></a>
-<p>在Linux中rm -rf的威力是十分巨大的，特别是附带了 -f 参数，不少新手都干过用root用户执行 rm -rf /命令这种傻事，如果云服务器没有快照，简直就是灾难，从根目录开始所有文件被递归删除，连系统都被损坏。</p>
-<p>但是，偶尔也会遇到使用rm -rf也删除不了的文件，执行后报rm: cannot remove `.user.ini’: Operation not permitted，</p>
-<p>这时候需要使用到Linux的chattr命令， chattr命令用于改变文件属性。这项指令可改变存放在ext2文件系统上的文件或目录属性，这些属性共有以下8种模式：<br>a：让文件或目录仅供附加用途。<br>b：不更新文件或目录的最后存取时间。<br>c：将文件或目录压缩后存放。<br>d：将文件或目录排除在倾倒操作之外。<br>i：不得任意更动文件或目录。<br>s：保密性删除文件或目录。<br>S：即时更新文件或目录。<br>u：预防以外删除。<br>语法chattr[-RV][-v&lt;版本编号&gt;][+/-/=&lt;属性&gt;][文件或目录…]参数<br>　　-R 递归处理，将指定目录下的所有文件及子目录一并处理。<br>　　-v&lt;版本编号&gt; 设置文件或目录版本。<br>　　-V 显示指令执行过程。<br>　　+&lt;属性&gt; 开启文件或目录的该项属性。<br>　　-&lt;属性&gt; 关闭文件或目录的该项属性。<br>　　=&lt;属性&gt; 指定文件或目录的该项属性。</p>
-<p>进入到<code>.user.ini&#39;所在目录，执行一下 lsattr -a，查看文件下下边包含文件的属性，看到</code>.user.ini’有个’i’属性，代表不得任意更动文件或目录，正是此属性在作祟：</p>
-<p>然后执行命令：<br><code>chattr -i .user.ini</code><br>就可以去除掉此属性，然后我们再执行删除，就可以顺利删除掉了：</p>
-<p>原文链接：<a href="https://blog.csdn.net/sinat_35861727/article/details/79040755" target="_blank" rel="noopener">https://blog.csdn.net/sinat_35861727/article/details/79040755</a></p>
+
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>context是一个表达式，返回的是一个对象，var用来保存context表达式返回的对象</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> context [<span class="keyword">as</span> var]:</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">'1.txt'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    print(f.read())</span><br><span class="line">    </span><br><span class="line">print(f.closed) <span class="comment">#true</span></span><br></pre></td></tr></table></figure>
+
+<p>在这段代码中，无论<code>with</code>中的代码块在执行的过程中发生任何情况，文件最终都会被关闭。如果代码块在执行的过程中发生了一个异常，<strong>那么在这个异常被抛出前，程序会先将被打开的文件关闭</strong>。</p>
+<h2 id="with-的一般执行过程"><a href="#with-的一般执行过程" class="headerlink" title="with 的一般执行过程"></a>with 的一般执行过程</h2><p>一段基本的<code>with</code>表达式，其结构是这样的：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">`<span class="keyword">with</span> EXPR <span class="keyword">as</span> VAR:     BLOCK `</span><br></pre></td></tr></table></figure>
+
+<p>其中：<code>EXPR</code>可以是任意表达式；<code>as VAR</code>是可选的。其一般的执行过程是这样的：</p>
+<ol>
+<li>计算<code>EXPR</code>，并获取一个上下文管理器。</li>
+<li>上下文管理器的<code>__exit()__</code>方法被保存起来用于之后的调用。</li>
+<li>调用上下文管理器的<code>__enter()__</code>方法。</li>
+<li>如果<code>with</code>表达式包含<code>as VAR</code>，那么<code>EXPR</code>的返回值被赋值给<code>VAR</code>。</li>
+<li>执行<code>BLOCK</code>中的表达式。</li>
+<li>调用上下文管理器的<code>__exit()__</code>方法。如果<code>BLOCK</code>的执行过程中发生了一个异常导致程序退出，那么异常的<code>type</code>、<code>value</code>和<code>traceback</code>(即<code>sys.exc_info()</code>的返回值)将作为参数传递给<code>__exit()__</code>方法。否则，将传递三个<code>None</code>。</li>
+</ol>
+<p>将这个过程用代码表示，是这样的：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">`mgr = (EXPR) exit = type(mgr).__exit__ <span class="comment"># 这里没有执行 value = type(mgr).__enter__(mgr) exc = True  try:     try:         VAR = value # 如果有 as VAR         BLOCK     except:         exc = False         if not exit(mgr, *sys.exc_info()):             raise finally:     if exc:         exit(mgr, None, None, None) `</span></span><br></pre></td></tr></table></figure>
+
+<p>这个过程有几个细节：</p>
+<ul>
+<li>如果上下文管理器中没有<code>__enter()__</code>或者<code>__exit()__</code>中的任意一个方法，那么解释器会抛出一个<code>AttributeError</code>。</li>
+<li>在<code>BLOCK</code>中发生异常后，如果<code>__exit()__</code>方法返回一个可被看成是<code>True</code>的值，那么这个异常就不会被抛出，后面的代码会继续执行。</li>
+</ul>
+<p>接下来，用两种方法来实现上面来实现上面的过程的吧。</p>
+<h2 id="实现上下文管理器类"><a href="#实现上下文管理器类" class="headerlink" title="实现上下文管理器类"></a>实现上下文管理器类</h2><p>第一种方法是实现一个类，其含有一个实例属性<code>db</code>和上下文管理器所需要的方法<code>__enter()__</code>和<code>__exit()__</code>。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">`<span class="class"><span class="keyword">class</span> <span class="title">transaction</span><span class="params">(object)</span>:</span>     <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, db)</span>:</span>         self.db = db      <span class="function"><span class="keyword">def</span> <span class="title">__enter__</span><span class="params">(self)</span>:</span>         self.db.begin()      <span class="function"><span class="keyword">def</span> <span class="title">__exit__</span><span class="params">(self, type, value, traceback)</span>:</span>         <span class="keyword">if</span> type <span class="keyword">is</span> <span class="literal">None</span>:             db.commit()         <span class="keyword">else</span>:             db.rollback() `</span><br></pre></td></tr></table></figure>
+
+<p>了解<code>with</code>的执行过程后，这个实现方式是很容易理解的。下面介绍的实现方式，其原理理解起来要复杂很多。</p>
+<h2 id="使用生成器装饰器"><a href="#使用生成器装饰器" class="headerlink" title="使用生成器装饰器"></a>使用生成器装饰器</h2><p>在Python的标准库中，有一个装饰器可以通过生成器获取上下文管理器。使用生成器装饰器的实现过程如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">`<span class="keyword">from</span> contextlib <span class="keyword">import</span> contextmanager  @contextmanager <span class="function"><span class="keyword">def</span> <span class="title">transaction</span><span class="params">(db)</span>:</span>     db.begin()      <span class="keyword">try</span>:         <span class="keyword">yield</span> db     <span class="keyword">except</span>:         db.rollback()         <span class="keyword">raise</span>     <span class="keyword">else</span>:         db.commit() `</span><br></pre></td></tr></table></figure>
+
+<p>第一眼上看去，这种实现方式更为简单，但是其机制更为复杂。看一下其执行过程吧：</p>
+<ol>
+<li>Python解释器识别到<code>yield</code>关键字后，<code>def</code>会创建一个生成器函数替代常规的函数（在类定义之外我喜欢用函数代替方法）。</li>
+<li>装饰器<code>contextmanager</code>被调用并返回一个帮助函数，这个帮助函数在被调用后会生成一个<code>GeneratorContextManager</code>实例。最终<code>with</code>表达式中的<code>EXPR</code>调用的是由<code>contentmanager</code>装饰器返回的帮助函数。</li>
+<li><code>with</code>表达式调用<code>transaction(db)</code>，实际上是调用帮助函数。帮助函数调用生成器函数，生成器函数创建一个生成器。</li>
+<li>帮助函数将这个生成器传递给<code>GeneratorContextManager</code>，并创建一个<code>GeneratorContextManager</code>的实例对象作为上下文管理器。</li>
+<li><code>with</code>表达式调用实例对象的上下文管理器的<code>__enter()__</code>方法。</li>
+<li><code>__enter()__</code>方法中会调用这个生成器的<code>next()</code>方法。这时候，生成器方法会执行到<code>yield db</code>处停止，并将<code>db</code>作为<code>next()</code>的返回值。如果有<code>as VAR</code>，那么它将会被赋值给<code>VAR</code>。</li>
+<li><code>with</code>中的<code>BLOCK</code>被执行。</li>
+<li><code>BLOCK</code>执行结束后，调用上下文管理器的<code>__exit()__</code>方法。<code>__exit()__</code>方法会再次调用生成器的<code>next()</code>方法。如果发生<code>StopIteration</code>异常，则<code>pass</code>。</li>
+<li>如果没有发生异常生成器方法将会执行<code>db.commit()</code>，否则会执行<code>db.rollback()</code>。</li>
+</ol>
+<p>再次看看上述过程的代码大致实现：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">`<span class="function"><span class="keyword">def</span> <span class="title">contextmanager</span><span class="params">(func)</span>:</span>     <span class="function"><span class="keyword">def</span> <span class="title">helper</span><span class="params">(*args, **kwargs)</span>:</span>         <span class="keyword">return</span> GeneratorContextManager(func(*args, **kwargs))     <span class="keyword">return</span> helper  <span class="class"><span class="keyword">class</span> <span class="title">GeneratorContextManager</span><span class="params">(object)</span>:</span>     <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, gen)</span>:</span>         self.gen = gen      <span class="function"><span class="keyword">def</span> <span class="title">__enter__</span><span class="params">(self)</span>:</span>         <span class="keyword">try</span>:             <span class="keyword">return</span> self.gen.next()         <span class="keyword">except</span> StopIteration:             <span class="keyword">raise</span> RuntimeError(<span class="string">"generator didn't yield"</span>)      <span class="function"><span class="keyword">def</span> <span class="title">__exit__</span><span class="params">(self, type, value, traceback)</span>:</span>         <span class="keyword">if</span> type <span class="keyword">is</span> <span class="literal">None</span>:             <span class="keyword">try</span>:                 self.gen.next()             <span class="keyword">except</span> StopIteration:                 <span class="keyword">pass</span>             <span class="keyword">else</span>:                 <span class="keyword">raise</span> RuntimeError(<span class="string">"generator didn't stop"</span>)         <span class="keyword">else</span>:             <span class="keyword">try</span>:                 self.gen.throw(type, value, traceback)                 <span class="keyword">raise</span> RuntimeError(<span class="string">"generator didn't stop after throw()"</span>)             <span class="keyword">except</span> StopIteration:                 <span class="keyword">return</span> <span class="literal">True</span>             <span class="keyword">except</span>:                 <span class="keyword">if</span> sys.exc_info()[<span class="number">1</span>] <span class="keyword">is</span> <span class="keyword">not</span> value:                     <span class="keyword">raise</span> `</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Python的<code>with</code>表达式包含了很多Python特性，花点时间吃透<code>with</code>是一件非常值得的事情。</p>
+<h2 id="一些其他的例子"><a href="#一些其他的例子" class="headerlink" title="一些其他的例子"></a>一些其他的例子</h2><p>锁机制</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">`@contextmanager <span class="function"><span class="keyword">def</span> <span class="title">locked</span><span class="params">(lock)</span>:</span>     lock.acquired()     <span class="keyword">try</span>:         <span class="keyword">yield</span>     <span class="keyword">finally</span>:         lock.release() `</span><br></pre></td></tr></table></figure>
+
+<p>标准输出重定向</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">`@contextmanager <span class="function"><span class="keyword">def</span> <span class="title">stdout_redirect</span><span class="params">(new_stdout)</span>:</span>     old_stdout = sys.stdout     sys.stdout = new_stdout     <span class="keyword">try</span>:         <span class="keyword">yield</span>     <span class="keyword">finally</span>:         sys.stdout = old_stdout  <span class="keyword">with</span> open(<span class="string">"file.txt"</span>, <span class="string">"w"</span>) <span class="keyword">as</span> f:     <span class="keyword">with</span> stdout_redirect(f):         <span class="keyword">print</span> <span class="string">"hello world"</span>`</span><br></pre></td></tr></table></figure>
+
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a href="http://preshing.com/20110920/the-python-with-statement-by-example/" target="_blank" rel="noopener">The Python “with” Statement by Example</a></li>
+<li><a href="https://www.python.org/dev/peps/pep-0343/" target="_blank" rel="noopener">PEP 343</a></li>
+</ul>
+<h3 id="原文地址"><a href="#原文地址" class="headerlink" title="原文地址"></a>原文地址</h3><p><a href="http://yuez.me/python-zhong-de-guan-jian-zi-with-xiang-jie" target="_blank" rel="noopener">http://yuez.me/python-zhong-de-guan-jian-zi-with-xiang-jie</a></p>
 ]]></content>
       <categories>
-        <category>Linux</category>
+        <category>python</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -384,6 +365,25 @@
       </categories>
       <tags>
         <tag>uuid</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>解决cannot remove &#39;.user.ini&#39;Operation not permitted</title>
+    <url>/2020/04/18/jie-jue-cannot-remove-user-ini-operation-not-permitted/</url>
+    <content><![CDATA[<p>在Linux中删除整个git仓库，删除失败出现 cannot remove ‘.user.ini’Operation not permitted，原因就是文件中含有某种属性不可更改，删除该属性就可以了</p>
+<a id="more"></a>
+<p>在Linux中rm -rf的威力是十分巨大的，特别是附带了 -f 参数，不少新手都干过用root用户执行 rm -rf /命令这种傻事，如果云服务器没有快照，简直就是灾难，从根目录开始所有文件被递归删除，连系统都被损坏。</p>
+<p>但是，偶尔也会遇到使用rm -rf也删除不了的文件，执行后报rm: cannot remove `.user.ini’: Operation not permitted，</p>
+<p>这时候需要使用到Linux的chattr命令， chattr命令用于改变文件属性。这项指令可改变存放在ext2文件系统上的文件或目录属性，这些属性共有以下8种模式：<br>a：让文件或目录仅供附加用途。<br>b：不更新文件或目录的最后存取时间。<br>c：将文件或目录压缩后存放。<br>d：将文件或目录排除在倾倒操作之外。<br>i：不得任意更动文件或目录。<br>s：保密性删除文件或目录。<br>S：即时更新文件或目录。<br>u：预防以外删除。<br>语法chattr[-RV][-v&lt;版本编号&gt;][+/-/=&lt;属性&gt;][文件或目录…]参数<br>　　-R 递归处理，将指定目录下的所有文件及子目录一并处理。<br>　　-v&lt;版本编号&gt; 设置文件或目录版本。<br>　　-V 显示指令执行过程。<br>　　+&lt;属性&gt; 开启文件或目录的该项属性。<br>　　-&lt;属性&gt; 关闭文件或目录的该项属性。<br>　　=&lt;属性&gt; 指定文件或目录的该项属性。</p>
+<p>进入到<code>.user.ini&#39;所在目录，执行一下 lsattr -a，查看文件下下边包含文件的属性，看到</code>.user.ini’有个’i’属性，代表不得任意更动文件或目录，正是此属性在作祟：</p>
+<p>然后执行命令：<br><code>chattr -i .user.ini</code><br>就可以去除掉此属性，然后我们再执行删除，就可以顺利删除掉了：</p>
+<p>原文链接：<a href="https://blog.csdn.net/sinat_35861727/article/details/79040755" target="_blank" rel="noopener">https://blog.csdn.net/sinat_35861727/article/details/79040755</a></p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
