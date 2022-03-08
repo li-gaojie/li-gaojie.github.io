@@ -118,17 +118,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">8</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">1</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">7</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">1</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">14</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">2</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -193,7 +193,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://li-gaojie.github.io/2022/03/03/%E6%B5%8B%E8%AF%95%E6%B5%8B%E8%AF%95%E5%B0%BA%E5%AF%B8/">
+    <link itemprop="mainEntityOfPage" href="https://li-gaojie.github.io/2022/03/08/javase-java%E7%B1%BB%E9%9D%99%E6%80%81%E3%80%81%E5%B0%81%E8%A3%85%E3%80%81%E7%BB%A7%E6%89%BF/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -207,7 +207,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/03/03/%E6%B5%8B%E8%AF%95%E6%B5%8B%E8%AF%95%E5%B0%BA%E5%AF%B8/" class="post-title-link" itemprop="url">测试测试尺寸</a>
+            <a href="/2022/03/08/javase-java%E7%B1%BB%E9%9D%99%E6%80%81%E3%80%81%E5%B0%81%E8%A3%85%E3%80%81%E7%BB%A7%E6%89%BF/" class="post-title-link" itemprop="url">javase-java类静态、封装、继承</a>
         </h2>
 
         <div class="post-meta">
@@ -218,7 +218,16 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-03-03 21:17:30 / 修改时间：21:19:26" itemprop="dateCreated datePublished" datetime="2022-03-03T21:17:30+08:00">2022-03-03</time>
+              <time title="创建时间：2022-03-08 20:39:53 / 修改时间：21:20:39" itemprop="dateCreated datePublished" datetime="2022-03-08T20:39:53+08:00">2022-03-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                </span>
             </span>
 
           <br>
@@ -227,14 +236,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>8.8k</span>
+              <span>4k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>8 分钟</span>
+              <span>4 分钟</span>
             </span>
 
         </div>
@@ -246,395 +255,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <span id="more"></span>
-
-<img src="E:/飞秋/11_Array：数组_第一天【尚学堂·百战程序员】/文档/images/0.png" style="zoom:200%;" />
-
-<h1 id="Array：数组"><a href="#Array：数组" class="headerlink" title="Array：数组"></a>Array：数组</h1><p><strong>主要内容</strong></p>
-<ul>
-<li><p>数据类型分类</p>
-</li>
-<li><p>JVM内存区域初步了解</p>
-</li>
-<li><p>栈空间</p>
-</li>
-<li><p>堆空间</p>
-</li>
-<li><p>字符串常量池</p>
-</li>
-<li><p>数组</p>
-</li>
-</ul>
-<p><strong>学习目标</strong></p>
-<table>
-<thead>
-<tr>
-<th>知识点</th>
-<th>要求</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>数据类型分类</td>
-<td>掌握</td>
-</tr>
-<tr>
-<td>JVM内存区域初步了解</td>
-<td>掌握</td>
-</tr>
-<tr>
-<td>栈空间</td>
-<td>掌握</td>
-</tr>
-<tr>
-<td>堆空间</td>
-<td>掌握</td>
-</tr>
-<tr>
-<td>字符串常量池</td>
-<td>掌握</td>
-</tr>
-<tr>
-<td>数组</td>
-<td>掌握</td>
-</tr>
-</tbody></table>
-<h2 id="一-数据类型分类"><a href="#一-数据类型分类" class="headerlink" title="一. 数据类型分类"></a>一. 数据类型分类</h2><h3 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. 介绍</h3><p>​    Java中数据类型分为两大类。</p>
-<p>​        1. 八大基本数据类型。简称：<font color='orange'>基本数据类型</font>。</p>
-<p>​            <font color='red'>注意:</font> 八大基本数据类型，并不包含八大基本数据类型对应的封装类, 封装类为引用类型</p>
-<p>​        2. 引用数据类型。</p>
-<p>​            除了八大基本数据类型以外都是引用数据类型。</p>
-<p>​        3. 这种分类的依据是这两种数据类型在内存中存储的原理不同。</p>
-<p>​        4. <strong>通过学习这两种数据类型在内存中的存储原理以后，要明白两件事情：</strong></p>
-<p>​            1. 基本数据类型使用&#x3D;&#x3D;比较, 和引用数据类型使用&#x3D;&#x3D;比较的不同</p>
-<p>​            2. 基本数据类型使用&#x3D;赋值, 和引用数据类型使用&#x3D;赋值的不同</p>
-<h2 id="二-关键字和保留字"><a href="#二-关键字和保留字" class="headerlink" title="二. 关键字和保留字"></a>二. 关键字和保留字</h2><h3 id="1-介绍-1"><a href="#1-介绍-1" class="headerlink" title="1. 介绍"></a>1. 介绍</h3><p>​    关键字：在当前JDK 版本中具有特殊含义，这些单词都是全小写字母单词。</p>
-<p>​    如：<font color='cornflowerblue'>class、if、public、static</font> 都是关键字。</p>
-<p>​    保留字：虽然在当前版本中没有特殊含义，但是为了以后版本作为关键字使用。例如：java中没有goto关键字，C++中有goto，就把goto设定为保留字。</p>
-<p>​    在IDEA中如果主题是浅色背景模式，所有关键字都是蓝色。</p>
-<p> <img src="E:/飞秋/11_Array：数组_第一天【尚学堂·百战程序员】/文档/images/1.png"></p>
-<p>​    <font color='red'><strong>无论是关键字还是保留字都不允许作为包名、类名、变量名</strong>。</font></p>
-<p> <img src="E:/飞秋/11_Array：数组_第一天【尚学堂·百战程序员】/文档/images/2.png"></p>
-<h3 id="2-关键字和保留字表"><a href="#2-关键字和保留字表" class="headerlink" title="2. 关键字和保留字表"></a>2. 关键字和保留字表</h3><p>​    我们不用刻意去记哪些是关键字，哪些是保留字。随着不断的学习，那些具有特殊含义的单词，都不要作为包名、类名、变量名就可以了。</p>
-<table>
-<thead>
-<tr>
-<th>abstract</th>
-<th>assert</th>
-<th>boolean</th>
-<th>break</th>
-<th>byte</th>
-<th>case</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>catch</td>
-<td>char</td>
-<td>class</td>
-<td>const</td>
-<td>continue</td>
-<td>default</td>
-</tr>
-<tr>
-<td>do</td>
-<td>double</td>
-<td>else</td>
-<td>extends</td>
-<td>final</td>
-<td>finally</td>
-</tr>
-<tr>
-<td>float</td>
-<td>for</td>
-<td>goto</td>
-<td>if</td>
-<td>implements</td>
-<td>import</td>
-</tr>
-<tr>
-<td>instanceof</td>
-<td>int</td>
-<td>interface</td>
-<td>long</td>
-<td>native</td>
-<td>new</td>
-</tr>
-<tr>
-<td>null</td>
-<td>package</td>
-<td>private</td>
-<td>protected</td>
-<td>public</td>
-<td>return</td>
-</tr>
-<tr>
-<td>short</td>
-<td>static</td>
-<td>strictfp</td>
-<td>super</td>
-<td>switch</td>
-<td>synchronized</td>
-</tr>
-<tr>
-<td>this</td>
-<td>throw</td>
-<td>throws</td>
-<td>transient</td>
-<td>try</td>
-<td>void</td>
-</tr>
-<tr>
-<td>volatile</td>
-<td>while</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id="三-JVM内存区域初步了解"><a href="#三-JVM内存区域初步了解" class="headerlink" title="三. JVM内存区域初步了解"></a>三. JVM内存区域初步了解</h2><h3 id="1-介绍-2"><a href="#1-介绍-2" class="headerlink" title="1. 介绍"></a>1. 介绍</h3><p>​    在计算机中任何运行的程序都是在<font color='orange'><strong>内存</strong></font>中的。所以Java应用程序也不例外。</p>
-<p>​    学习好Java程序内存原理，对于理解Java底层和未来的面试有很大的帮助。</p>
-<p>​    JVM运行在内存中，为了提高效率对整个空间做了不同区域的划分，而在JVM中有两个非常重要的内存空间。一个是堆，另一个是栈。</p>
-<p> <img src="E:/飞秋/11_Array：数组_第一天【尚学堂·百战程序员】/文档/images/3.png"></p>
-<p>​    注意：</p>
-<p>​        1. 此处的堆和栈跟数据结构中的堆和栈是完全不同的两个东西。</p>
-<p>​        2. 堆和栈都是内存中一块空间。</p>
-<p>​        3. Java 8 和Java 7和Java 6在内存原理中有一定的区别，预科阶段我们只考虑Java 8的。</p>
-<p>​        4. JVM内存结构中不仅仅有堆和栈。<font color='orange'>预科阶段我们先学习堆和栈</font>。</p>
-<p>​        5. <font color='cornflowerblue'>由于目前我们只学习了局部变量（方法里面定义变量），所以目前我们只考虑的是局部变量的内存存储原理。</font></p>
-<h2 id="四-栈空间-Stack"><a href="#四-栈空间-Stack" class="headerlink" title="四. 栈空间(Stack)"></a>四. 栈空间(Stack)</h2><p>​    栈：一块存储**<font color='cornflowerblue'>八大基本数据类型值 和 引用数据类型地址</font>**的内存空间。</p>
-<p>​    栈中数据的特点：</p>
-<p>​        有效时间固定。</p>
-<h3 id="1-存储时间固定"><a href="#1-存储时间固定" class="headerlink" title="1. 存储时间固定"></a>1. 存储时间固定</h3><p>​    存储时间固定中的，不是说固定1秒，固定2秒。而是会跟随方法(代码块)的执行完成进行回收。回收后的空间可以立即被其他人使用。整个回收过程不需要程序员进行参与。</p>
-<p> <img src="E:/飞秋/11_Array：数组_第一天【尚学堂·百战程序员】/文档/images/4.png"></p>
-<h3 id="2-八大基本数据使用-x3D-x3D"><a href="#2-八大基本数据使用-x3D-x3D" class="headerlink" title="2. 八大基本数据使用&#x3D;&#x3D;"></a>2. 八大基本数据使用&#x3D;&#x3D;</h3><p>​    Java中基本数据类型使用 &#x3D;&#x3D; 比较, 比较的是存储的值。</p>
-<p>​    由于基本数据类型在栈空间中存储的特性，<font color='red'>&#x3D;&#x3D;对于八大基本数据类型比较的是值</font></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"><span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">System.out.println(a == b);  <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="3-八大基本数据类型的赋值"><a href="#3-八大基本数据类型的赋值" class="headerlink" title="3. 八大基本数据类型的赋值"></a>3. 八大基本数据类型的赋值</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"><span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> a;</span><br></pre></td></tr></table></figure>
-
-<p>​    根据上面讲解的原理，八大基本数据类型中，栈中存储的就是实际的值。所以当我们把变量a赋值给变量b时，在栈空间中变量b的值和变量a的值就是相等的</p>
-<p>​    如果在上面代码基础上，添加b&#x3D;2;栈空间的变化又是什么呢？</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"><span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> a;</span><br><span class="line">b = <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
-
-<p>​    在栈空间中变量b的值变为2, 而变量a的值还是1</p>
-<p>​    强调：“**<font color='red'>八大基本数据类型在赋值时，传递的是值</font>**”。</p>
-<h3 id="4-结论验证"><a href="#4-结论验证" class="headerlink" title="4. 结论验证"></a>4. 结论验证</h3><p>​    请说明下面代码的输出结果</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"><span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> a;</span><br><span class="line"><span class="type">int</span> <span class="variable">c</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">System.out.println(b == <span class="number">1</span>);</span><br><span class="line">System.out.println(a == b);</span><br><span class="line">System.out.println(a == c);</span><br><span class="line">System.out.println(b == c);</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="五-堆空间"><a href="#五-堆空间" class="headerlink" title="五. 堆空间"></a>五. 堆空间</h2><h3 id="1-堆空间介绍"><a href="#1-堆空间介绍" class="headerlink" title="1. 堆空间介绍"></a>1. 堆空间介绍</h3><p>​    堆(Heap): 里面存储java中所有引用数据类型的内容。</p>
-<p>​    所有引用数据类型的实际值都存储到堆里面。 在栈空间中存储引用数据类型的值在堆中的地址。</p>
-<p>​    也就是说：在代码中引用数据类型变量里面只存储了数据在堆中的地址。</p>
-<h3 id="2-引用类型在堆空间中的原理"><a href="#2-引用类型在堆空间中的原理" class="headerlink" title="2. 引用类型在堆空间中的原理"></a>2. 引用类型在堆空间中的原理</h3><p>​    例如：Integer a &#x3D; new Integer(123);对应的内存示意图如下：</p>
-<p> <img src="E:/飞秋/11_Array：数组_第一天【尚学堂·百战程序员】/文档/images/5.png"></p>
-<p>​    堆空间中和栈空间存储原理是不一样的。堆中的数据是由Java GC进行回收的（<font color='orange'>不会立即回收</font>）。</p>
-<p>​    绝大多数引用数据类型需要使用时都需要通过<font color='orange'>new</font> 关键字(具有特殊含义的单词，类名和变量名和包名都不能是关键字)，每一次执行<font color='red'><strong>new时都会在堆中重新申请一块空间</strong></font>。</p>
-<p>​    重新申请空间后，将地址存储在栈空间中, 所以两个值的地址就不一样了。</p>
-<p>​    引用类型使用 &#x3D; &#x3D;比较时必须注意</p>
-<p> <img src="E:/飞秋/11_Array：数组_第一天【尚学堂·百战程序员】/文档/images/6.png"></p>
-<p>​    所以在使用封装类Integer时&#x3D;&#x3D;比较结果为false</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Integer</span> <span class="variable">a</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">1</span>);</span><br><span class="line"><span class="type">Integer</span> <span class="variable">b</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">1</span>);</span><br><span class="line">System.out.println(a == b);</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-引用数据类型赋值"><a href="#3-引用数据类型赋值" class="headerlink" title="3. 引用数据类型赋值"></a>3. 引用数据类型赋值</h3><p>​    局部变量都是存储在栈空间中, 所以引用类型在栈中存储的是在堆空间中开辟的地址。</p>
-<p>​    所以：把一个引用数据类型赋值给另一个引用数据类型时，<font color='orange'>传递的是地址</font>。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Integer</span> <span class="variable">a</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">1</span>);</span><br><span class="line"><span class="type">Integer</span> <span class="variable">b</span> <span class="operator">=</span> a;</span><br><span class="line">System.out.println(a == b); <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="4-基本数据类型和封装类比较时"><a href="#4-基本数据类型和封装类比较时" class="headerlink" title="4. 基本数据类型和封装类比较时"></a>4. 基本数据类型和封装类比较时</h3><p>对于<font color='cornflowerblue'>基本数据类型</font>和<font color='cornflowerblue'>封装类</font>进行<font color='orange'>比较</font>时. 编译器都按照<font color='cornflowerblue'>两侧是基本数据类型</font>进行看待。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"><span class="type">Integer</span> <span class="variable">b</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">1</span>);</span><br><span class="line">System.out.println(a == b); <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="六-字符串常量池"><a href="#六-字符串常量池" class="headerlink" title="六. 字符串常量池"></a>六. 字符串常量池</h2><h3 id="1-知识点回顾"><a href="#1-知识点回顾" class="headerlink" title="1. 知识点回顾"></a>1. 知识点回顾</h3><p>​    在使用String类型时允许有两种方式实例化String对象。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">name1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;北京尚学堂&quot;</span>);</span><br><span class="line"><span class="type">String</span> <span class="variable">name2</span> <span class="operator">=</span> <span class="string">&quot;北京尚学堂&quot;</span>;</span><br></pre></td></tr></table></figure>
-
-<p>​    以上两种方式都是将字符串的值存储在了<font color='orange'>字符串常量池中</font></p>
-<p>​    第一种方式:</p>
-<p>​        使用new关键字, 会在堆空间中开辟空间, 将堆中开辟空间的地址存储在栈空间中, 字符串的值会存储在字符串常量池中, 字符串常量池中的地址存储在堆空间中</p>
-<p>​    第二种方式:</p>
-<p>​        将字符串放入常量池中, 字符串常量池中的地址存储在栈空间中</p>
-<h3 id="2-字符串常量池"><a href="#2-字符串常量池" class="headerlink" title="2. 字符串常量池"></a>2. 字符串常量池</h3><p>​    字符串常量池是<font color='cornflowerblue'><strong>堆空间里面</strong></font>一块专门存放字符串值的空间。</p>
-<p>​    当我们使用String name&#x3D;””; 这种形式实例化字符串类型变量时，会把值存放在字符串常量池中。</p>
-<p>​    如果字符串的值已经在常量池中则直接返回存在的地址不会再新添加。</p>
-<p>​    如果字符串值没有在字符串常量池中，会新开辟一块空间存放字符串值。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">name1</span> <span class="operator">=</span> <span class="string">&quot;北京尚学堂&quot;</span>;</span><br><span class="line"><span class="type">String</span> <span class="variable">name2</span> <span class="operator">=</span> <span class="string">&quot;北京尚学堂&quot;</span>;</span><br><span class="line">System.out.println(name1 == name2); <span class="comment">//true</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>​    所以上面代码中name1和name2使用双等号比较地址时是相等的。</p>
-<p> <img src="E:/飞秋/11_Array：数组_第一天【尚学堂·百战程序员】/文档/images/7.png"></p>
-<h3 id="3-new-String"><a href="#3-new-String" class="headerlink" title="3. new String"></a>3. new String</h3><p>​    如果使用String name &#x3D; new String();形式时，将字符串的值存放在字符创常量池中, 堆空间中存放字符串常量池中的地址, 栈空间中存储堆空间的地址。</p>
-<p>​    谨记：<font color='red'><strong>在Java中只要new，一定会在堆中开辟新空间</strong></font>。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">name1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;北京尚学堂&quot;</span>);</span><br><span class="line"><span class="type">String</span> <span class="variable">name2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;北京尚学堂&quot;</span>);</span><br><span class="line">System.out.println(name1 == name2); <span class="comment">//false</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p> <img src="E:/飞秋/11_Array：数组_第一天【尚学堂·百战程序员】/文档/images/8.png"></p>
-<h3 id="4-字面量和new方式比较"><a href="#4-字面量和new方式比较" class="headerlink" title="4. 字面量和new方式比较"></a>4. 字面量和new方式比较</h3><p>​    字面量：等号右侧的表达式或固定值称为字面量。</p>
-<p>​    例如: String name&#x3D;”北京尚学堂”; 北京尚学堂 就是字面量。</p>
-<p>​    当我们使用字面量和new String方式产生的对象进行比较时结果是什么呢？</p>
-<p>​    只要new 就是开辟新空间，双等号比较的地址就是不一样的。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">name1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;北京尚学堂&quot;</span>);</span><br><span class="line"><span class="type">String</span> <span class="variable">name2</span> <span class="operator">=</span> <span class="string">&quot;北京尚学堂&quot;</span>;</span><br><span class="line">System.out.println(name1 == name2); <span class="comment">//false</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p> <img src="E:/飞秋/11_Array：数组_第一天【尚学堂·百战程序员】/文档/images/9.png"></p>
-<h3 id="5-intern-方法"><a href="#5-intern-方法" class="headerlink" title="5. intern() 方法"></a>5. intern() 方法</h3><p>​    Java中String类中有intern()方法，调用inern()方法时，会返回字符串常量池中的地址。</p>
-<p>​    执行流程:</p>
-<pre><code>1. 执行了new String(“北京尚学堂”); 就已经将字符串放入了字符串常量池中
-2. 调用inern()方法时，会返回该字符串在字符串常量池中的地址
-</code></pre>
-<ol start="3">
-<li>尽管在输出中调用intern方法并没有什么效果，但是实际上后台这个方法会做一系列的动作和操作。在调用”bjsxt”.intern()方法的时候会返回”bjsxt”，但是这个方法会首先检查字符串池中是否有”bjsxt”这个字符串，如果存在则返回这个字符串的引用，否则就将这个字符串添加到字符串池中，然会返回这个字符串的引用</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">name1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;北京尚学堂&quot;</span>);</span><br><span class="line"><span class="type">String</span> <span class="variable">name2</span> <span class="operator">=</span> <span class="string">&quot;北京尚学堂&quot;</span>;</span><br><span class="line">System.out.println(name1 == name2); <span class="comment">//false</span></span><br><span class="line"><span class="type">String</span> <span class="variable">name3</span> <span class="operator">=</span> name1.intern();</span><br><span class="line">System.out.println(name2 == name3); <span class="comment">//true</span></span><br><span class="line">System.out.println(name1 == name3); <span class="comment">//false</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p> <img src="E:/飞秋/11_Array：数组_第一天【尚学堂·百战程序员】/文档/images/10.png"></p>
-<h3 id="6-综合结论"><a href="#6-综合结论" class="headerlink" title="6. 综合结论"></a>6. 综合结论</h3><p>​    在多个String类型变量中存放相同值时，使用双等号判断内存地址，有的时候为true，有的时候为false。</p>
-<p>​    所以，在开发中，为了保险起见。在对String 类型中存放的值进行比较时，一定要用equals()方法进行比较。如果相等返回true，如果不相等返回false。</p>
-<p>​    引用类型进行比较时:</p>
-<p>​        1. &#x3D;&#x3D; :  比较的是地址</p>
-<p>​        2. equals():  比较的是实际存储的值</p>
-<h2 id="七-数组"><a href="#七-数组" class="headerlink" title="七. 数组"></a>七. 数组</h2><h3 id="1-为什么使用数组"><a href="#1-为什么使用数组" class="headerlink" title="1. 为什么使用数组"></a>1. 为什么使用数组</h3><p>​    在我们上次课中最后一个综合作业里面，要求：录入商品时需要录入固定数量的两个商品，这是我们就需要提供四个变量分别存储两个商品的名称和价格。 </p>
-<p>​    那么如果我希望一次录入10个商品呢？这个时候时候是需要定义20个变量。</p>
-<p>​    那么如果我希望一次录入100个商品呢？这个时候是需要定义200个变量。</p>
-<p>​    显然，当商品数量比较多时，定义大量变量是比较复杂的，这个时候，如果Java给我们提供一种可以<font color='cornflowerblue'><strong>一个变量存放多个值</strong></font>的结构，是不是就比较简单了。</p>
-<p>​    这个时候数组就顺势而生了。</p>
-<h3 id="2-数组介绍"><a href="#2-数组介绍" class="headerlink" title="2. 数组介绍"></a>2. 数组介绍</h3><p>​    数组是一种可以存放<font color='red'><strong>固定个数</strong></font>的**<font color='red'>相同类型</font><strong>数据的有序集合,</strong><font color='red'>数组是引用数据类型</font>**。</p>
-<p><img src="E:/飞秋/11_Array：数组_第一天【尚学堂·百战程序员】/文档/images/image-20220226162138079.png" alt="image-20220226162138079"> </p>
-<p>​    一旦定义好数组长度就是不能改变的。这时会在堆中申请一块连续空间用于存放数组中的值。数组长度最大值为int类型最大值。（前提内存足够大）</p>
-<p><img src="E:/飞秋/11_Array：数组_第一天【尚学堂·百战程序员】/文档/images/image-20220226162154956.png" alt="image-20220226162154956"> </p>
-<p>​    通过上面定义，我们要知道：<font color='red'><strong>（重点）</strong></font></p>
-<ol>
-<li><p>长度是确定的。数组一旦被创建，它的大小就是不可以改变的。</p>
-</li>
-<li><p>在内存中分配连续的空间，每个元素占用的空间大小是相同的</p>
-</li>
-<li><p>同一个数组其元素的类型必须是相同类型，不允许出现混合类型</p>
-</li>
-<li><p>数组类型可以是任何数据类型，包括基本类型和引用类型</p>
-</li>
-<li><p>数组变量属于引用数据类型</p>
-</li>
-</ol>
-<h3 id="3-数组定义语法"><a href="#3-数组定义语法" class="headerlink" title="3. 数组定义语法"></a>3. 数组定义语法</h3><h4 id="3-1-声明数组"><a href="#3-1-声明数组" class="headerlink" title="3.1 声明数组"></a>3.1 声明数组</h4><p>​    语法:</p>
-<p>​         <strong><font color='cornflowerblue'>类型[]  对象名;</font></strong>  </p>
-<p>​         <strong><font color='cornflowerblue'>类型  对象名[];</font></strong>  </p>
-<p>​    其中类型就是数组中每个值(元素)的类型，不允许存储其他类型的值。</p>
-<p>​    例如:</p>
-<p>​        int[] arr;</p>
-<p>​        int arr[];</p>
-<p>​        这时只是声明了数组，但是并没有在内存中申请空间. 并不允许获取数组中值，因为还没有开辟空间。</p>
-<h4 id="3-2-声明并赋值"><a href="#3-2-声明并赋值" class="headerlink" title="3.2 声明并赋值"></a>3.2 <strong>声明并赋值</strong></h4><p>​    创建数组并给定初始值的语法有多种，<font color='red'><strong>前后类型必须相同</strong></font>。</p>
-<p>​    数据类型[] 对象名 &#x3D; {值1, 值2, 值3, …};</p>
-<p>​    数据类型[] 对象名 &#x3D; new 数据类型[]{值1, 值2, 值3, …};</p>
-<p>​    数据类型[] 对象名 &#x3D; new 数据类型[长度];</p>
-<p>​    例如:</p>
-<p>​        int[] arr &#x3D; {1, 2, 3};</p>
-<p>​        int[] arr1 &#x3D; new int[]{1, 2, 3};</p>
-<p>​        int[] arr2 &#x3D; new int[3];</p>
-<p>​        第一种：创建了长度为3，元素类型为int的数组，数组中值分别为1，2，3</p>
-<p>​        第二种：创建了长度为3，元素类型为int的数组，数组中值分别为1，2，3</p>
-<p>​        第三种：创建了长度为3，元素类型为int的数组，数组中值使用int默认值0</p>
-<h4 id="3-3-数组中元素的默认值"><a href="#3-3-数组中元素的默认值" class="headerlink" title="3.3 数组中元素的默认值"></a>3.3 数组中元素的默认值</h4><table>
-<thead>
-<tr>
-<th>类型</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>byte</td>
-<td>0</td>
-</tr>
-<tr>
-<td>short</td>
-<td>0</td>
-</tr>
-<tr>
-<td>int</td>
-<td>0</td>
-</tr>
-<tr>
-<td>long</td>
-<td>0</td>
-</tr>
-<tr>
-<td>float</td>
-<td>0.0</td>
-</tr>
-<tr>
-<td>double</td>
-<td>0.0</td>
-</tr>
-<tr>
-<td>char</td>
-<td>空格（’\u0000’）</td>
-</tr>
-<tr>
-<td>boolean</td>
-<td>false</td>
-</tr>
-<tr>
-<td>String及其他引用数据类型（包含八大基本数据类型的封装类）</td>
-<td>null强调：String取值可以为””。null表示未初始化，没有分配内容空间。””表示已经实例化，只是存的值为空白。</td>
-</tr>
-</tbody></table>
-<h3 id="4-获取数组中的元素"><a href="#4-获取数组中的元素" class="headerlink" title="4. 获取数组中的元素"></a>4. 获取数组中的元素</h3><p>​    如果只想获取数组一个值，可以使用从0开始的脚标。</p>
-<p>​    一个长度为N的数组，其脚标的取值范围：<font color='red'>0&lt;&#x3D;脚标&lt;&#x3D;N-1</font></p>
-<p>​    语法:</p>
-<p>​        <font color='cornflowerblue'><strong>数据类型 变量名 &#x3D; 数组对象[脚标]</strong></font></p>
-<p>​    例如我们定义一个这样的数组：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>[] arr = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>​    如果我想要获取里面第三个元素，应该这</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> arr[<span class="number">2</span>];</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>​    因为数组长度是固定的，如果我想要获取里面第6个元素的值，这时已经超出了数组的空间，程序会报错。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">i1</span> <span class="operator">=</span> arr[<span class="number">6</span>];</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p> <img src="E:/飞秋/11_Array：数组_第一天【尚学堂·百战程序员】/文档/images/12.png"></p>
-<p><strong><font color='red'>所以千万不要超过数组的最大脚标。脚标最大值为数组长度-1</font></strong></p>
-<h3 id="5-修改数组中元素值"><a href="#5-修改数组中元素值" class="headerlink" title="5. 修改数组中元素值"></a>5. 修改数组中元素值</h3><p>​    如果想要修改数组中某个元素的值。可以通过脚标设置这个元素值</p>
-<p>​    语法：</p>
-<p>​        <strong><font color='cornflowerblue'>数组对象[脚标] &#x3D; 值;</font></strong></p>
-<p>​    例如：先设置数组中第三个元素的值，然后在获取第三个元素的值。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>[] arr = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line">arr[<span class="number">2</span>] = <span class="number">100</span>;</span><br><span class="line"><span class="type">int</span> <span class="variable">i2</span> <span class="operator">=</span> arr[<span class="number">2</span>];</span><br><span class="line">System.out.println(i2);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>​    和获取值是一个道理：**<font color='red'>脚标不允许超过数组最大脚标，脚标最大值为数组长度-1</font>**</p>
-<h3 id="6-数组常用属性"><a href="#6-数组常用属性" class="headerlink" title="6. 数组常用属性"></a>6. 数组常用属性</h3><p>​    属性就是类中的全局变量。</p>
-<p>​    数组类型最常用的属性就是<font color='orange'>length</font>，使用length获取数组的长度。</p>
-<p>​     一定要注意，length没有括号。length是属性，不是方法。</p>
-<p>​    语法：</p>
-<p>​        <strong><font color='cornflowerblue'>数组对象.length</font></strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>[] arr = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line"><span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> arr.length;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="7-遍历数组"><a href="#7-遍历数组" class="headerlink" title="7. 遍历数组"></a>7. 遍历数组</h3><h4 id="7-1-普通for循环"><a href="#7-1-普通for循环" class="headerlink" title="7.1 普通for循环"></a>7.1 普通for循环</h4><p>​    数组中的脚标都是从0开始的整数，如果希望把数组中所有值都输出出来，可以使用for循环进行遍历。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; arr.length; i++)&#123;</span><br><span class="line">    System.out.println(arr[i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h4 id="7-2-增强for循环"><a href="#7-2-增强for循环" class="headerlink" title="7.2 增强for循环"></a>7.2 增强for循环</h4><p>​    在Java中支持for循环的另一种写法，称为增强for循环</p>
-<p>​    语法：</p>
-<p>​        <strong><font color='cornflowerblue'>for(类型 : 迭代变量){</font></strong></p>
-<p>​        <font color='cornflowerblue'><strong>}</strong></font></p>
-<p>​    代码实例:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>[] arr = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i : arr)&#123;</span><br><span class="line">    System.out.println(i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="8-数组内存结构"><a href="#8-数组内存结构" class="headerlink" title="8. 数组内存结构"></a>8. 数组内存结构</h3><p>​    因为数组是一块连续的空间，虽然元素的地址是连续的，但是因为有多个元素，那就有多个地址，但是栈空间中只能存放一个地址引用。</p>
-<p><font color='orange'>    <strong>所以数组对象中存放的是数组空间中第一个元素的地址</strong>。</font></p>
-<p> <img src="E:/飞秋/11_Array：数组_第一天【尚学堂·百战程序员】/文档/images/11.png"></p>
-<h2 id="八、小节实战案例-只有程序员才懂的电话号码"><a href="#八、小节实战案例-只有程序员才懂的电话号码" class="headerlink" title="八、小节实战案例-只有程序员才懂的电话号码"></a>八、小节实战案例-只有程序员才懂的电话号码</h2><p> <img src="E:/飞秋/11_Array：数组_第一天【尚学堂·百战程序员】/文档/images/13.png"></p>
-<h2 id="九-小节实战案例-求平均数"><a href="#九-小节实战案例-求平均数" class="headerlink" title="九. 小节实战案例 - 求平均数"></a>九. 小节实战案例 - 求平均数</h2><h3 id="1-需求"><a href="#1-需求" class="headerlink" title="1. 需求"></a>1. 需求</h3><p>​    在控制台输入5个整数数字，最后输出输入的五个数字，以及平均值。</p>
-<p>​    效果图:</p>
-<p> <img src="E:/飞秋/11_Array：数组_第一天【尚学堂·百战程序员】/文档/images/14.png"></p>
-<h3 id="2-实现"><a href="#2-实现" class="headerlink" title="2. 实现"></a>2. 实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="comment">//在控制台输入5个整数数字，最后输出输入的五个数字，以及平均值。</span></span><br><span class="line">    <span class="comment">//循环 : 固定次数的循环  for</span></span><br><span class="line">    <span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">    <span class="comment">//声明一个数组, 并指定数组长度为5</span></span><br><span class="line">    <span class="type">int</span>[] ints = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">5</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment">//循环5次</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;请输入第 &quot;</span>+(i+<span class="number">1</span>)+<span class="string">&quot; 个数字&quot;</span>);</span><br><span class="line">        <span class="type">int</span> <span class="variable">i1</span> <span class="operator">=</span> sc.nextInt();</span><br><span class="line">        <span class="comment">//将数字存储到数组中</span></span><br><span class="line">        ints[i] = i1;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//输出5个数字(5个数字在数组中), 遍历数组</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> anInt : ints) &#123;</span><br><span class="line">        System.out.print(anInt+<span class="string">&quot;  &quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//计算所有数字的和</span></span><br><span class="line">    <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>; <span class="comment">//5个数字的和</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> anInt : ints) &#123;</span><br><span class="line">        sum+=anInt;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//计算平均数  5个数字的和/数组的长度</span></span><br><span class="line">    System.out.println(<span class="string">&quot;5个数字的和为: &quot;</span>+sum);</span><br><span class="line">    System.out.println(<span class="string">&quot;平均数为: &quot;</span>+sum/ints.length);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="十-小节实战案例-改写简易超市管理系统"><a href="#十-小节实战案例-改写简易超市管理系统" class="headerlink" title="十. 小节实战案例 - 改写简易超市管理系统"></a>十. 小节实战案例 - 改写简易超市管理系统</h2><h3 id="1-需求-1"><a href="#1-需求-1" class="headerlink" title="1. 需求"></a>1. 需求</h3><p>​    1. 录入商品时最多可以录入200个数据。</p>
-<p>​    2. 通过一个整型变量存储目前商品库存数。</p>
-<p>​    3. 每次录入完成后会提示用户是否继续输入，如果输入y，继续输入。否则停止输入。</p>
-<p>​    4. 选择菜单2时输出的信息为数组中实际库存的商品信息。默认值不要输出。</p>
-<p><strong><font color='cornflowerblue'>菜单1效果图：</font></strong></p>
-<p> <img src="E:/飞秋/11_Array：数组_第一天【尚学堂·百战程序员】/文档/images/15.png"></p>
-<p><strong><font color='cornflowerblue'>菜单2效果图：</font></strong></p>
-<p> <img src="E:/飞秋/11_Array：数组_第一天【尚学堂·百战程序员】/文档/images/16.png"></p>
-<h3 id="2-实现-1"><a href="#2-实现-1" class="headerlink" title="2. 实现"></a>2. 实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">    <span class="comment">//存储商品名称的数组</span></span><br><span class="line">    String[] names = <span class="keyword">new</span> <span class="title class_">String</span>[<span class="number">200</span>];</span><br><span class="line">    <span class="comment">//存储商品价格的数组</span></span><br><span class="line">    <span class="type">double</span>[] privces = <span class="keyword">new</span> <span class="title class_">double</span>[<span class="number">200</span>];</span><br><span class="line">    <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>; <span class="comment">//计数器</span></span><br><span class="line">    System.out.println(<span class="string">&quot;欢迎使用简易超市管理系统&quot;</span>);</span><br><span class="line">    o: <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;\n请选择要完成的事: &quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;1.录入商品&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;2.查看商品&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;3.退出系统&quot;</span>);</span><br><span class="line">        <span class="comment">//接收用户输入的选项</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> sc.nextInt();</span><br><span class="line">        <span class="comment">//根据不同的选择, 完成不同操作</span></span><br><span class="line">        <span class="keyword">switch</span> (i) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>: <span class="comment">//录入商品</span></span><br><span class="line">                <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">                    System.out.println(<span class="string">&quot;\n是否要录入商品? y|n&quot;</span>);</span><br><span class="line">                    <span class="type">String</span> <span class="variable">next</span> <span class="operator">=</span> sc.next(); <span class="comment">//接收用户输入的选择</span></span><br><span class="line">                    <span class="comment">//不等于y时执行</span></span><br><span class="line">                    <span class="keyword">if</span> (!<span class="string">&quot;y&quot;</span>.equals(next)) &#123;<span class="comment">// String  引用类型, 判断需要使用 equals()方法</span></span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    System.out.println(<span class="string">&quot;请输入商品名称: &quot;</span>);</span><br><span class="line">                    <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> sc.next(); <span class="comment">//接收商品名称</span></span><br><span class="line">                    System.out.println(<span class="string">&quot;请输入商品价格: &quot;</span>);</span><br><span class="line">                    <span class="type">double</span> <span class="variable">privce</span> <span class="operator">=</span> sc.nextDouble();</span><br><span class="line">                    <span class="comment">//存储多个商品信息, 需要数组进行存储</span></span><br><span class="line">                    </span><br><span class="line">                    <span class="comment">/* 向数组中添加元素, 根据下标添加  */</span></span><br><span class="line">                    <span class="comment">//将商品名称添加到存储名称的数组中</span></span><br><span class="line">                    names[count] = name;</span><br><span class="line">                    <span class="comment">//将商品价格添加到存储价格的数组中</span></span><br><span class="line">                    privces[count] = privce;</span><br><span class="line">                    <span class="comment">//添加完一个商品信息之后需要将count+1</span></span><br><span class="line">                    count++;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">                System.out.println(<span class="string">&quot;\n商品名称\t商品价格&quot;</span>);</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i1</span> <span class="operator">=</span> <span class="number">0</span>; i1 &lt; count; i1++) &#123;</span><br><span class="line">                    System.out.println(names[i1] + <span class="string">&quot;\t&quot;</span> + privces[i1]);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">                <span class="keyword">break</span> o;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
+          <h2 id="static"><a href="#static" class="headerlink" title="static"></a>static</h2><p>可以使用static 修饰成员变量 | 方法|代码块。</p>
+<h3 id="static修饰成员变量"><a href="#static修饰成员变量" class="headerlink" title="static修饰成员变量"></a>static修饰成员变量</h3><blockquote>
+<p>静态成员变量存在方法区中  并且只有一份<br>静态成员变量是被所有对象所共享的<br>静态成员变量属于类  所以在使用的时候不需要创建对象的直接使用 【类名.静态成员变量】名即可<br>静态成员变量 在类加载后就可以完成初始化 </p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Student</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> age; <span class="comment">//静态成员</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">//Student.age  可直接访问 无需实例化</span></span><br><span class="line">        <span class="type">Student</span> <span class="variable">stu</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>();</span><br><span class="line">        <span class="type">Student</span> <span class="variable">stu2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>();</span><br><span class="line">        stu.name=<span class="string">&quot;zs&quot;</span>;</span><br><span class="line">        stu2.name=<span class="string">&quot;ls&quot;</span>;</span><br><span class="line"></span><br><span class="line">        stu.age = <span class="number">12</span>;</span><br><span class="line">        stu2.age = <span class="number">18</span>;</span><br><span class="line">        System.out.println(stu.name); <span class="comment">//zs</span></span><br><span class="line">        System.out.println(stu2.name); <span class="comment">//ls</span></span><br><span class="line">        System.out.println(stu.age);  <span class="comment">//18</span></span><br><span class="line">        System.out.println(stu2.age); <span class="comment">//18</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/08/javase-java%E7%B1%BB%E9%9D%99%E6%80%81%E3%80%81%E5%B0%81%E8%A3%85%E3%80%81%E7%BB%A7%E6%89%BF/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -653,7 +286,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://li-gaojie.github.io/2022/03/02/hello-world/">
+    <link itemprop="mainEntityOfPage" href="https://li-gaojie.github.io/2022/03/07/javase-java%E7%B1%BB%EF%BC%8C%E5%AF%B9%E8%B1%A1%E5%92%8C%E6%96%B9%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -667,7 +300,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/03/02/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+            <a href="/2022/03/07/javase-java%E7%B1%BB%EF%BC%8C%E5%AF%B9%E8%B1%A1%E5%92%8C%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">javase-java类，对象和方法</a>
         </h2>
 
         <div class="post-meta">
@@ -677,98 +310,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-03-02 08:52:14" itemprop="dateCreated datePublished" datetime="2022-03-02T08:52:14+08:00">2022-03-02</time>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>367</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://li-gaojie.github.io/2020/05/07/python-with%E7%94%A8%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Lee">
-      <meta itemprop="description" content=" 庐山烟雨浙江潮， 未至千般恨不消。 及至到来无一事， 庐山烟雨浙江潮。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小lee的菜园子">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/07/python-with%E7%94%A8%E6%B3%95/" class="post-title-link" itemprop="url">python with用法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-07 18:33:39" itemprop="dateCreated datePublished" datetime="2020-05-07T18:33:39+08:00">2020-05-07</time>
+              <time title="创建时间：2022-03-07 20:08:03" itemprop="dateCreated datePublished" datetime="2022-03-07T20:08:03+08:00">2022-03-07</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-14 12:10:10" itemprop="dateModified" datetime="2021-01-14T12:10:10+08:00">2021-01-14</time>
+                <time title="修改时间：2022-03-08 20:37:13" itemprop="dateModified" datetime="2022-03-08T20:37:13+08:00">2022-03-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -776,7 +325,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
                 </span>
             </span>
 
@@ -786,7 +335,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.5k</span>
+              <span>3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -805,687 +354,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span>表达式类似与<span class="keyword">try</span>-<span class="keyword">finally</span>，但又不会捕获异常。</span><br><span class="line"><span class="keyword">with</span> 语句实质是上下文管理。</span><br><span class="line"><span class="number">1</span>、上下文管理协议。包含方法__enter__() 和 __exit__()，支持该协议对象要实现这两个方法。</span><br><span class="line"><span class="number">2</span>、上下文管理器，定义执行<span class="keyword">with</span>语句时要建立的运行时上下文，负责执行<span class="keyword">with</span>语句块上下文中的进入与退出操作。</span><br><span class="line"><span class="number">3</span>、进入上下文的时候执行__enter__方法，如果设置<span class="keyword">as</span> var语句，var变量接受__enter__()方法返回值。</span><br><span class="line"><span class="number">4</span>、如果运行时发生了异常，就退出上下文管理器。调用管理器__exit__方法。</span><br></pre></td></tr></table></figure>
+          <h2 id="面向过程和面向对象"><a href="#面向过程和面向对象" class="headerlink" title="面向过程和面向对象"></a>面向过程和面向对象</h2><blockquote>
+<p>面向过程：是一种执行者思维 主要处理简单的逻辑问题</p>
+<p>面向对象：是一种设计者思维 主要处理复杂问题</p>
+<p>注意: 面向对象和面向过程是相辅相成的 我们对于事物分析 首先使用面向对象对事物进行宏观整体分析，在使用面向过程对事物进行微观的具体执行</p>
 </blockquote>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/05/07/python-with%E7%94%A8%E6%B3%95/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://li-gaojie.github.io/2020/05/06/python-map%E5%87%BD%E6%95%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Lee">
-      <meta itemprop="description" content=" 庐山烟雨浙江潮， 未至千般恨不消。 及至到来无一事， 庐山烟雨浙江潮。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小lee的菜园子">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/06/python-map%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">python-map函数</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-06 15:51:31" itemprop="dateCreated datePublished" datetime="2020-05-06T15:51:31+08:00">2020-05-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-13 16:48:56" itemprop="dateModified" datetime="2021-01-13T16:48:56+08:00">2021-01-13</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>385</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="Python-map-函数"><a href="#Python-map-函数" class="headerlink" title="Python map() 函数"></a>Python map() 函数</h3><blockquote>
-<p><strong>map()</strong> 会根据提供的函数对指定序列做映射。</p>
-<p>第一个参数 function 以参数序列中的每一个元素调用 function 函数，返回包含每次 function 函数返回值的新列表。</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/05/06/python-map%E5%87%BD%E6%95%B0/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://li-gaojie.github.io/2020/05/06/python-filter%E5%87%BD%E6%95%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Lee">
-      <meta itemprop="description" content=" 庐山烟雨浙江潮， 未至千般恨不消。 及至到来无一事， 庐山烟雨浙江潮。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小lee的菜园子">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/06/python-filter%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">python-filter函数</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-06 15:35:22" itemprop="dateCreated datePublished" datetime="2020-05-06T15:35:22+08:00">2020-05-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-07 19:35:48" itemprop="dateModified" datetime="2020-05-07T19:35:48+08:00">2020-05-07</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>432</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="python-filter函数"><a href="#python-filter函数" class="headerlink" title="python filter函数"></a>python filter函数</h3><blockquote>
-<p><strong>filter()</strong> 函数用于过滤序列，过滤掉不符合条件的元素，返回一个迭代器对象，如果要转换为列表，可以使用 list() 来转换。</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/05/06/python-filter%E5%87%BD%E6%95%B0/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://li-gaojie.github.io/2020/05/06/lambda%E5%87%BD%E6%95%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Lee">
-      <meta itemprop="description" content=" 庐山烟雨浙江潮， 未至千般恨不消。 及至到来无一事， 庐山烟雨浙江潮。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小lee的菜园子">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/06/lambda%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">lambda函数</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-06 15:05:25" itemprop="dateCreated datePublished" datetime="2020-05-06T15:05:25+08:00">2020-05-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-07 19:59:32" itemprop="dateModified" datetime="2020-05-07T19:59:32+08:00">2020-05-07</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>388</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="python-lambda函数"><a href="#python-lambda函数" class="headerlink" title="python lambda函数"></a>python lambda函数</h3><blockquote>
-<p>匿名函数lambda：是指一类无需定义标识符（函数名）的函数或子程序。<br>lambda 函数可以接收任意多个参数 (包括可选参数) 并且返回单个表达式的值。</p>
-<p>lambda匿名函数的格式：冒号前是参数，可以有多个，用逗号隔开，冒号右边的为表达式。其实lambda返回值是一个函数的地址，也就是函数对象。</p>
-</blockquote>
-<p><strong>要点：</strong></p>
-<ul>
-<li>lambda 函数不能包含命令，</li>
-<li>包含的表达式不能超过一个。
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/05/06/lambda%E5%87%BD%E6%95%B0/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://li-gaojie.github.io/2020/04/24/%E7%94%9F%E6%88%90%E5%85%A8%E7%90%83%E5%94%AF%E4%B8%80%E6%A0%87%E8%AF%86uuid-python-php/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Lee">
-      <meta itemprop="description" content=" 庐山烟雨浙江潮， 未至千般恨不消。 及至到来无一事， 庐山烟雨浙江潮。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小lee的菜园子">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/24/%E7%94%9F%E6%88%90%E5%85%A8%E7%90%83%E5%94%AF%E4%B8%80%E6%A0%87%E8%AF%86uuid-python-php/" class="post-title-link" itemprop="url">生成全球唯一标识uuid(python/php)</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-24 17:04:30" itemprop="dateCreated datePublished" datetime="2020-04-24T17:04:30+08:00">2020-04-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-08 09:50:30" itemprop="dateModified" datetime="2020-05-08T09:50:30+08:00">2020-05-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/php/" itemprop="url" rel="index"><span itemprop="name">php</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.4k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>UUID（全称为Universally Unique IDentifier）是128位的全局唯一标识符，通常由32字节的字符串表示。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/04/24/%E7%94%9F%E6%88%90%E5%85%A8%E7%90%83%E5%94%AF%E4%B8%80%E6%A0%87%E8%AF%86uuid-python-php/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://li-gaojie.github.io/2020/04/23/post%E5%B8%B8%E8%A7%81%E5%9B%9B%E7%A7%8D%E6%8F%90%E4%BA%A4%E6%96%B9%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Lee">
-      <meta itemprop="description" content=" 庐山烟雨浙江潮， 未至千般恨不消。 及至到来无一事， 庐山烟雨浙江潮。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小lee的菜园子">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/23/post%E5%B8%B8%E8%A7%81%E5%9B%9B%E7%A7%8D%E6%8F%90%E4%BA%A4%E6%96%B9%E5%BC%8F/" class="post-title-link" itemprop="url">post常见四种提交方式及php接收</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-04-23 10:23:08 / 修改时间：12:43:56" itemprop="dateCreated datePublished" datetime="2020-04-23T10:23:08+08:00">2020-04-23</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/php/" itemprop="url" rel="index"><span itemprop="name">php</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3.5k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li>application&#x2F;x-www-form-urlencoded</li>
-<li>multipart&#x2F;form-data</li>
-<li>application&#x2F;json</li>
-<li>text&#x2F;xml</li>
-</ul>
-<p>以上是四种常见的<code>POST</code>提交数据的方式，<code>HTTP</code> 协议是以 ASCII 码传输（可参考<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-hans/%E8%B6%85%E6%96%87%E6%9C%AC%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE">http介绍</a>），建立在 TCP&#x2F;IP 协议之上的应用层规范。规范把 HTTP 请求分为三个部分：<code>状态行</code>、<code>请求头</code>、<code>消息主体</code>。类似于下面这样</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/04/23/post%E5%B8%B8%E8%A7%81%E5%9B%9B%E7%A7%8D%E6%8F%90%E4%BA%A4%E6%96%B9%E5%BC%8F/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://li-gaojie.github.io/2020/04/18/%E5%9C%A8github%E4%B8%AD%E5%BB%BA%E7%AB%8B%E4%B8%80%E4%B8%AA%E5%9B%BE%E7%89%87%E5%BA%93/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Lee">
-      <meta itemprop="description" content=" 庐山烟雨浙江潮， 未至千般恨不消。 及至到来无一事， 庐山烟雨浙江潮。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小lee的菜园子">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/18/%E5%9C%A8github%E4%B8%AD%E5%BB%BA%E7%AB%8B%E4%B8%80%E4%B8%AA%E5%9B%BE%E7%89%87%E5%BA%93/" class="post-title-link" itemprop="url">在github中建立一个图片库</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-18 14:31:18" itemprop="dateCreated datePublished" datetime="2020-04-18T14:31:18+08:00">2020-04-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-19 10:42:40" itemprop="dateModified" datetime="2020-04-19T10:42:40+08:00">2020-04-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/github/" itemprop="url" rel="index"><span itemprop="name">github</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>131</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>废话少说 就是在GitHub建个库单独存储图片<br>遇到的问题是<br>    <strong>找不到 raw.githubusercontent.com 的服务器 IP 地址。</strong><br>其原因应该就是DNS污染，解决办法<br><strong>在hosts文件添加 199.232.68.133  raw.githubusercontent.com</strong></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://li-gaojie.github.io/2020/04/18/JS%E4%B8%AD%E7%9A%84prototype%E3%80%81-proto-%E4%B8%8Econstructor/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Lee">
-      <meta itemprop="description" content=" 庐山烟雨浙江潮， 未至千般恨不消。 及至到来无一事， 庐山烟雨浙江潮。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小lee的菜园子">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/18/JS%E4%B8%AD%E7%9A%84prototype%E3%80%81-proto-%E4%B8%8Econstructor/" class="post-title-link" itemprop="url">JS中的prototype、__proto__与constructor</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-18 13:31:24" itemprop="dateCreated datePublished" datetime="2020-04-18T13:31:24+08:00">2020-04-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-19 10:42:40" itemprop="dateModified" datetime="2020-04-19T10:42:40+08:00">2020-04-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JS/" itemprop="url" rel="index"><span itemprop="name">JS</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3.5k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>​    原文链接 <a target="_blank" rel="noopener" href="https://blog.csdn.net/cc18868876837/article/details/81211729">https://blog.csdn.net/cc18868876837/article/details/81211729</a></p>
-<h3 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h3><p>作为一名前端工程师，必须搞懂JS中的prototype、_ _ proto_ _ 与constructor属性，相信很多初学者对这些属性存在许多困惑，容易把它们混淆，本文旨在帮助大家理清它们之间的关系并彻底搞懂它们。这里说明一点，_ _ proto_ _ 属性的两边是各由两个下划线构成（这里为了方便大家看清，在两下划线之间加入了一个空格：_ <em>proto</em> <em>，读作“dunder proto”，“double underscore proto”的缩写），实际上，该属性在ES标准定义中的名字应该是[[Prototype]]，具体实现是由浏览器代理自己实现，谷歌浏览器的实现就是将[[Prototype]]命名为</em> _ proto_ _ ，大家清楚这个标准定义与具体实现的区别即可（名字有所差异，功能是一样的），可以通过该方式检测引擎是否支持这个属性：Object.getPrototypeOf({_ _ proto_ _ : null}) &#x3D;&#x3D;&#x3D; null。本文基于谷歌浏览器（版本 72.0.3626.121）的实验结果所得。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/04/18/JS%E4%B8%AD%E7%9A%84prototype%E3%80%81-proto-%E4%B8%8Econstructor/#more" rel="contents">
+              <a class="btn" href="/2022/03/07/javase-java%E7%B1%BB%EF%BC%8C%E5%AF%B9%E8%B1%A1%E5%92%8C%E6%96%B9%E6%B3%95/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1507,9 +383,6 @@
 
 
   
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
 
 
 
@@ -1576,20 +449,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">1</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">1</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1608,16 +481,6 @@
 
 
 
-      </div>
-      
-      <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
-      <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
-      <div class="widget-wrap">
-          <div id="myCanvasContainer" class="widget tagcloud">
-          <canvas width="220" height="250" id="resCanvas" style="width=100%">
-              <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/" rel="tag">JS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/" rel="tag">Nginx</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/" rel="tag">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/" rel="tag">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/" rel="tag">php</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uuid/" rel="tag">uuid</a><span class="tag-list-count">1</span></li></ul>
-          </canvas>
-          </div>
       </div>
       
     </div>
@@ -1647,13 +510,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">25k</span>
+    <span title="站点总字数">7k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">23 分钟</span>
+    <span title="站点阅读时长">6 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

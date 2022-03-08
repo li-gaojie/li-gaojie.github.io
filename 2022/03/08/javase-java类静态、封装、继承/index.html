@@ -20,19 +20,22 @@
     var CONFIG = {"hostname":"li-gaojie.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":"ture","show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="庐山烟雨浙江潮， 未至千般恨不消。 及至到来无一事， 庐山烟雨浙江潮。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="https://li-gaojie.github.io/categories/index.html">
+  <meta name="description" content="static可以使用static 修饰成员变量 | 方法|代码块。 static修饰成员变量 静态成员变量存在方法区中  并且只有一份静态成员变量是被所有对象所共享的静态成员变量属于类  所以在使用的时候不需要创建对象的直接使用 【类名.静态成员变量】名即可静态成员变量 在类加载后就可以完成初始化   12345678910111213141516171819public class Studen">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javase-java类静态、封装、继承">
+<meta property="og:url" content="https://li-gaojie.github.io/2022/03/08/javase-java%E7%B1%BB%E9%9D%99%E6%80%81%E3%80%81%E5%B0%81%E8%A3%85%E3%80%81%E7%BB%A7%E6%89%BF/index.html">
 <meta property="og:site_name" content="小lee的菜园子">
-<meta property="og:description" content="庐山烟雨浙江潮， 未至千般恨不消。 及至到来无一事， 庐山烟雨浙江潮。">
+<meta property="og:description" content="static可以使用static 修饰成员变量 | 方法|代码块。 static修饰成员变量 静态成员变量存在方法区中  并且只有一份静态成员变量是被所有对象所共享的静态成员变量属于类  所以在使用的时候不需要创建对象的直接使用 【类名.静态成员变量】名即可静态成员变量 在类加载后就可以完成初始化   12345678910111213141516171819public class Studen">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-04-05T12:39:16.000Z">
-<meta property="article:modified_time" content="2020-04-06T05:47:24.000Z">
+<meta property="og:image" content="https://li-gaojie.github.io/images/1646744144370.png">
+<meta property="article:published_time" content="2022-03-08T12:39:53.000Z">
+<meta property="article:modified_time" content="2022-03-08T13:20:39.921Z">
 <meta property="article:author" content="Lee">
+<meta property="article:tag" content="javase">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://li-gaojie.github.io/images/1646744144370.png">
 
-<link rel="canonical" href="https://li-gaojie.github.io/categories/">
+<link rel="canonical" href="https://li-gaojie.github.io/2022/03/08/javase-java%E7%B1%BB%E9%9D%99%E6%80%81%E3%80%81%E5%B0%81%E8%A3%85%E3%80%81%E7%BB%A7%E6%89%BF/">
 
 
 <script id="page-configurations">
@@ -40,13 +43,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>categories | 小lee的菜园子
-</title>
+  <title>javase-java类静态、封装、继承 | 小lee的菜园子</title>
   
 
 
@@ -189,51 +191,190 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
-          <div class="content page posts-expand">
+          <div class="content post posts-expand">
             
 
     
-    
-    
-    <div class="post-block" lang="zh-CN">
-      <header class="post-header">
-
-<h1 class="post-title" itemprop="name headline">categories
-</h1>
-
-<div class="post-meta">
   
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://li-gaojie.github.io/2022/03/08/javase-java%E7%B1%BB%E9%9D%99%E6%80%81%E3%80%81%E5%B0%81%E8%A3%85%E3%80%81%E7%BB%A7%E6%89%BF/">
 
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Lee">
+      <meta itemprop="description" content=" 庐山烟雨浙江潮， 未至千般恨不消。 及至到来无一事， 庐山烟雨浙江潮。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小lee的菜园子">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          javase-java类静态、封装、继承
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-08 20:39:53 / 修改时间：21:20:39" itemprop="dateCreated datePublished" datetime="2022-03-08T20:39:53+08:00">2022-03-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="static"><a href="#static" class="headerlink" title="static"></a>static</h2><p>可以使用static 修饰成员变量 | 方法|代码块。</p>
+<h3 id="static修饰成员变量"><a href="#static修饰成员变量" class="headerlink" title="static修饰成员变量"></a>static修饰成员变量</h3><blockquote>
+<p>静态成员变量存在方法区中  并且只有一份<br>静态成员变量是被所有对象所共享的<br>静态成员变量属于类  所以在使用的时候不需要创建对象的直接使用 【类名.静态成员变量】名即可<br>静态成员变量 在类加载后就可以完成初始化 </p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Student</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> age; <span class="comment">//静态成员</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">//Student.age  可直接访问 无需实例化</span></span><br><span class="line">        <span class="type">Student</span> <span class="variable">stu</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>();</span><br><span class="line">        <span class="type">Student</span> <span class="variable">stu2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>();</span><br><span class="line">        stu.name=<span class="string">&quot;zs&quot;</span>;</span><br><span class="line">        stu2.name=<span class="string">&quot;ls&quot;</span>;</span><br><span class="line"></span><br><span class="line">        stu.age = <span class="number">12</span>;</span><br><span class="line">        stu2.age = <span class="number">18</span>;</span><br><span class="line">        System.out.println(stu.name); <span class="comment">//zs</span></span><br><span class="line">        System.out.println(stu2.name); <span class="comment">//ls</span></span><br><span class="line">        System.out.println(stu.age);  <span class="comment">//18</span></span><br><span class="line">        System.out.println(stu2.age); <span class="comment">//18</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+
+
+<h3 id="静态成员在内存中"><a href="#静态成员在内存中" class="headerlink" title="静态成员在内存中"></a>静态成员在内存中</h3><p>由于静态成员在类加载中完成初始化且只初始化一次，因此可以直接<code>类名.静态变量</code>调用无需实例化对象 再者被类的所有对象共享 所以当一个对象访问后所有对象都受到影响</p>
+<p><img src="/../images/1646744144370.png" alt="1646744144370"></p>
+<p><strong>static变量和非static变量的区别：</strong></p>
+<ul>
+<li><p>份数不同：静态变量：1份；非静态变量：1个对象一份</p>
+</li>
+<li><p>存储位置不同：静态变量：方法区；非静态变量：堆中</p>
+</li>
+<li><p>内存分配空间的时间不同：静态变量：第一次加载类的时候；非静态变量：创建对象的时候</p>
+</li>
+<li><p>生命周期不同。静态变量和类的生命周期相同；非静态变量的生命周期和所属对象相同</p>
+</li>
+<li><p>调用方式不同</p>
+<p>  静态变量：  通过类名调用  Student.classRoom</p>
+<p> 也可以通过对象名调用stu1.classRoom &#x3D;”301” 不推荐</p>
+<p>  非静态变量：通过对象名调用    stu1.name &#x3D;”小张”;</p>
+</li>
+</ul>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><h3 id="static修饰成员方法"><a href="#static修饰成员方法" class="headerlink" title="static修饰成员方法"></a>static修饰成员方法</h3><blockquote>
+<p>静态方法直接使用<code>类名.方法名()</code> 不需要创建对象<br><code>静态方法中不可以直接使用非静态内容</code>（非静态变量&#x2F;非静态方法）<br>静态方法中不可以写this关键字<br>非静态方法是可以直接使用静态内容（静态方法&#x2F;静态变量）</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    * static修饰的方法叫做静态成员方法</span></span><br><span class="line"><span class="comment">    *   静态成员方法中只能直接使用静态成员变量</span></span><br><span class="line"><span class="comment">    *   静态成员方法推荐使用类名.方法名方式调用</span></span><br><span class="line"><span class="comment">    *   静态成员方法中不能使用this关键</span></span><br><span class="line"><span class="comment">    *   静态成员方法只能直接调用其他静态成员方法</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    * */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 姓 名属性</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String firstName;</span><br><span class="line">    <span class="keyword">public</span> String lastName;</span><br><span class="line">    <span class="comment">// 显示姓名的方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">showName</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(firstName+<span class="built_in">this</span>.lastName);</span><br><span class="line">        methodA();</span><br><span class="line">        methodB();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">viewName</span><span class="params">()</span>&#123;</span><br><span class="line"></span><br><span class="line">        System.out.println(firstName<span class="comment">/*+lastName*/</span>);</span><br><span class="line">        methodA();</span><br><span class="line">        <span class="comment">//methodB();</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">methodA</span><span class="params">()</span>&#123;&#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">methodB</span><span class="params">()</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Person</span><span class="params">(String lastName)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.lastName = lastName;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Person</span><span class="params">()</span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="static修饰代码块"><a href="#static修饰代码块" class="headerlink" title="static修饰代码块"></a>static修饰代码块</h3><blockquote>
+<p>普通代码块:（执行多次）<br>    [1]在构造方法之前执行 并且每创建一次对象 就会执行一次普通代码块中内容<br>    [2]作用:给参数进行初始化赋值的操作 (使用情况非常少)<br> 静态代码块：(执行一次)<br>    [1]在类加载的时候执行  只会执行一次<br>    [2] A、给静态成员变量进行初始化赋值的操作  B、初始化解析加载一些配置文件(例如我们以后学习的xml)</p>
+<p> 执行顺序 静态代码块 &gt; 普通代码块 &gt;构造器</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Teacher</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="variable">age</span> <span class="operator">=</span> <span class="number">19</span>;</span><br><span class="line">    <span class="keyword">private</span> String name=<span class="string">&quot;张三&quot;</span>;</span><br><span class="line">   </span><br><span class="line">    <span class="comment">//顺序 静态代码块&gt;普通代码块&gt;构造</span></span><br><span class="line">    <span class="comment">//每次实例化执行  可看作匿名函数</span></span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;普通代码块&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="comment">//类加载时候执行 只执行一次 给静态变量赋值或加载配置文件</span></span><br><span class="line">        System.out.println(<span class="string">&quot;静态代码块&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">aa</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">int</span> age=<span class="number">12</span>;</span><br><span class="line">        System.out.println(<span class="built_in">this</span>.age);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//静态调用 类名.方法名/变量名  不可在非静态方法中调用</span></span><br><span class="line">    <span class="comment">//静态方法中不可使用this关键字</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">bb</span><span class="params">()</span></span><br><span class="line">    &#123;</span><br><span class="line">       <span class="comment">// aa(); //错误</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><blockquote>
+<p>优点 在调用方法的时候比较的方便 使用时候比较简单 不需要创建对象<br> 缺点：静态内容的产生比较占用内存   由于数据的共享 会导致数据的混淆 从而导致线程不安全</p>
+</blockquote>
+<h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><blockquote>
+<p>作用：可以更好的保护变量 使代码变得更加安全<br>实现: 成员变量私有化 提供公共的get&#x2F;set方法 供用户使用即可</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Base</span> &#123;</span><br><span class="line">   </span><br><span class="line">    <span class="keyword">private</span> String color;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">double</span> price;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Base</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getColor</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> color;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setColor</span><span class="params">(String color)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.color = color;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">getPrice</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setPrice</span><span class="params">(<span class="type">double</span> price)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.price = price;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><blockquote>
+<p>作用：实现代码的复用</p>
+<ol>
+<li>父类也称作超类、基类。子类：派生类等。</li>
+<li>Java中只有单继承，没有像C++那样的多继承。多继承会引起混乱，使得继承链过于复杂，系统难于维护。</li>
+<li>子类继承父类，可以得到父类的全部属性和方法 (除了父类的构造方法)，但不见得可以直接访问(比如，父类私有的属性和方法)。</li>
+<li>如果定义一个类时，没有调用extends，则它的父类是：java.lang.Object。</li>
+</ol>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//父类</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Base</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String color;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">double</span> price;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Base</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Base</span><span class="params">(String color, String name, <span class="type">double</span> price)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.color = color;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.price = price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getColor</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> color;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setColor</span><span class="params">(String color)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.color = color;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">getPrice</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setPrice</span><span class="params">(<span class="type">double</span> price)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.price = price;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//子类</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Phone</span> <span class="keyword">extends</span> <span class="title class_">Base</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String size;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Phone</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getSize</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> size;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setSize</span><span class="params">(String size)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.size = size;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">Phone</span> <span class="variable">phone</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Phone</span>();</span><br><span class="line"><span class="comment">//子类中没有这两个方法 继承自父类</span></span><br><span class="line">phone.setName(<span class="string">&quot;aa&quot;</span>);</span><br><span class="line">phone.getName();</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    <div>
+    
+        <div style="text-align:center;color: #333;font-size:14px;">-------------本文结束 <i class="fa fa-hand-peace"></i> 感谢您的阅读-------------</div>
+    
 </div>
 
-</header>
-
-      
-      
-      
-      <div class="post-body">
-          <div class="category-all-page">
-            <div class="category-all-title">
-              目前共计 1 个分类
-            </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">2</span></li></ul>
-            </div>
-          </div>
         
-      </div>
-      
-      
-      
-    </div>
-    
 
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Lee
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://li-gaojie.github.io/2022/03/08/javase-java%E7%B1%BB%E9%9D%99%E6%80%81%E3%80%81%E5%B0%81%E8%A3%85%E3%80%81%E7%BB%A7%E6%89%BF/" title="javase-java类静态、封装、继承">https://li-gaojie.github.io/2022/03/08/javase-java类静态、封装、继承/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/javase/" rel="tag"><i class="fa fa-tag"></i> javase</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2022/03/07/javase-java%E7%B1%BB%EF%BC%8C%E5%AF%B9%E8%B1%A1%E5%92%8C%E6%96%B9%E6%B3%95/" rel="next" title="javase-java类，对象和方法">
+      javase-java类，对象和方法 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
     
-    
-    
+  </article>
+  
+  
+  
+
 
 
           </div>
@@ -284,6 +425,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#static"><span class="nav-number">1.</span> <span class="nav-text">static</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#static%E4%BF%AE%E9%A5%B0%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F"><span class="nav-number">1.1.</span> <span class="nav-text">static修饰成员变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E5%9C%A8%E5%86%85%E5%AD%98%E4%B8%AD"><span class="nav-number">1.2.</span> <span class="nav-text">静态成员在内存中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.3.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#static%E4%BF%AE%E9%A5%B0%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95"><span class="nav-number">1.4.</span> <span class="nav-text">static修饰成员方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#static%E4%BF%AE%E9%A5%B0%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="nav-number">1.5.</span> <span class="nav-text">static修饰代码块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93%EF%BC%9A"><span class="nav-number">1.6.</span> <span class="nav-text">总结：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%81%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">封装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF"><span class="nav-number">3.</span> <span class="nav-text">继承</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

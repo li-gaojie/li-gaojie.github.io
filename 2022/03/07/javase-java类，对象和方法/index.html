@@ -20,19 +20,22 @@
     var CONFIG = {"hostname":"li-gaojie.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":"ture","show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="庐山烟雨浙江潮， 未至千般恨不消。 及至到来无一事， 庐山烟雨浙江潮。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="https://li-gaojie.github.io/categories/index.html">
+  <meta name="description" content="面向过程和面向对象 面向过程：是一种执行者思维 主要处理简单的逻辑问题 面向对象：是一种设计者思维 主要处理复杂问题 注意: 面向对象和面向过程是相辅相成的 我们对于事物分析 首先使用面向对象对事物进行宏观整体分析，在使用面向过程对事物进行微观的具体执行">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javase-java类，对象和方法">
+<meta property="og:url" content="https://li-gaojie.github.io/2022/03/07/javase-java%E7%B1%BB%EF%BC%8C%E5%AF%B9%E8%B1%A1%E5%92%8C%E6%96%B9%E6%B3%95/index.html">
 <meta property="og:site_name" content="小lee的菜园子">
-<meta property="og:description" content="庐山烟雨浙江潮， 未至千般恨不消。 及至到来无一事， 庐山烟雨浙江潮。">
+<meta property="og:description" content="面向过程和面向对象 面向过程：是一种执行者思维 主要处理简单的逻辑问题 面向对象：是一种设计者思维 主要处理复杂问题 注意: 面向对象和面向过程是相辅相成的 我们对于事物分析 首先使用面向对象对事物进行宏观整体分析，在使用面向过程对事物进行微观的具体执行">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-04-05T12:39:16.000Z">
-<meta property="article:modified_time" content="2020-04-06T05:47:24.000Z">
+<meta property="og:image" content="https://li-gaojie.github.io/images/1646659075342.png">
+<meta property="article:published_time" content="2022-03-07T12:08:03.000Z">
+<meta property="article:modified_time" content="2022-03-08T12:37:13.820Z">
 <meta property="article:author" content="Lee">
+<meta property="article:tag" content="javase">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://li-gaojie.github.io/images/1646659075342.png">
 
-<link rel="canonical" href="https://li-gaojie.github.io/categories/">
+<link rel="canonical" href="https://li-gaojie.github.io/2022/03/07/javase-java%E7%B1%BB%EF%BC%8C%E5%AF%B9%E8%B1%A1%E5%92%8C%E6%96%B9%E6%B3%95/">
 
 
 <script id="page-configurations">
@@ -40,13 +43,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>categories | 小lee的菜园子
-</title>
+  <title>javase-java类，对象和方法 | 小lee的菜园子</title>
   
 
 
@@ -189,51 +191,191 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
-          <div class="content page posts-expand">
+          <div class="content post posts-expand">
             
 
     
-    
-    
-    <div class="post-block" lang="zh-CN">
-      <header class="post-header">
-
-<h1 class="post-title" itemprop="name headline">categories
-</h1>
-
-<div class="post-meta">
   
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://li-gaojie.github.io/2022/03/07/javase-java%E7%B1%BB%EF%BC%8C%E5%AF%B9%E8%B1%A1%E5%92%8C%E6%96%B9%E6%B3%95/">
 
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Lee">
+      <meta itemprop="description" content=" 庐山烟雨浙江潮， 未至千般恨不消。 及至到来无一事， 庐山烟雨浙江潮。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小lee的菜园子">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          javase-java类，对象和方法
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-07 20:08:03" itemprop="dateCreated datePublished" datetime="2022-03-07T20:08:03+08:00">2022-03-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-08 20:37:13" itemprop="dateModified" datetime="2022-03-08T20:37:13+08:00">2022-03-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="面向过程和面向对象"><a href="#面向过程和面向对象" class="headerlink" title="面向过程和面向对象"></a>面向过程和面向对象</h2><blockquote>
+<p>面向过程：是一种执行者思维 主要处理简单的逻辑问题</p>
+<p>面向对象：是一种设计者思维 主要处理复杂问题</p>
+<p>注意: 面向对象和面向过程是相辅相成的 我们对于事物分析 首先使用面向对象对事物进行宏观整体分析，在使用面向过程对事物进行微观的具体执行</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="类和对象之间的关系"><a href="#类和对象之间的关系" class="headerlink" title="类和对象之间的关系"></a>类和对象之间的关系</h2><blockquote>
+<p>类：class 是一个模板</p>
+<p>对象：具体的一个实例</p>
+<p> 一个类可以产生无数个对象  java中所有的对象通过new 关键字体现的</p>
+</blockquote>
+<h2 id="类的组成"><a href="#类的组成" class="headerlink" title="类的组成"></a><strong>类的组成</strong></h2><p><code>Java中所有自定义类型都是引用类型</code></p>
+<ul>
+<li>成员变量</li>
+<li>方法</li>
+<li>构造方法</li>
+</ul>
+<h3 id="成员变量"><a href="#成员变量" class="headerlink" title="成员变量"></a><strong>成员变量</strong></h3><blockquote>
+<p>局部变量和成员变量之间区别<br>类中定义的变量是成员变量，而方法中定义的变量，包括方法的参数，代码块中定义的变量被称为局部变量<br>A、内存中位置不同   成员变量在 堆内存   局部变量是栈内存<br>B、是否有默认值  局部变量是没有    成员变量有    整数—0   浮点数—-0.0   布尔类型—-false   字符类型—‘\u0000’  引用数据类型—-null<br>C、作用范围   局部变量当前方法内有效    成员变量 在整个类中有有效的</p>
+</blockquote>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a><strong>方法</strong></h3><p><code>方法的四种书写方式</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//[A]没有参数 没有返回值  ---- 如果方法没有返回值的使用 void</span></span><br><span class="line"> <span class="keyword">public</span>   <span class="keyword">void</span>    <span class="title function_">aa</span><span class="params">()</span>&#123;</span><br><span class="line"></span><br><span class="line">     System.out.println(<span class="string">&quot;我是方法aa&quot;</span>);</span><br><span class="line">     <span class="comment">//bb(&quot;ceshi&quot;,12); ----在【一个类中】 直接调用【同一种类型】的方法 直接使用方法名进行调用即可</span></span><br><span class="line"> &#125;</span><br><span class="line"> <span class="comment">//[B]有参数没有返回值----- String  a,int b  代表的是方法的参数 多个参数之间使用逗号(,)进行分割</span></span><br><span class="line"><span class="comment">//a  b  称为 形参代表的是形式上参数</span></span><br><span class="line"><span class="keyword">public</span>    <span class="keyword">void</span>    <span class="title function_">bb</span><span class="params">(String a,<span class="type">int</span> b)</span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;我是方法bb:&quot;</span>+a+<span class="string">&quot;--&quot;</span>+b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//[C]有返回值没有参数 -----return 返回值  方法的返回值只可有一个</span></span><br><span class="line"><span class="comment">//那个位置调用cc方法  这个返回值就返回给谁</span></span><br><span class="line"><span class="keyword">public</span>   <span class="type">int</span>    <span class="title function_">cc</span><span class="params">()</span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;我是ccc方法&quot;</span>);</span><br><span class="line">     <span class="keyword">return</span> <span class="number">18</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//[D]有参数有返回值</span></span><br><span class="line"><span class="keyword">public</span>   String  <span class="title function_">dd</span><span class="params">(<span class="type">int</span> a,<span class="type">double</span> b)</span>&#123;</span><br><span class="line"></span><br><span class="line">    System.out.println(<span class="string">&quot;我是方法dd:&quot;</span>+a+<span class="string">&quot;--&quot;</span>+b);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;ceshi&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a><strong>方法重载</strong></h4><blockquote>
+<p>在【一个类】中 出现了 【方法名相同】  【参数列表不同】  这种方法称为 方法的重载<br>参数列表不同  （只要满足一个就可以看成是参数列表不同）<br>   A、类型不同<br>   B、个数不同<br>   C、顺序（位置）不同<br>方法重载仅仅能够帮助我们更加方便的整理,归纳,记忆,调用 方法.<br>方法重载没有提高任何效率,也没有节约任何代码.</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a><strong>构造方法</strong></h3><blockquote>
+<p>注意：</p>
+<ul>
+<li>构造方法的方法名必须和类名一致！</li>
+<li>构造方法通过new关键字调用！！</li>
+<li>构造方法虽然有返回值，但是不能定义返回值类型(返回值的类型肯定是本类)，不能在构造器里使用return返回某个值。</li>
+<li>如果我们没有定义构造方法，则编译器会自动定义一个【无参的构造方法】。如果已定义则编译器不会自动添加！</li>
+<li>构造方法可以重载</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.lee.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Phone</span> &#123;</span><br><span class="line">    <span class="comment">//成员变量</span></span><br><span class="line">    <span class="keyword">public</span> String name ;</span><br><span class="line">    <span class="keyword">public</span> String color ;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> price ;</span><br><span class="line">    <span class="keyword">public</span> String storage ;</span><br><span class="line">    <span class="comment">//构造方法 无参</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Phone</span><span class="params">()</span> &#123;&#125;</span><br><span class="line">	<span class="comment">//构造方法 有参</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Phone</span><span class="params">(String name, String color, <span class="type">double</span> price, String storage)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.color = color;</span><br><span class="line">        <span class="built_in">this</span>.price = price;</span><br><span class="line">        <span class="built_in">this</span>.storage = storage;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//方法重载根据参数个数，类型和顺序调用</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">aa</span> <span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;这是aa方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">aa</span> <span class="params">(<span class="type">int</span> a,String b)</span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;这是aa方法&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">aa</span> <span class="params">(String b,<span class="type">int</span> a)</span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;这是aa方法&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">&#125; <span class="comment">//类</span></span><br><span class="line"><span class="type">Phone</span> <span class="variable">phone</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Phone</span>(); <span class="comment">//通过new关键字获取Phone类的实例化对象 无参</span></span><br><span class="line"><span class="type">Phone</span> <span class="variable">phone2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Phone</span>(<span class="string">&quot;华为手机&quot;</span>,<span class="string">&quot;白色&quot;</span>,<span class="number">2500</span>,<span class="string">&quot;256G&quot;</span>); <span class="comment">//通过new关键字获取Phone类的实例化对象 有参</span></span><br><span class="line"></span><br><span class="line">System.out.println(phone.name);</span><br><span class="line">System.out.println(phone.price);</span><br><span class="line"><span class="comment">//由于未赋初始值 取默认值</span></span><br><span class="line"><span class="comment">//null</span></span><br><span class="line"><span class="comment">//0.0</span></span><br><span class="line">System.out.println(phone2.name);</span><br><span class="line">System.out.println(phone2.price);</span><br><span class="line"><span class="comment">//华为手机</span></span><br><span class="line"><span class="comment">//2500.0</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="this关键字"><a href="#this关键字" class="headerlink" title="this关键字"></a>this关键字</h2><p> this关键字  —-&gt;创建好的对象的地址</p>
+<p>作用：<br>    A、解决局部变量名称和成员变量名称冲突的时候获得值的问题—-this.属性<br>    B、解决了构造方法之间相互的调用—-this()</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Phone</span> &#123;</span><br><span class="line">    <span class="comment">//成员变量</span></span><br><span class="line">    <span class="keyword">public</span> String name ;</span><br><span class="line">    <span class="keyword">public</span> String color ;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> price ;</span><br><span class="line">    <span class="keyword">public</span> String storage ;</span><br><span class="line">    <span class="comment">//构造方法 无参</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Phone</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">//在构造方法中相互调用</span></span><br><span class="line">        <span class="built_in">this</span>(<span class="string">&quot;华为手机&quot;</span>,<span class="string">&quot;白色&quot;</span>,<span class="number">2500</span>,<span class="string">&quot;256G&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//构造方法 有参</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Phone</span><span class="params">(String name, String color, <span class="type">double</span> price, String storage)</span> &#123;</span><br><span class="line">        <span class="comment">//this();</span></span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.color = color;</span><br><span class="line">        <span class="built_in">this</span>.price = price;</span><br><span class="line">        <span class="built_in">this</span>.storage = storage;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><p><strong>类和对象在内存中的执行</strong></p>
+<p>通过类加载器将类的信息加载到jvm中的方法区中 方法区存放类信息对象信息、常量、静态变量和其他信息</p>
+<p>通过new实例化对象时</p>
+<ol>
+<li>分配对象空间，并将对象成员变量初始化为0或null</li>
+<li>执行属性值的显示初始化</li>
+<li>执行构造方法</li>
+<li>返回对象的地址给相关的变量</li>
+</ol>
+<p>所以栈中存放的是stu的地址值 指向堆中存放的地址，每实例化一个对象就会在堆中开辟一片空间并将地址值返回  this关键字代表创建好的对象的地址 如stu的this.age相当于0x111.age</p>
+<p>当执行方法时将从方法区中将类的方法压入栈中 执行完后出栈</p>
+<p><img src="/../images/1646659075342.png" alt="1646742249430"></p>
+
+    </div>
+
+    
+    
+    <div>
+    
+        <div style="text-align:center;color: #333;font-size:14px;">-------------本文结束 <i class="fa fa-hand-peace"></i> 感谢您的阅读-------------</div>
+    
 </div>
 
-</header>
-
-      
-      
-      
-      <div class="post-body">
-          <div class="category-all-page">
-            <div class="category-all-title">
-              目前共计 1 个分类
-            </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">2</span></li></ul>
-            </div>
-          </div>
         
-      </div>
-      
-      
-      
-    </div>
-    
 
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Lee
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://li-gaojie.github.io/2022/03/07/javase-java%E7%B1%BB%EF%BC%8C%E5%AF%B9%E8%B1%A1%E5%92%8C%E6%96%B9%E6%B3%95/" title="javase-java类，对象和方法">https://li-gaojie.github.io/2022/03/07/javase-java类，对象和方法/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/javase/" rel="tag"><i class="fa fa-tag"></i> javase</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/08/javase-java%E7%B1%BB%E9%9D%99%E6%80%81%E3%80%81%E5%B0%81%E8%A3%85%E3%80%81%E7%BB%A7%E6%89%BF/" rel="prev" title="javase-java类静态、封装、继承">
+      <i class="fa fa-chevron-left"></i> javase-java类静态、封装、继承
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
     
-    
-    
+  </article>
+  
+  
+  
+
 
 
           </div>
@@ -284,6 +426,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B%E5%92%8C%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.</span> <span class="nav-text">面向过程和面向对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">2.</span> <span class="nav-text">类和对象之间的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E7%9A%84%E7%BB%84%E6%88%90"><span class="nav-number">3.</span> <span class="nav-text">类的组成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F"><span class="nav-number">3.1.</span> <span class="nav-text">成员变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95"><span class="nav-number">3.2.</span> <span class="nav-text">方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD"><span class="nav-number">3.2.1.</span> <span class="nav-text">方法重载</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95"><span class="nav-number">3.3.</span> <span class="nav-text">构造方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#this%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">4.</span> <span class="nav-text">this关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%A9%E5%B1%95"><span class="nav-number">5.</span> <span class="nav-text">扩展</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
